@@ -73,8 +73,8 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		ImagePanel panel = new ImagePanel("Resources/usa-canada-map.jpg");
-		splitPane.setRightComponent(panel);
+		ImagePanel visualOutput = new ImagePanel("images/usa-canada-map.jpg");
+		splitPane.setRightComponent(visualOutput);
 		
 		JMenuBar menuContainer = new JMenuBar();
 		splitPane.setLeftComponent(menuContainer);
@@ -119,5 +119,20 @@ public class Main {
 		JMenuItem mntmTransferPoint = new JMenuItem("Transfer Point");
 		mnCity.add(mntmTransferPoint);
 		menuContainer.setLayout(gl_menuContainer);
+		
+		JToolBar toolBar = new JToolBar();
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JMenuBar menuBar = new JMenuBar();
+		toolBar.add(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenu mnEdit = new JMenu("Edit");
+		menuBar.add(mnEdit);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
 	}
 }
