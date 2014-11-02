@@ -1,0 +1,247 @@
+http://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=141102160716
+
+class Map
+{
+  Image background;
+  1 -- * Node;
+  1 -- * Link;
+}
+
+class Node
+{
+  name;
+  double longitude;
+  double latitude;
+    1 -- 1 Weather;
+}
+
+class Link
+{
+  Time travelTime;
+Node origin;
+Node destination;
+1..* -- 2 Node;
+}
+
+
+class Venue
+{
+  name;
+type;
+Double cost;
+* -- 1 City;
+}
+
+class TransferPoint
+{
+  Time layoverTime;
+isA City;
+}
+
+
+class TransportationType
+{
+  name;
+  1 -- 1 Link;
+}
+
+class Accomodation
+{
+  name;
+  type;
+  Double cost;
+  * -- 1 City;
+}
+
+class StartPoint
+{
+  isA City;
+}
+
+class EndPoint
+{
+   isA City;
+}
+
+class City
+{
+  region;
+  Long population;
+  isA Node;
+}
+
+class Weather
+{
+  type;
+}
+
+class AlternateRoute
+{
+  isA Link;
+}
+
+class MainRoute
+{
+  isA Link;
+}
+
+
+//$?[End_of_model]$?
+
+class Link
+{
+  position 220 129 143 96;
+  position.association Link__Node 144,34 0,47;
+}
+
+class Venue
+{
+  position 804 152 113 96;
+  position.association City__Venue 0,43 153,1;
+}
+
+class TransferPoint
+{
+  position 380 366 152 60;
+}
+
+class TransportationType
+{
+  position 40 166 134 60;
+  position.association Link__TransportationType 135,34 0,47;
+}
+
+class Accomodation
+{
+  position 812 269 113 96;
+  position.association Accomodation__City 0,48 153,42;
+}
+
+class StartPoint
+{
+  position 698 373 109 45;
+}
+
+class EndPoint
+{
+  position 564 370 109 45;
+}
+
+class City
+{
+  position 573 209 152 78;
+}
+
+class Weather
+{
+  position 806 45 109 45;
+}
+
+class Map
+{
+  position 273 19 156 60;
+  position.association Map__Node 156,33 0,1;
+  position.association Link__Map 11,60 27,0;
+}
+
+class Node
+{
+  position 578 59 141 96;
+  position.association Node__Weather 142,4 0,10;
+}
+
+class AlternateRoute
+{
+  position 302 267 109 45;
+}
+
+class Link
+{
+  position 220 129 143 96;
+}
+
+class MainRoute
+{
+  position 166 267 109 45;
+}
+
+
+
+http://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=141028744137
+
+We need to show how it relates to the abstract model. Either by plugging in our diagram the abstract model, or by making a table where our classes show the relation with a class in the abstract one. (I vote for the table)
+
+class DirectedArrow
+{
+    double distance;
+* -- 1 Map;
+  * -- * Label;
+  1 -- 1 Symbol;
+}
+
+class Circle
+{
+  name;
+  double longitude;
+  double latitude;
+
+1 -- * Symbol;
+  2 -- 1..* DirectedArrow;
+  * -- 1 Map;
+  * -- * Label;
+}
+
+class SolidArrow
+{
+  isA DirectedArrow;
+}
+
+class DottedArrow
+{
+  isA DirectedArrow;
+}
+
+class Map
+{
+  int sizeH;
+  int sizeW;
+}
+
+class Label
+{
+  descritption;
+}
+
+class Symbol
+{
+  iconPath;
+  }
+
+class PopupLabel
+{
+  isA Label;
+}
+
+class PermanentLabel
+{
+  isA Label;
+}
+
+class CircleLabel
+{ 
+    City city;
+    Accomodation accomodation;
+    Venue venue;
+    isA PopupLabel;
+}
+
+class ArrowLabel
+{
+    isA PopupLabel;
+Time travelTime;
+  Time depTime;
+  Time arrTime;
+  double cost;
+}
+
+
