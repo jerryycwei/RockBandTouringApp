@@ -35,9 +35,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 
+import metamodel.Map;
+
 public class Main {
 
 	private JFrame frame;
+	private Map map;
 
 	/**
 	 * Launch the application.
@@ -82,7 +85,6 @@ public class Main {
 		JMenu mnLink = new JMenu("Link");
 		
 		JMenu mnCity = new JMenu("City");
-		mnCity.setSelectedIcon(new ImageIcon("C:\\Users\\Quang\\Documents\\GitHub\\ECSE539\\RockBandTouringApp\\Resources\\download.jpeg"));
 		GroupLayout gl_menuContainer = new GroupLayout(menuContainer);
 		gl_menuContainer.setHorizontalGroup(
 			gl_menuContainer.createParallelGroup(Alignment.LEADING)
