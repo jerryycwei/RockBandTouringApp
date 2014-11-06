@@ -57,7 +57,7 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		visualOutput = new ImagePanel("images/usa-canada-map.jpg");
+		visualOutput = new ImagePanel("images/map_bitches.png");
 		splitPane.setRightComponent(visualOutput);
 		
 		JLabel widthLabel = new JLabel("width " + frame.getWidth());
