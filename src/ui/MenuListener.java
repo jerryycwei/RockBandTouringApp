@@ -37,8 +37,7 @@ public class MenuListener implements ActionListener {
 		case "New":
 			MapSystem system = parent.getSystem();
 			system.clearLists();
-			ImagePanel imgPanel = parent.getVisualOutput();
-			imgPanel.repaint();
+			parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg"));
 			break;
 		case "Undo":
 			//TODO: implements click stack to undo

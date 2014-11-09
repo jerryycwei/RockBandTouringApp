@@ -1,4 +1,8 @@
 package metamodel;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
@@ -113,5 +117,17 @@ public class Circle
 		"positionY" + ":" + getPositionY()+ "]" + System.getProperties().getProperty("line.separator") +
 		"  " + "node = "+(getNode()!=null?Integer.toHexString(System.identityHashCode(getNode())):"null")
 		+ outputString;
+	}
+	
+	public void drawCircle(Graphics g, boolean isSelected) {
+		int r = 5;
+		int startX = positionX - (r/2);
+		int startY = positionY - (r/2);
+		if (isSelected) {
+			g.setColor(Color.blue);
+		} else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(startX, startY, r, r);
 	}
 }
