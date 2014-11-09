@@ -42,7 +42,7 @@ public class Node
     circle = aCircle;
   }
 
-  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, double aLongitudeForCircle, double aLatitudeForCircle)
+  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, int positionX, int positionY)
   {
     name = aName;
     boolean didAddMapSystem = setMapSystem(aMapSystem);
@@ -51,7 +51,7 @@ public class Node
       throw new RuntimeException("Unable to create node due to mapSystem");
     }
     links = new ArrayList<Link>();
-    circle = new Circle(aNameForCircle, aLongitudeForCircle, aLatitudeForCircle, this);
+    circle = new Circle(aNameForCircle, positionX, positionY, this);
   }
 
   //------------------------

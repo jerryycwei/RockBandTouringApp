@@ -4,115 +4,114 @@ package metamodel;
 
 
 
-// line 186 "model.ump"
-// line 223 "model.ump"
-// line 260 "model.ump"
+// line 187 "model.ump"
+// line 224 "model.ump"
+// line 261 "model.ump"
 public class Circle
 {
 
-  //------------------------
-  // MEMBER VARIABLES
-  //------------------------
+	//------------------------
+	// MEMBER VARIABLES
+	//------------------------
 
-  //Circle Attributes
-  private String name;
-  private double longitude;
-  private double latitude;
+	//Circle Attributes
+	private String name;
+	private int positionX;
+	private int positionY;
 
-  //Circle Associations
-  private Node node;
+	//Circle Associations
+	private Node node;
 
-  //------------------------
-  // CONSTRUCTOR
-  //------------------------
+	//------------------------
+	// CONSTRUCTOR
+	//------------------------
 
-  public Circle(String aName, double aLongitude, double aLatitude, Node aNode)
-  {
-    name = aName;
-    longitude = aLongitude;
-    latitude = aLatitude;
-    if (aNode == null || aNode.getCircle() != null)
-    {
-      throw new RuntimeException("Unable to create Circle due to aNode");
-    }
-    node = aNode;
-  }
+	public Circle(String aName, int aPositionX, int aPositionY, Node aNode)
+	{
+		name = aName;
+		positionX = aPositionX;
+		positionY = aPositionY;
+		if (aNode == null || aNode.getCircle() != null)
+		{
+			throw new RuntimeException("Unable to create Circle due to aNode");
+		}
+		node = aNode;
+	}
 
-  public Circle(String aName, double aLongitude, double aLatitude, String aNameForNode, MapSystem aMapSystemForNode)
-  {
-    name = aName;
-    longitude = aLongitude;
-    latitude = aLatitude;
-    node = new Node(aNameForNode, aMapSystemForNode, this);
-  }
+	public Circle(String aName, int aPositionX, int aPositionY, String aNameForNode, MapSystem aMapSystemForNode)
+	{
+		name = aName;
+		positionX = aPositionX;
+		positionY = aPositionY;
+		node = new Node(aNameForNode, aMapSystemForNode, this);
+	}
 
-  //------------------------
-  // INTERFACE
-  //------------------------
+	//------------------------
+	// INTERFACE
+	//------------------------
 
-  public boolean setName(String aName)
-  {
-    boolean wasSet = false;
-    name = aName;
-    wasSet = true;
-    return wasSet;
-  }
+	public boolean setName(String aName)
+	{
+		boolean wasSet = false;
+		name = aName;
+		wasSet = true;
+		return wasSet;
+	}
 
-  public boolean setLongitude(double aLongitude)
-  {
-    boolean wasSet = false;
-    longitude = aLongitude;
-    wasSet = true;
-    return wasSet;
-  }
+	public boolean setPositionX(int aPositionX)
+	{
+		boolean wasSet = false;
+		positionX = aPositionX;
+		wasSet = true;
+		return wasSet;
+	}
 
-  public boolean setLatitude(double aLatitude)
-  {
-    boolean wasSet = false;
-    latitude = aLatitude;
-    wasSet = true;
-    return wasSet;
-  }
+	public boolean setPositionY(int aPositionY)
+	{
+		boolean wasSet = false;
+		positionY = aPositionY;
+		wasSet = true;
+		return wasSet;
+	}
 
-  public String getName()
-  {
-    return name;
-  }
+	public String getName()
+	{
+		return name;
+	}
 
-  public double getLongitude()
-  {
-    return longitude;
-  }
+	public int getPositionX()
+	{
+		return positionX;
+	}
 
-  public double getLatitude()
-  {
-    return latitude;
-  }
+	public int getPositionY()
+	{
+		return positionY;
+	}
 
-  public Node getNode()
-  {
-    return node;
-  }
+	public Node getNode()
+	{
+		return node;
+	}
 
-  public void delete()
-  {
-    Node existingNode = node;
-    node = null;
-    if (existingNode != null)
-    {
-      existingNode.delete();
-    }
-  }
+	public void delete()
+	{
+		Node existingNode = node;
+		node = null;
+		if (existingNode != null)
+		{
+			existingNode.delete();
+		}
+	}
 
-
-  public String toString()
-  {
-	  String outputString = "";
-    return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "longitude" + ":" + getLongitude()+ "," +
-            "latitude" + ":" + getLatitude()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "node = "+(getNode()!=null?Integer.toHexString(System.identityHashCode(getNode())):"null")
-     + outputString;
-  }
+	public String toString()
+	{
+		String outputString = "";
+		return super.toString() + "["+
+		"name" + ":" + getName()+ "," +
+		"positionX" + ":" + getPositionX()+ "," +
+		"positionY" + ":" + getPositionY()+ "]" + System.getProperties().getProperty("line.separator") +
+		"  " + "node = "+(getNode()!=null?Integer.toHexString(System.identityHashCode(getNode())):"null")
+		+ outputString;
+	}
 }

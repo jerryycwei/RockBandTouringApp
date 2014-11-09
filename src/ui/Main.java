@@ -21,6 +21,7 @@ public class Main {
 
 	private JFrame frame;
 	private Map map;
+	private MapSystem system;
 	private ImagePanel visualOutput;
 
 	/**
