@@ -13,7 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
-import metamodel.Map;
+import metamodel.*;
+
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -28,6 +29,7 @@ public class Main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		//initializeCities();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,6 +41,16 @@ public class Main {
 			}
 		});
 	}
+
+	/**
+	 * Initialize Cities as well as the venues and accomodations
+	 
+	private static void initializeCities() {
+		// TODO Auto-generated method stub
+		Circle losAngeles = new Circle("Los Angeles", 
+		City losAngeles = new City("Los Angeles", this, c, null, 0, null, null);
+		City chicago = new City()
+	}*/
 
 	/**
 	 * Create the application.
