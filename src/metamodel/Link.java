@@ -6,9 +6,9 @@ package metamodel;
 import java.sql.Time;
 import java.util.*;
 
-// line 14 "model.ump"
-// line 100 "model.ump"
-// line 170 "model.ump"
+// line 15 "model.ump"
+// line 101 "model.ump"
+// line 171 "model.ump"
 public class Link
 {
 
@@ -20,7 +20,7 @@ public class Link
   private Time travelTime;
   private Node origin;
   private Node destination;
-  private int distance;
+  private double distance;
 
   //Link Associations
   private List<Node> nodes;
@@ -31,7 +31,7 @@ public class Link
   // CONSTRUCTOR
   //------------------------
 
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType)
+  public Link(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType)
   {
     travelTime = aTravelTime;
     origin = aOrigin;
@@ -50,7 +50,7 @@ public class Link
     transportationType = aTransportationType;
   }
 
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, String aNameForTransportationType, Symbol aSymbolForTransportationType)
+  public Link(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, String aNameForTransportationType, Symbol aSymbolForTransportationType)
   {
     travelTime = aTravelTime;
     origin = aOrigin;
@@ -93,7 +93,7 @@ public class Link
     return wasSet;
   }
 
-  public boolean setDistance(int aDistance)
+  public boolean setDistance(double aDistance)
   {
     boolean wasSet = false;
     distance = aDistance;
@@ -116,7 +116,7 @@ public class Link
     return destination;
   }
 
-  public int getDistance()
+  public double getDistance()
   {
     return distance;
   }

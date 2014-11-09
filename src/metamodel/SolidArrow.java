@@ -3,11 +3,12 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import java.awt.geom.Point2D;
 import java.sql.Time;
 
-// line 195 "model.ump"
-// line 229 "model.ump"
-// line 271 "model.ump"
+// line 197 "model.ump"
+// line 231 "model.ump"
+// line 273 "model.ump"
 public class SolidArrow extends DirectedArrow
 {
 
@@ -22,9 +23,9 @@ public class SolidArrow extends DirectedArrow
   // CONSTRUCTOR
   //------------------------
 
-  public SolidArrow(double aDistance, MainRoute aMainRoute)
+  public SolidArrow(Point2D aBegin, Point2D aEnd, MainRoute aMainRoute)
   {
-    super(aDistance);
+    super(aBegin, aEnd);
     if (aMainRoute == null || aMainRoute.getSolidArrow() != null)
     {
       throw new RuntimeException("Unable to create SolidArrow due to aMainRoute");
@@ -32,9 +33,9 @@ public class SolidArrow extends DirectedArrow
     mainRoute = aMainRoute;
   }
 
-  public SolidArrow(double aDistance, Time aTravelTimeForMainRoute, Node aOriginForMainRoute, Node aDestinationForMainRoute, int aDistanceForMainRoute, MapSystem aMapSystemForMainRoute, TransportationType aTransportationTypeForMainRoute)
+  public SolidArrow(Point2D aBegin, Point2D aEnd, Time aTravelTimeForMainRoute, Node aOriginForMainRoute, Node aDestinationForMainRoute, double aDistanceForMainRoute, MapSystem aMapSystemForMainRoute, TransportationType aTransportationTypeForMainRoute)
   {
-    super(aDistance);
+    super(aBegin, aEnd);
     mainRoute = new MainRoute(aTravelTimeForMainRoute, aOriginForMainRoute, aDestinationForMainRoute, aDistanceForMainRoute, aMapSystemForMainRoute, aTransportationTypeForMainRoute, this);
   }
 

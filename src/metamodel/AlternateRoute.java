@@ -3,11 +3,12 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import java.awt.geom.Point2D;
 import java.sql.Time;
 import java.util.*;
 
-// line 78 "model.ump"
-// line 164 "model.ump"
+// line 79 "model.ump"
+// line 165 "model.ump"
 public class AlternateRoute extends Link
 {
 
@@ -22,7 +23,7 @@ public class AlternateRoute extends Link
   // CONSTRUCTOR
   //------------------------
 
-  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, DottedArrow aDottedArrow)
+  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType, DottedArrow aDottedArrow)
   {
     super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
     if (aDottedArrow == null || aDottedArrow.getAlternateRoute() != null)
@@ -32,10 +33,10 @@ public class AlternateRoute extends Link
     dottedArrow = aDottedArrow;
   }
 
-  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForDottedArrow)
+  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType, Point2D aBeginForDottedArrow, Point2D aEndForDottedArrow)
   {
     super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
-    dottedArrow = new DottedArrow(aDistanceForDottedArrow, this);
+    dottedArrow = new DottedArrow(aBeginForDottedArrow, aEndForDottedArrow, this);
   }
 
   //------------------------

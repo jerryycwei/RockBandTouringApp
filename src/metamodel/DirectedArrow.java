@@ -1,12 +1,14 @@
 package metamodel;
+import java.awt.geom.Point2D;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 
-// line 181 "model.ump"
-// line 218 "model.ump"
-// line 251 "model.ump"
+// line 182 "model.ump"
+// line 220 "model.ump"
+// line 253 "model.ump"
 public class DirectedArrow
 {
 
@@ -15,32 +17,47 @@ public class DirectedArrow
   //------------------------
 
   //DirectedArrow Attributes
-  private double distance;
+  private Point2D begin;
+  private Point2D end;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public DirectedArrow(double aDistance)
+  public DirectedArrow(Point2D aBegin, Point2D aEnd)
   {
-    distance = aDistance;
+    begin = aBegin;
+    end = aEnd;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
 
-  public boolean setDistance(double aDistance)
+  public boolean setBegin(Point2D aBegin)
   {
     boolean wasSet = false;
-    distance = aDistance;
+    begin = aBegin;
     wasSet = true;
     return wasSet;
   }
 
-  public double getDistance()
+  public boolean setEnd(Point2D aEnd)
   {
-    return distance;
+    boolean wasSet = false;
+    end = aEnd;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public Point2D getBegin()
+  {
+    return begin;
+  }
+
+  public Point2D getEnd()
+  {
+    return end;
   }
 
   public void delete()
@@ -50,8 +67,9 @@ public class DirectedArrow
   public String toString()
   {
 	  String outputString = "";
-    return super.toString() + "["+
-            "distance" + ":" + getDistance()+ "]"
+    return super.toString() + "["+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "begin" + "=" + (getBegin() != null ? !getBegin().equals(this)  ? getBegin().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "end" + "=" + (getEnd() != null ? !getEnd().equals(this)  ? getEnd().toString().replaceAll("  ","    ") : "this" : "null")
      + outputString;
   }
 }

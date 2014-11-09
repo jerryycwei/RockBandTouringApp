@@ -3,11 +3,12 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import java.awt.geom.Point2D;
 import java.sql.Time;
 import java.util.*;
 
-// line 84 "model.ump"
-// line 175 "model.ump"
+// line 85 "model.ump"
+// line 176 "model.ump"
 public class MainRoute extends Link
 {
 
@@ -22,7 +23,7 @@ public class MainRoute extends Link
   // CONSTRUCTOR
   //------------------------
 
-  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, SolidArrow aSolidArrow)
+  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType, SolidArrow aSolidArrow)
   {
     super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
     if (aSolidArrow == null || aSolidArrow.getMainRoute() != null)
@@ -32,10 +33,10 @@ public class MainRoute extends Link
     solidArrow = aSolidArrow;
   }
 
-  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForSolidArrow)
+  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType, Point2D aBeginForSolidArrow, Point2D aEndForSolidArrow)
   {
     super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
-    solidArrow = new SolidArrow(aDistanceForSolidArrow, this);
+    solidArrow = new SolidArrow(aBeginForSolidArrow, aEndForSolidArrow, this);
   }
 
   //------------------------
