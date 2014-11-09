@@ -1,8 +1,11 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -24,6 +27,8 @@ public class Main {
 	private Map map;
 	private MapSystem system;
 	private ImagePanel visualOutput;
+	
+	Graphics2D g2d;
 
 	/**
 	 * Launch the application.
@@ -166,4 +171,40 @@ public class Main {
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
 		mnHelp.add(mntmWalkthrough);
 	}
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+	
+    public void paint(Graphics g) { // the paint method draws shapes and other images onto the GUI
+        g2d = ( Graphics2D ) g; // Graphics2D is accessed for more options
+//        g2d.setColor(new Color(205,127,50)); // the color of the graphics is set
+//        if (point == true) {
+//            g2d.fillOval(xPoints[coord-1]-2, yPoints[coord-1]-2, 4, 4);
+//            point = false;
+//        }
+//        if (makeit == true) { // if the boolean makeit is true, then we draw the shape
+//            
+//            shapepath.moveTo(xPoints[0], yPoints[0]); // the shape path is moved to the first point in the array
+//
+//            for (int a = 1; a < coord; a++) { // goes through all the coordinates in the array
+//                shapepath.lineTo(xPoints[a], yPoints[a]); // a line is created from one point in the array to the other in the order they were clicked
+//            }
+//            shapepath.closePath(); // the shapepath is closed (shape is finalized)
+//                       
+//            g2d.fill(shapepath); // shape is drawn onto the GUI
+//            clear.repaint(); // buttons are repainted because they would sometimes be hidden by the drawn shape
+//            create.repaint();
+//            shapepath.reset(); 
+//            coord = 0; // coord is reset to 0 so that a new shape may be created
+//            makeit = false;
+//        }
+//         if (clearit == true) {
+//            g2d.clearRect(0,0,1152,834); // a rectangle the size of the window is cleared, so as to clear the entire shape
+//            coord = 0; // coord is reset to 0 so that a new shape may be created
+//            clear.repaint(); // buttons are repainted because they wouldn't display after clear was clicked
+//            create.repaint();
+//            clearit = false;            
+//        }
+    }
 }
