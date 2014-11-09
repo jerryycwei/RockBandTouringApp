@@ -160,10 +160,20 @@ public class Main {
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmAbout = new JMenuItem("About");
-		mntmAbout.addActionListener(new MenuListener(frame, mntmAbout));
+		mntmAbout.addActionListener(new MenuListener(this, mntmAbout));
 		mnHelp.add(mntmAbout);
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
 		mnHelp.add(mntmWalkthrough);
 	}
+	
+	
+	public ImagePanel getVisualOutput() {
+		return this.visualOutput;
+	}
+	
+	public MapSystem getMapSystem() {
+		return this.system;
+	}
+
 }
