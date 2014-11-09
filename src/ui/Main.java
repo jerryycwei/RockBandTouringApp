@@ -47,7 +47,7 @@ public class Main {
 		});
 	}
 
-	/**
+	/*
 	 * Initialize Cities as well as the venues and accomodations
 	 
 	private static void initializeCities() {

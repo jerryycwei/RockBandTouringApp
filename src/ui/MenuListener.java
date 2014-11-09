@@ -10,9 +10,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import metamodel.MapSystem;
+
 public class MenuListener implements ActionListener {
 	private JMenuItem caller;
-	private JFrame parent;
+	private Main parent;
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -21,8 +23,7 @@ public class MenuListener implements ActionListener {
 		System.out.println("called");
 		switch(caller.getText()) {
 		case "About":
-			System.out.println("work");
-			JDialog aboutDialog = new JDialog(parent);
+			JDialog aboutDialog = new JDialog(parent.getFrame());
 			aboutDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			aboutDialog.setBounds(500, 200, 300, 200);
 			JPanel panel = new JPanel();
@@ -34,14 +35,28 @@ public class MenuListener implements ActionListener {
 			aboutDialog.add(panel);
 			aboutDialog.setVisible(true);
 			break;
+		case "New":
+			MapSystem system = parent.getMapSystem();
+			system.clearLists();
+			ImagePanel imgPanel = parent.getVisualOutput();
+			imgPanel.repaint();
+			break;
+		case "Undo":
+			//TODO: implements click stack to undo
+			break;
+		case "Redo":
+			//TODO: implements click stack to redo
+			break;
 		
+			
 		default:
 			break;
 		}
 		
 	}
 	
-	public MenuListener(JFrame parent, JMenuItem caller) {
+	public MenuListener(Main parent, JMenuItem caller) {
+		this.parent = parent;
 		this.caller = caller;
 	}
 
