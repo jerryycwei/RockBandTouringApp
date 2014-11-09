@@ -16,18 +16,18 @@ public class Map
   //------------------------
 
   //Map Attributes
-  private int sizeH;
-  private int sizeW;
+  private int height;
+  private int width;
   private Image map;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Map(int aSizeH, int aSizeW, Image aMap)
+  public Map(int aHeight, int aWidth, Image aMap)
   {
-    sizeH = aSizeH;
-    sizeW = aSizeW;
+    height = aHeight;
+    width = aWidth;
     map = aMap;
   }
 
@@ -35,18 +35,18 @@ public class Map
   // INTERFACE
   //------------------------
 
-  public boolean setSizeH(int aSizeH)
+  public boolean setHeight(int aHeight)
   {
     boolean wasSet = false;
-    sizeH = aSizeH;
+    height = aHeight;
     wasSet = true;
     return wasSet;
   }
 
-  public boolean setSizeW(int aSizeW)
+  public boolean setWidth(int aWidth)
   {
     boolean wasSet = false;
-    sizeW = aSizeW;
+    width = aWidth;
     wasSet = true;
     return wasSet;
   }
@@ -59,14 +59,14 @@ public class Map
     return wasSet;
   }
 
-  public int getSizeH()
+  public int getHeight()
   {
-    return sizeH;
+    return height;
   }
 
-  public int getSizeW()
+  public int getWidth()
   {
-    return sizeW;
+    return width;
   }
 
   public Image getMap()
@@ -82,8 +82,8 @@ public class Map
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "sizeH" + ":" + getSizeH()+ "," +
-            "sizeW" + ":" + getSizeW()+ "]" + System.getProperties().getProperty("line.separator") +
+            "height" + ":" + getHeight()+ "," +
+            "width" + ":" + getWidth()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "map" + "=" + (getMap() != null ? !getMap().equals(this)  ? getMap().toString().replaceAll("  ","    ") : "this" : "null")
      + outputString;
   }
