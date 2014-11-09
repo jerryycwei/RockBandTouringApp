@@ -16,7 +16,7 @@ public class InfoLabel
   //------------------------
 
   //InfoLabel Attributes
-  private TextArea info;
+  private JTextArea info;
 
   //InfoLabel Associations
   private MapSystem mapSystem;
@@ -25,7 +25,7 @@ public class InfoLabel
   // CONSTRUCTOR
   //------------------------
 
-  public InfoLabel(TextArea aInfo, MapSystem aMapSystem)
+  public InfoLabel(JTextArea aInfo, MapSystem aMapSystem)
   {
     info = aInfo;
     if (aMapSystem == null || aMapSystem.getInfoLabel() != null)
@@ -35,7 +35,7 @@ public class InfoLabel
     mapSystem = aMapSystem;
   }
 
-  public InfoLabel(TextArea aInfo, Map aMapForMapSystem)
+  public InfoLabel(JTextArea aInfo, Map aMapForMapSystem)
   {
     info = aInfo;
     mapSystem = new MapSystem(aMapForMapSystem, this);
@@ -45,7 +45,7 @@ public class InfoLabel
   // INTERFACE
   //------------------------
 
-  public boolean setInfo(TextArea aInfo)
+  public boolean setInfo(JTextArea aInfo)
   {
     boolean wasSet = false;
     info = aInfo;
@@ -53,7 +53,7 @@ public class InfoLabel
     return wasSet;
   }
 
-  public TextArea getInfo()
+  public JTextArea getInfo()
   {
     return info;
   }

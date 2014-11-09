@@ -4,6 +4,7 @@ package metamodel;
 
 
 import java.util.*;
+import javax.swing.JTextArea;
 import java.sql.Time;
 
 // line 2 "model.ump"
@@ -39,7 +40,7 @@ public class MapSystem
     infoLabel = aInfoLabel;
   }
 
-  public MapSystem(Map aMap, TextArea aInfoForInfoLabel)
+  public MapSystem(Map aMap, JTextArea aInfoForInfoLabel)
   {
     map = aMap;
     nodes = new ArrayList<Node>();
