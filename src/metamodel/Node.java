@@ -1,12 +1,11 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 import java.util.*;
 
 // line 9 "model.ump"
-// line 146 "model.ump"
+// line 151 "model.ump"
 public class Node
 {
 
@@ -16,48 +15,42 @@ public class Node
 
   //Node Attributes
   private String name;
-  private double longitude;
-  private double latitude;
 
   //Node Associations
-  private Weather weather;
-  private Map map;
+  private MapSystem mapSystem;
   private List<Link> links;
+  private Circle circle;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Node(String aName, double aLongitude, double aLatitude, Weather aWeather, Map aMap)
+  public Node(String aName, MapSystem aMapSystem, Circle aCircle)
   {
     name = aName;
-    longitude = aLongitude;
-    latitude = aLatitude;
-    if (aWeather == null || aWeather.getNode() != null)
+    boolean didAddMapSystem = setMapSystem(aMapSystem);
+    if (!didAddMapSystem)
     {
-      throw new RuntimeException("Unable to create Node due to aWeather");
-    }
-    weather = aWeather;
-    boolean didAddMap = setMap(aMap);
-    if (!didAddMap)
-    {
-      throw new RuntimeException("Unable to create node due to map");
+      throw new RuntimeException("Unable to create node due to mapSystem");
     }
     links = new ArrayList<Link>();
+    if (aCircle == null || aCircle.getNode() != null)
+    {
+      throw new RuntimeException("Unable to create Node due to aCircle");
+    }
+    circle = aCircle;
   }
 
-  public Node(String aName, double aLongitude, double aLatitude, String aTypeForWeather, Map aMap)
+  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, double aLongitudeForCircle, double aLatitudeForCircle, CircleLabel aCircleLabelForCircle)
   {
     name = aName;
-    longitude = aLongitude;
-    latitude = aLatitude;
-    weather = new Weather(aTypeForWeather, this);
-    boolean didAddMap = setMap(aMap);
-    if (!didAddMap)
+    boolean didAddMapSystem = setMapSystem(aMapSystem);
+    if (!didAddMapSystem)
     {
-      throw new RuntimeException("Unable to create node due to map");
+      throw new RuntimeException("Unable to create node due to mapSystem");
     }
     links = new ArrayList<Link>();
+    circle = new Circle(aNameForCircle, aLongitudeForCircle, aLatitudeForCircle, this, aCircleLabelForCircle);
   }
 
   //------------------------
@@ -72,45 +65,14 @@ public class Node
     return wasSet;
   }
 
-  public boolean setLongitude(double aLongitude)
-  {
-    boolean wasSet = false;
-    longitude = aLongitude;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setLatitude(double aLatitude)
-  {
-    boolean wasSet = false;
-    latitude = aLatitude;
-    wasSet = true;
-    return wasSet;
-  }
-
   public String getName()
   {
     return name;
   }
 
-  public double getLongitude()
+  public MapSystem getMapSystem()
   {
-    return longitude;
-  }
-
-  public double getLatitude()
-  {
-    return latitude;
-  }
-
-  public Weather getWeather()
-  {
-    return weather;
-  }
-
-  public Map getMap()
-  {
-    return map;
+    return mapSystem;
   }
 
   public Link getLink(int index)
@@ -143,21 +105,26 @@ public class Node
     return index;
   }
 
-  public boolean setMap(Map aMap)
+  public Circle getCircle()
+  {
+    return circle;
+  }
+
+  public boolean setMapSystem(MapSystem aMapSystem)
   {
     boolean wasSet = false;
-    if (aMap == null)
+    if (aMapSystem == null)
     {
       return wasSet;
     }
 
-    Map existingMap = map;
-    map = aMap;
-    if (existingMap != null && !existingMap.equals(aMap))
+    MapSystem existingMapSystem = mapSystem;
+    mapSystem = aMapSystem;
+    if (existingMapSystem != null && !existingMapSystem.equals(aMapSystem))
     {
-      existingMap.removeNode(this);
+      existingMapSystem.removeNode(this);
     }
-    map.addNode(this);
+    mapSystem.addNode(this);
     wasSet = true;
     return wasSet;
   }
@@ -299,15 +266,9 @@ public class Node
 
   public void delete()
   {
-    Weather existingWeather = weather;
-    weather = null;
-    if (existingWeather != null)
-    {
-      existingWeather.delete();
-    }
-    Map placeholderMap = map;
-    this.map = null;
-    placeholderMap.removeNode(this);
+    MapSystem placeholderMapSystem = mapSystem;
+    this.mapSystem = null;
+    placeholderMapSystem.removeNode(this);
     ArrayList<Link> copyOfLinks = new ArrayList<Link>(links);
     links.clear();
     for(Link aLink : copyOfLinks)
@@ -321,6 +282,12 @@ public class Node
         aLink.removeNode(this);
       }
     }
+    Circle existingCircle = circle;
+    circle = null;
+    if (existingCircle != null)
+    {
+      existingCircle.delete();
+    }
   }
 
 
@@ -328,11 +295,9 @@ public class Node
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "longitude" + ":" + getLongitude()+ "," +
-            "latitude" + ":" + getLatitude()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "weather = "+(getWeather()!=null?Integer.toHexString(System.identityHashCode(getWeather())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "map = "+(getMap()!=null?Integer.toHexString(System.identityHashCode(getMap())):"null")
+            "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "circle = "+(getCircle()!=null?Integer.toHexString(System.identityHashCode(getCircle())):"null")
      + outputString;
   }
 }

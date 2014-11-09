@@ -2,11 +2,10 @@
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
-import java.util.*;
 
-// line 53 "model.ump"
-// line 121 "model.ump"
-public class StartPoint extends City
+// line 236 "model.ump"
+// line 353 "model.ump"
+public class PermanentSymbol extends Symbol
 {
 
   //------------------------
@@ -17,9 +16,9 @@ public class StartPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public StartPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather)
+  public PermanentSymbol(String aIconPath, DirectedArrow aDirectedArrow, Circle aCircle)
   {
-    super(aName, aMapSystem, aCircle, aRegion, aPopulation, aWeather);
+    super(aIconPath, aDirectedArrow, aCircle);
   }
 
   //------------------------

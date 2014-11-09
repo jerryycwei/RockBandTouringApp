@@ -1,13 +1,12 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 import java.sql.Time;
 import java.util.*;
 
-// line 34 "model.ump"
-// line 102 "model.ump"
+// line 31 "model.ump"
+// line 104 "model.ump"
 public class TransferPoint extends City
 {
 
@@ -22,9 +21,9 @@ public class TransferPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public TransferPoint(String aName, double aLongitude, double aLatitude, Weather aWeather, Map aMap, String aRegion, Long aPopulation, Time aLayoverTime)
+  public TransferPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather, Time aLayoverTime)
   {
-    super(aName, aLongitude, aLatitude, aWeather, aMap, aRegion, aPopulation);
+    super(aName, aMapSystem, aCircle, aRegion, aPopulation, aWeather);
     layoverTime = aLayoverTime;
   }
 

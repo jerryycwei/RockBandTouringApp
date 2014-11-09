@@ -1,12 +1,11 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 import java.sql.Time;
 
-// line 41 "model.ump"
-// line 107 "model.ump"
+// line 38 "model.ump"
+// line 109 "model.ump"
 public class TransportationType
 {
 
@@ -16,6 +15,7 @@ public class TransportationType
 
   //TransportationType Attributes
   private String name;
+  private PermanentSymbol symbol;
 
   //TransportationType Associations
   private Link link;
@@ -24,9 +24,10 @@ public class TransportationType
   // CONSTRUCTOR
   //------------------------
 
-  public TransportationType(String aName, Link aLink)
+  public TransportationType(String aName, PermanentSymbol aSymbol, Link aLink)
   {
     name = aName;
+    symbol = aSymbol;
     if (aLink == null || aLink.getTransportationType() != null)
     {
       throw new RuntimeException("Unable to create TransportationType due to aLink");
@@ -34,10 +35,11 @@ public class TransportationType
     link = aLink;
   }
 
-  public TransportationType(String aName, Time aTravelTimeForLink, Node aOriginForLink, Node aDestinationForLink, Map aMapForLink)
+  public TransportationType(String aName, PermanentSymbol aSymbol, Time aTravelTimeForLink, Node aOriginForLink, Node aDestinationForLink, MapSystem aMapSystemForLink)
   {
     name = aName;
-    link = new Link(aTravelTimeForLink, aOriginForLink, aDestinationForLink, aMapForLink, this);
+    symbol = aSymbol;
+    link = new Link(aTravelTimeForLink, aOriginForLink, aDestinationForLink, aMapSystemForLink, this);
   }
 
   //------------------------
@@ -52,9 +54,22 @@ public class TransportationType
     return wasSet;
   }
 
+  public boolean setSymbol(PermanentSymbol aSymbol)
+  {
+    boolean wasSet = false;
+    symbol = aSymbol;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getName()
   {
     return name;
+  }
+
+  public PermanentSymbol getSymbol()
+  {
+    return symbol;
   }
 
   public Link getLink()
@@ -78,6 +93,7 @@ public class TransportationType
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "symbol" + "=" + (getSymbol() != null ? !getSymbol().equals(this)  ? getSymbol().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "link = "+(getLink()!=null?Integer.toHexString(System.identityHashCode(getLink())):"null")
      + outputString;
   }

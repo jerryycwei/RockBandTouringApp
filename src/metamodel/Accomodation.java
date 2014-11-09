@@ -1,11 +1,10 @@
-package metamodel;
-//*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 
-// line 47 "model.ump"
-// line 113 "model.ump"
+// line 45 "model.ump"
+// line 115 "model.ump"
 public class Accomodation
 {
 

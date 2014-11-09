@@ -1,11 +1,10 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 
-// line 72 "model.ump"
-// line 134 "model.ump"
+// line 71 "model.ump"
+// line 137 "model.ump"
 public class Weather
 {
 
@@ -15,28 +14,31 @@ public class Weather
 
   //Weather Attributes
   private String type;
+  private PopupSymbol symbol;
 
   //Weather Associations
-  private Node node;
+  private City city;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Weather(String aType, Node aNode)
+  public Weather(String aType, PopupSymbol aSymbol, City aCity)
   {
     type = aType;
-    if (aNode == null || aNode.getWeather() != null)
+    symbol = aSymbol;
+    if (aCity == null || aCity.getWeather() != null)
     {
-      throw new RuntimeException("Unable to create Weather due to aNode");
+      throw new RuntimeException("Unable to create Weather due to aCity");
     }
-    node = aNode;
+    city = aCity;
   }
 
-  public Weather(String aType, String aNameForNode, double aLongitudeForNode, double aLatitudeForNode, Map aMapForNode)
+  public Weather(String aType, PopupSymbol aSymbol, String aNameForCity, MapSystem aMapSystemForCity, Circle aCircleForCity, String aRegionForCity, Long aPopulationForCity)
   {
     type = aType;
-    node = new Node(aNameForNode, aLongitudeForNode, aLatitudeForNode, this, aMapForNode);
+    symbol = aSymbol;
+    city = new City(aNameForCity, aMapSystemForCity, aCircleForCity, aRegionForCity, aPopulationForCity, this);
   }
 
   //------------------------
@@ -51,23 +53,36 @@ public class Weather
     return wasSet;
   }
 
+  public boolean setSymbol(PopupSymbol aSymbol)
+  {
+    boolean wasSet = false;
+    symbol = aSymbol;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getType()
   {
     return type;
   }
 
-  public Node getNode()
+  public PopupSymbol getSymbol()
   {
-    return node;
+    return symbol;
+  }
+
+  public City getCity()
+  {
+    return city;
   }
 
   public void delete()
   {
-    Node existingNode = node;
-    node = null;
-    if (existingNode != null)
+    City existingCity = city;
+    city = null;
+    if (existingCity != null)
     {
-      existingNode.delete();
+      existingCity.delete();
     }
   }
 
@@ -77,7 +92,8 @@ public class Weather
 	  String outputString = "";
     return super.toString() + "["+
             "type" + ":" + getType()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "node = "+(getNode()!=null?Integer.toHexString(System.identityHashCode(getNode())):"null")
+            "  " + "symbol" + "=" + (getSymbol() != null ? !getSymbol().equals(this)  ? getSymbol().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "city = "+(getCity()!=null?Integer.toHexString(System.identityHashCode(getCity())):"null")
      + outputString;
   }
 }

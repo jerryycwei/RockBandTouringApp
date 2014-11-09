@@ -1,11 +1,10 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 
-// line 26 "model.ump"
-// line 96 "model.ump"
+// line 23 "model.ump"
+// line 98 "model.ump"
 public class Venue
 {
 

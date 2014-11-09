@@ -1,12 +1,11 @@
-package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4678 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 import java.util.*;
 
-// line 65 "model.ump"
-// line 129 "model.ump"
+// line 63 "model.ump"
+// line 131 "model.ump"
 public class City extends Node
 {
 
@@ -19,6 +18,7 @@ public class City extends Node
   private Long population;
 
   //City Associations
+  private Weather weather;
   private List<Venue> venues;
   private List<Accomodation> accomodations;
 
@@ -26,11 +26,26 @@ public class City extends Node
   // CONSTRUCTOR
   //------------------------
 
-  public City(String aName, double aLongitude, double aLatitude, Weather aWeather, Map aMap, String aRegion, Long aPopulation)
+  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather)
   {
-    super(aName, aLongitude, aLatitude, aWeather, aMap);
+    super(aName, aMapSystem, aCircle);
     region = aRegion;
     population = aPopulation;
+    if (aWeather == null || aWeather.getCity() != null)
+    {
+      throw new RuntimeException("Unable to create City due to aWeather");
+    }
+    weather = aWeather;
+    venues = new ArrayList<Venue>();
+    accomodations = new ArrayList<Accomodation>();
+  }
+
+  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, String aTypeForWeather, PopupSymbol aSymbolForWeather)
+  {
+    super(aName, aMapSystem, aCircle);
+    region = aRegion;
+    population = aPopulation;
+    weather = new Weather(aTypeForWeather, aSymbolForWeather, this);
     venues = new ArrayList<Venue>();
     accomodations = new ArrayList<Accomodation>();
   }
@@ -63,6 +78,11 @@ public class City extends Node
   public Long getPopulation()
   {
     return population;
+  }
+
+  public Weather getWeather()
+  {
+    return weather;
   }
 
   public Venue getVenue(int index)
@@ -277,6 +297,12 @@ public class City extends Node
 
   public void delete()
   {
+    Weather existingWeather = weather;
+    weather = null;
+    if (existingWeather != null)
+    {
+      existingWeather.delete();
+    }
     for(int i=venues.size(); i > 0; i--)
     {
       Venue aVenue = venues.get(i - 1);
@@ -296,7 +322,8 @@ public class City extends Node
 	  String outputString = "";
     return super.toString() + "["+
             "region" + ":" + getRegion()+ "," +
-            "population" + ":" + getPopulation()+ "]"
+            "population" + ":" + getPopulation()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "weather = "+(getWeather()!=null?Integer.toHexString(System.identityHashCode(getWeather())):"null")
      + outputString;
   }
 }
