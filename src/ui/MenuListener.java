@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -47,6 +46,18 @@ public class MenuListener implements ActionListener {
 		case "Redo":
 			//TODO: implements click stack to redo
 			break;
+			
+//		case "Create Tour":
+//			parent.getSystem().setCreateMode(true);
+//			caller.setEnabled(false);
+//			parent.getEndTour().setEnabled(true);
+//			break;
+//			
+//		case "End Create Tour":
+//			parent.getSystem().setCreateMode(false)
+//			caller.setEnabled(false);
+//			parent.getCreateTour().setEnabled(true);
+//			break;
 		
 			
 		default:
