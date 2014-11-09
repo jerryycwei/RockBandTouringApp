@@ -70,7 +70,7 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		visualOutput = new ImagePanel("images/map_bitches.png");
+		visualOutput = new ImagePanel("images/map_bitches.jpg");
 		splitPane.setRightComponent(visualOutput);
 		
 		JLabel widthLabel = new JLabel("width " + frame.getWidth());
