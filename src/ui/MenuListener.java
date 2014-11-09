@@ -28,7 +28,7 @@ public class MenuListener implements ActionListener {
 			aboutDialog.setBounds(500, 200, 300, 200);
 			JPanel panel = new JPanel();
 			JTextArea aboutArea = new JTextArea();
-			aboutArea.setText("GunTour MussBander\nVersion 1.0.6 (35247)\nCopyright © 2014, GunTour MussBander\n");
+			aboutArea.setText("GunTour MussBander\nVersion 1.0.6 (35247)\nCopyright ï¿½ 2014, GunTour MussBander\n");
 			aboutArea.setEditable(false);
 			panel.add(aboutArea);
 			aboutDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
@@ -36,7 +36,7 @@ public class MenuListener implements ActionListener {
 			aboutDialog.setVisible(true);
 			break;
 		case "New":
-			MapSystem system = parent.getMapSystem();
+			MapSystem system = parent.getSystem();
 			system.clearLists();
 			ImagePanel imgPanel = parent.getVisualOutput();
 			imgPanel.repaint();

@@ -165,7 +165,7 @@ public class Main {
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmAbout = new JMenuItem("About");
-		mntmAbout.addActionListener(new MenuListener(frame, mntmAbout));
+		mntmAbout.addActionListener(new MenuListener(this, mntmAbout));
 		mnHelp.add(mntmAbout);
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
@@ -174,6 +174,14 @@ public class Main {
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public MapSystem getSystem() {
+		return system;
+	}
+	
+	public ImagePanel getVisualOutput() {
+		return visualOutput;
 	}
 	
     public void paint(Graphics g) { // the paint method draws shapes and other images onto the GUI
