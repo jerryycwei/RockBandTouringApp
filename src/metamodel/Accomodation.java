@@ -4,8 +4,8 @@ package metamodel;
 
 
 
-// line 45 "model.ump"
-// line 115 "model.ump"
+// line 46 "model.ump"
+// line 123 "model.ump"
 public class Accomodation
 {
 

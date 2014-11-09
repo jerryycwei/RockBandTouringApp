@@ -5,8 +5,8 @@ package metamodel;
 
 import java.util.*;
 
-// line 53 "model.ump"
-// line 121 "model.ump"
+// line 54 "model.ump"
+// line 129 "model.ump"
 public class StartPoint extends City
 {
 
@@ -18,7 +18,7 @@ public class StartPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public StartPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather)
+  public StartPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, Weather aWeather)
   {
     super(aName, aMapSystem, aCircle, aRegion, aPopulation, aWeather);
   }

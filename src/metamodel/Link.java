@@ -7,8 +7,8 @@ import java.sql.Time;
 import java.util.*;
 
 // line 14 "model.ump"
-// line 92 "model.ump"
-// line 162 "model.ump"
+// line 100 "model.ump"
+// line 170 "model.ump"
 public class Link
 {
 
@@ -20,6 +20,7 @@ public class Link
   private Time travelTime;
   private Node origin;
   private Node destination;
+  private int distance;
 
   //Link Associations
   private List<Node> nodes;
@@ -30,11 +31,12 @@ public class Link
   // CONSTRUCTOR
   //------------------------
 
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, TransportationType aTransportationType)
+  public Link(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType)
   {
     travelTime = aTravelTime;
     origin = aOrigin;
     destination = aDestination;
+    distance = aDistance;
     nodes = new ArrayList<Node>();
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
@@ -48,11 +50,12 @@ public class Link
     transportationType = aTransportationType;
   }
 
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, String aNameForTransportationType, PermanentSymbol aSymbolForTransportationType)
+  public Link(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, String aNameForTransportationType, Symbol aSymbolForTransportationType)
   {
     travelTime = aTravelTime;
     origin = aOrigin;
     destination = aDestination;
+    distance = aDistance;
     nodes = new ArrayList<Node>();
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
@@ -90,6 +93,14 @@ public class Link
     return wasSet;
   }
 
+  public boolean setDistance(int aDistance)
+  {
+    boolean wasSet = false;
+    distance = aDistance;
+    wasSet = true;
+    return wasSet;
+  }
+
   public Time getTravelTime()
   {
     return travelTime;
@@ -103,6 +114,11 @@ public class Link
   public Node getDestination()
   {
     return destination;
+  }
+
+  public int getDistance()
+  {
+    return distance;
   }
 
   public Node getNode(int index)
@@ -313,7 +329,8 @@ public class Link
   public String toString()
   {
 	  String outputString = "";
-    return super.toString() + "["+ "]" + System.getProperties().getProperty("line.separator") +
+    return super.toString() + "["+
+            "distance" + ":" + getDistance()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "travelTime" + "=" + (getTravelTime() != null ? !getTravelTime().equals(this)  ? getTravelTime().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "origin" + "=" + (getOrigin() != null ? !getOrigin().equals(this)  ? getOrigin().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "destination" + "=" + (getDestination() != null ? !getDestination().equals(this)  ? getDestination().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +

@@ -5,8 +5,8 @@ package metamodel;
 
 import java.sql.Time;
 
-// line 38 "model.ump"
-// line 109 "model.ump"
+// line 39 "model.ump"
+// line 117 "model.ump"
 public class TransportationType
 {
 
@@ -16,7 +16,7 @@ public class TransportationType
 
   //TransportationType Attributes
   private String name;
-  private PermanentSymbol symbol;
+  private Symbol symbol;
 
   //TransportationType Associations
   private Link link;
@@ -25,7 +25,7 @@ public class TransportationType
   // CONSTRUCTOR
   //------------------------
 
-  public TransportationType(String aName, PermanentSymbol aSymbol, Link aLink)
+  public TransportationType(String aName, Symbol aSymbol, Link aLink)
   {
     name = aName;
     symbol = aSymbol;
@@ -36,11 +36,11 @@ public class TransportationType
     link = aLink;
   }
 
-  public TransportationType(String aName, PermanentSymbol aSymbol, Time aTravelTimeForLink, Node aOriginForLink, Node aDestinationForLink, MapSystem aMapSystemForLink)
+  public TransportationType(String aName, Symbol aSymbol, Time aTravelTimeForLink, Node aOriginForLink, Node aDestinationForLink, int aDistanceForLink, MapSystem aMapSystemForLink)
   {
     name = aName;
     symbol = aSymbol;
-    link = new Link(aTravelTimeForLink, aOriginForLink, aDestinationForLink, aMapSystemForLink, this);
+    link = new Link(aTravelTimeForLink, aOriginForLink, aDestinationForLink, aDistanceForLink, aMapSystemForLink, this);
   }
 
   //------------------------
@@ -55,7 +55,7 @@ public class TransportationType
     return wasSet;
   }
 
-  public boolean setSymbol(PermanentSymbol aSymbol)
+  public boolean setSymbol(Symbol aSymbol)
   {
     boolean wasSet = false;
     symbol = aSymbol;
@@ -68,7 +68,7 @@ public class TransportationType
     return name;
   }
 
-  public PermanentSymbol getSymbol()
+  public Symbol getSymbol()
   {
     return symbol;
   }

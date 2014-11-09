@@ -5,8 +5,8 @@ package metamodel;
 
 import java.util.*;
 
-// line 63 "model.ump"
-// line 131 "model.ump"
+// line 64 "model.ump"
+// line 139 "model.ump"
 public class City extends Node
 {
 
@@ -16,7 +16,7 @@ public class City extends Node
 
   //City Attributes
   private String region;
-  private Long population;
+  private int population;
 
   //City Associations
   private Weather weather;
@@ -27,7 +27,7 @@ public class City extends Node
   // CONSTRUCTOR
   //------------------------
 
-  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather)
+  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, Weather aWeather)
   {
     super(aName, aMapSystem, aCircle);
     region = aRegion;
@@ -41,7 +41,7 @@ public class City extends Node
     accomodations = new ArrayList<Accomodation>();
   }
 
-  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, String aTypeForWeather, PopupSymbol aSymbolForWeather)
+  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
   {
     super(aName, aMapSystem, aCircle);
     region = aRegion;
@@ -63,7 +63,7 @@ public class City extends Node
     return wasSet;
   }
 
-  public boolean setPopulation(Long aPopulation)
+  public boolean setPopulation(int aPopulation)
   {
     boolean wasSet = false;
     population = aPopulation;
@@ -76,7 +76,7 @@ public class City extends Node
     return region;
   }
 
-  public Long getPopulation()
+  public int getPopulation()
   {
     return population;
   }

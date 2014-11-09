@@ -6,8 +6,8 @@ package metamodel;
 import java.sql.Time;
 import java.util.*;
 
-// line 31 "model.ump"
-// line 104 "model.ump"
+// line 32 "model.ump"
+// line 112 "model.ump"
 public class TransferPoint extends City
 {
 
@@ -22,7 +22,7 @@ public class TransferPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public TransferPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, Long aPopulation, Weather aWeather, Time aLayoverTime)
+  public TransferPoint(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, Weather aWeather, Time aLayoverTime)
   {
     super(aName, aMapSystem, aCircle, aRegion, aPopulation, aWeather);
     layoverTime = aLayoverTime;

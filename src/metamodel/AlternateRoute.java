@@ -6,8 +6,8 @@ package metamodel;
 import java.sql.Time;
 import java.util.*;
 
-// line 77 "model.ump"
-// line 156 "model.ump"
+// line 78 "model.ump"
+// line 164 "model.ump"
 public class AlternateRoute extends Link
 {
 
@@ -22,9 +22,9 @@ public class AlternateRoute extends Link
   // CONSTRUCTOR
   //------------------------
 
-  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, TransportationType aTransportationType, DottedArrow aDottedArrow)
+  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, DottedArrow aDottedArrow)
   {
-    super(aTravelTime, aOrigin, aDestination, aMapSystem, aTransportationType);
+    super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
     if (aDottedArrow == null || aDottedArrow.getAlternateRoute() != null)
     {
       throw new RuntimeException("Unable to create AlternateRoute due to aDottedArrow");
@@ -32,10 +32,10 @@ public class AlternateRoute extends Link
     dottedArrow = aDottedArrow;
   }
 
-  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForDottedArrow, Symbol aSymbolForDottedArrow, ArrowLabel aArrowLabelForDottedArrow)
+  public AlternateRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForDottedArrow)
   {
-    super(aTravelTime, aOrigin, aDestination, aMapSystem, aTransportationType);
-    dottedArrow = new DottedArrow(aDistanceForDottedArrow, aSymbolForDottedArrow, aArrowLabelForDottedArrow, this);
+    super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
+    dottedArrow = new DottedArrow(aDistanceForDottedArrow, this);
   }
 
   //------------------------

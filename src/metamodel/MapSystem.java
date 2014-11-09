@@ -7,7 +7,7 @@ import java.util.*;
 import java.sql.Time;
 
 // line 2 "model.ump"
-// line 142 "model.ump"
+// line 150 "model.ump"
 public class MapSystem
 {
 
@@ -21,16 +21,30 @@ public class MapSystem
   //MapSystem Associations
   private List<Node> nodes;
   private List<Link> links;
+  private InfoLabel infoLabel;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public MapSystem(Map aMap)
+  public MapSystem(Map aMap, InfoLabel aInfoLabel)
   {
     map = aMap;
     nodes = new ArrayList<Node>();
     links = new ArrayList<Link>();
+    if (aInfoLabel == null || aInfoLabel.getMapSystem() != null)
+    {
+      throw new RuntimeException("Unable to create MapSystem due to aInfoLabel");
+    }
+    infoLabel = aInfoLabel;
+  }
+
+  public MapSystem(Map aMap, TextArea aInfoForInfoLabel)
+  {
+    map = aMap;
+    nodes = new ArrayList<Node>();
+    links = new ArrayList<Link>();
+    infoLabel = new InfoLabel(aInfoForInfoLabel, this);
   }
 
   //------------------------
@@ -110,6 +124,11 @@ public class MapSystem
     return index;
   }
 
+  public InfoLabel getInfoLabel()
+  {
+    return infoLabel;
+  }
+
   public static int minimumNumberOfNodes()
   {
     return 0;
@@ -187,9 +206,9 @@ public class MapSystem
     return 0;
   }
 
-  public Link addLink(Time aTravelTime, Node aOrigin, Node aDestination, TransportationType aTransportationType)
+  public Link addLink(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, TransportationType aTransportationType)
   {
-    return new Link(aTravelTime, aOrigin, aDestination, this, aTransportationType);
+    return new Link(aTravelTime, aOrigin, aDestination, aDistance, this, aTransportationType);
   }
 
   public boolean addLink(Link aLink)
@@ -266,6 +285,12 @@ public class MapSystem
       Link aLink = links.get(i - 1);
       aLink.delete();
     }
+    InfoLabel existingInfoLabel = infoLabel;
+    infoLabel = null;
+    if (existingInfoLabel != null)
+    {
+      existingInfoLabel.delete();
+    }
   }
 
 
@@ -273,7 +298,8 @@ public class MapSystem
   {
 	  String outputString = "";
     return super.toString() + "["+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "map" + "=" + (getMap() != null ? !getMap().equals(this)  ? getMap().toString().replaceAll("  ","    ") : "this" : "null")
+            "  " + "map" + "=" + (getMap() != null ? !getMap().equals(this)  ? getMap().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "infoLabel = "+(getInfoLabel()!=null?Integer.toHexString(System.identityHashCode(getInfoLabel())):"null")
      + outputString;
   }
 }

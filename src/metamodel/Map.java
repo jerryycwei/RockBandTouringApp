@@ -1,14 +1,13 @@
 package metamodel;
-
-import java.awt.Image;
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import java.awt.Image;
 
-// line 200 "model.ump"
-// line 270 "model.ump"
-// line 328 "model.ump"
+// line 205 "model.ump"
+// line 239 "model.ump"
+// line 281 "model.ump"
 public class Map
 {
 

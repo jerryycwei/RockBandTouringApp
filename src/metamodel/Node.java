@@ -6,7 +6,7 @@ package metamodel;
 import java.util.*;
 
 // line 9 "model.ump"
-// line 151 "model.ump"
+// line 159 "model.ump"
 public class Node
 {
 
@@ -42,7 +42,7 @@ public class Node
     circle = aCircle;
   }
 
-  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, double aLongitudeForCircle, double aLatitudeForCircle, CircleLabel aCircleLabelForCircle)
+  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, double aLongitudeForCircle, double aLatitudeForCircle)
   {
     name = aName;
     boolean didAddMapSystem = setMapSystem(aMapSystem);
@@ -51,7 +51,7 @@ public class Node
       throw new RuntimeException("Unable to create node due to mapSystem");
     }
     links = new ArrayList<Link>();
-    circle = new Circle(aNameForCircle, aLongitudeForCircle, aLatitudeForCircle, this, aCircleLabelForCircle);
+    circle = new Circle(aNameForCircle, aLongitudeForCircle, aLatitudeForCircle, this);
   }
 
   //------------------------

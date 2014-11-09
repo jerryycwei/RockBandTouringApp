@@ -4,8 +4,8 @@ package metamodel;
 
 
 
-// line 71 "model.ump"
-// line 137 "model.ump"
+// line 72 "model.ump"
+// line 145 "model.ump"
 public class Weather
 {
 
@@ -15,7 +15,7 @@ public class Weather
 
   //Weather Attributes
   private String type;
-  private PopupSymbol symbol;
+  private Symbol symbol;
 
   //Weather Associations
   private City city;
@@ -24,7 +24,7 @@ public class Weather
   // CONSTRUCTOR
   //------------------------
 
-  public Weather(String aType, PopupSymbol aSymbol, City aCity)
+  public Weather(String aType, Symbol aSymbol, City aCity)
   {
     type = aType;
     symbol = aSymbol;
@@ -35,7 +35,7 @@ public class Weather
     city = aCity;
   }
 
-  public Weather(String aType, PopupSymbol aSymbol, String aNameForCity, MapSystem aMapSystemForCity, Circle aCircleForCity, String aRegionForCity, Long aPopulationForCity)
+  public Weather(String aType, Symbol aSymbol, String aNameForCity, MapSystem aMapSystemForCity, Circle aCircleForCity, String aRegionForCity, int aPopulationForCity)
   {
     type = aType;
     symbol = aSymbol;
@@ -54,7 +54,7 @@ public class Weather
     return wasSet;
   }
 
-  public boolean setSymbol(PopupSymbol aSymbol)
+  public boolean setSymbol(Symbol aSymbol)
   {
     boolean wasSet = false;
     symbol = aSymbol;
@@ -67,7 +67,7 @@ public class Weather
     return type;
   }
 
-  public PopupSymbol getSymbol()
+  public Symbol getSymbol()
   {
     return symbol;
   }

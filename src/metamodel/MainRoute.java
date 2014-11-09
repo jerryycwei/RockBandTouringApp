@@ -6,8 +6,8 @@ package metamodel;
 import java.sql.Time;
 import java.util.*;
 
-// line 83 "model.ump"
-// line 167 "model.ump"
+// line 84 "model.ump"
+// line 175 "model.ump"
 public class MainRoute extends Link
 {
 
@@ -22,9 +22,9 @@ public class MainRoute extends Link
   // CONSTRUCTOR
   //------------------------
 
-  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, TransportationType aTransportationType, SolidArrow aSolidArrow)
+  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, SolidArrow aSolidArrow)
   {
-    super(aTravelTime, aOrigin, aDestination, aMapSystem, aTransportationType);
+    super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
     if (aSolidArrow == null || aSolidArrow.getMainRoute() != null)
     {
       throw new RuntimeException("Unable to create MainRoute due to aSolidArrow");
@@ -32,10 +32,10 @@ public class MainRoute extends Link
     solidArrow = aSolidArrow;
   }
 
-  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForSolidArrow, Symbol aSymbolForSolidArrow, ArrowLabel aArrowLabelForSolidArrow)
+  public MainRoute(Time aTravelTime, Node aOrigin, Node aDestination, int aDistance, MapSystem aMapSystem, TransportationType aTransportationType, double aDistanceForSolidArrow)
   {
-    super(aTravelTime, aOrigin, aDestination, aMapSystem, aTransportationType);
-    solidArrow = new SolidArrow(aDistanceForSolidArrow, aSymbolForSolidArrow, aArrowLabelForSolidArrow, this);
+    super(aTravelTime, aOrigin, aDestination, aDistance, aMapSystem, aTransportationType);
+    solidArrow = new SolidArrow(aDistanceForSolidArrow, this);
   }
 
   //------------------------
