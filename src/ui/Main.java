@@ -42,7 +42,7 @@ public class Main {
 		});
 	}
 
-	/**
+	/*
 	 * Initialize Cities as well as the venues and accomodations
 	 
 	private static void initializeCities() {
@@ -160,20 +160,10 @@ public class Main {
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmAbout = new JMenuItem("About");
-		mntmAbout.addActionListener(new MenuListener(this, mntmAbout));
+		mntmAbout.addActionListener(new MenuListener(frame, mntmAbout));
 		mnHelp.add(mntmAbout);
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
 		mnHelp.add(mntmWalkthrough);
 	}
-	
-	
-	public ImagePanel getVisualOutput() {
-		return this.visualOutput;
-	}
-	
-	public MapSystem getMapSystem() {
-		return this.system;
-	}
-
 }
