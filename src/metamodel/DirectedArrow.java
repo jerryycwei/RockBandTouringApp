@@ -62,6 +62,14 @@ public class DirectedArrow {
 	public Point2D getEnd() {
 		return end;
 	}
+	
+	public Path2D getHead() {
+		return head;
+	}
+	
+	public Path2D getLine() {
+		return line;
+	}
 
 	public void delete() {
 	}
@@ -86,7 +94,11 @@ public class DirectedArrow {
 				+ outputString;
 	}
 	
-	public static Path2D createLine(double beginX, double beginY, double endX, double endY) {
+	// ------------------------
+	// HELPER
+	// ------------------------
+	
+	private static Path2D createLine(double beginX, double beginY, double endX, double endY) {
 		Path2D line = new Path2D.Double();
 		line.moveTo(beginX, beginY);
 		line.lineTo(endX, endY);
