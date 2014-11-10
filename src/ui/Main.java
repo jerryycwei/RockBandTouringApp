@@ -30,6 +30,7 @@ public class Main {
 	private Map map;
 	private MapSystem system;
 	private ImagePanel visualOutput;
+	private MenuListener menuListener = new MenuListener(this);
 	
 	Graphics2D g2d;
 
@@ -165,6 +166,7 @@ public class Main {
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmNew = new JMenuItem("New");
+		mntmNew.addActionListener(menuListener);
 		mnFile.add(mntmNew);
 		
 		JMenu mnEdit = new JMenu("Edit");
@@ -174,7 +176,7 @@ public class Main {
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmAbout = new JMenuItem("About");
-		mntmAbout.addActionListener(new MenuListener(this, mntmAbout));
+		mntmAbout.addActionListener(menuListener);
 		mnHelp.add(mntmAbout);
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");

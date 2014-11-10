@@ -9,9 +9,9 @@ public class Console extends JPanel {
 	private JTextArea textArea;
 	
 	public Console() {
-		this.setBounds(0, 603, 915, 80);
+		this.setBounds(0, 613, 915, 80);
 		textArea = new JTextArea();
-		textArea.setBounds(120, 603, 915, 80);
+		textArea.setBounds(0, 613, 915, 80);
 		textArea.setEditable(false);
 		textArea.setVisible(true);
 		textArea.setBackground(new Color(205,127,50));

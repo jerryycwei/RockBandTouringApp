@@ -20,6 +20,9 @@ public class MenuListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("called");
+		if (e.getSource() instanceof JMenuItem) {
+			caller = (JMenuItem) e.getSource();
+		}
 		switch(caller.getText()) {
 		case "About":
 			JDialog aboutDialog = new JDialog(parent.getFrame());
@@ -36,8 +39,10 @@ public class MenuListener implements ActionListener {
 			break;
 		case "New":
 			MapSystem system = parent.getSystem();
-			system.clearLists();
-			parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg"));
+			if (system != null) {
+				system.clearLists();
+				parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg"));
+			}
 			break;
 		case "Undo":
 			//TODO: implements click stack to undo
@@ -65,9 +70,8 @@ public class MenuListener implements ActionListener {
 		
 	}
 	
-	public MenuListener(Main parent, JMenuItem caller) {
+	public MenuListener(Main parent) {
 		this.parent = parent;
-		this.caller = caller;
 	}
 
 }
