@@ -22,9 +22,9 @@ public class TransferPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public TransferPoint(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather, Time aLayoverTime)
+  public TransferPoint(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather, Time aLayoverTime)
   {
-    super(aName, aCircle, aSelected, aMapSystem, aRegion, aPopulation, aWeather);
+    super(aName, aCircle, aMapSystem, aRegion, aPopulation, aWeather);
     layoverTime = aLayoverTime;
   }
 

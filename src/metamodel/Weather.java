@@ -35,11 +35,11 @@ public class Weather
     city = aCity;
   }
 
-  public Weather(String aType, Symbol aSymbol, String aNameForCity, Circle aCircleForCity, boolean aSelectedForCity, MapSystem aMapSystemForCity, String aRegionForCity, int aPopulationForCity)
+  public Weather(String aType, Symbol aSymbol, String aNameForCity, Circle aCircleForCity, MapSystem aMapSystemForCity, String aRegionForCity, int aPopulationForCity)
   {
     type = aType;
     symbol = aSymbol;
-    city = new City(aNameForCity, aCircleForCity, aSelectedForCity, aMapSystemForCity, aRegionForCity, aPopulationForCity, this);
+    city = new City(aNameForCity, aCircleForCity, aMapSystemForCity, aRegionForCity, aPopulationForCity, this);
   }
 
   //------------------------

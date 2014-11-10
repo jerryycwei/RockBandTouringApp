@@ -27,9 +27,9 @@ public class City extends Node
   // CONSTRUCTOR
   //------------------------
 
-  public City(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
+  public City(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
   {
-    super(aName, aCircle, aSelected, aMapSystem);
+    super(aName, aCircle, aMapSystem);
     region = aRegion;
     population = aPopulation;
     if (aWeather == null || aWeather.getCity() != null)
@@ -41,9 +41,9 @@ public class City extends Node
     accomodations = new ArrayList<Accomodation>();
   }
 
-  public City(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
+  public City(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
   {
-    super(aName, aCircle, aSelected, aMapSystem);
+    super(aName, aCircle, aMapSystem);
     region = aRegion;
     population = aPopulation;
     weather = new Weather(aTypeForWeather, aSymbolForWeather, this);

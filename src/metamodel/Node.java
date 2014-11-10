@@ -27,11 +27,11 @@ public class Node
   // CONSTRUCTOR
   //------------------------
 
-  public Node(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem)
+  public Node(String aName, Circle aCircle, MapSystem aMapSystem)
   {
     name = aName;
     circle = aCircle;
-    selected = aSelected;
+    selected = false;
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
     {

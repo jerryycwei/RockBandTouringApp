@@ -137,7 +137,7 @@ public class MapSystem
 
 	public Node addNode(String aName, Circle aCircle)
 	{
-		return new Node(aName, aCircle, false, this);
+		return new Node(aName, aCircle, this);
 	}
 
 	public boolean addNode(Node aNode)

@@ -18,9 +18,9 @@ public class EndPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public EndPoint(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
+  public EndPoint(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
   {
-    super(aName, aCircle, aSelected, aMapSystem, aRegion, aPopulation, aWeather);
+    super(aName, aCircle, aMapSystem, aRegion, aPopulation, aWeather);
   }
 
   //------------------------
