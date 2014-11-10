@@ -1,12 +1,13 @@
 package metamodel;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
 import java.util.*;
 
-// line 9 "model.ump"
-// line 159 "model.ump"
+// line 10 "model.ump"
+// line 161 "model.ump"
 public class Node
 {
 
@@ -16,42 +17,26 @@ public class Node
 
   //Node Attributes
   private String name;
+  private Circle circle;
 
   //Node Associations
   private MapSystem mapSystem;
   private List<Link> links;
-  private Circle circle;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Node(String aName, MapSystem aMapSystem, Circle aCircle)
+  public Node(String aName, Circle aCircle, MapSystem aMapSystem)
   {
     name = aName;
-    boolean didAddMapSystem = setMapSystem(aMapSystem);
-    if (!didAddMapSystem)
-    {
-      throw new RuntimeException("Unable to create node due to mapSystem");
-    }
-    links = new ArrayList<Link>();
-    if (aCircle == null || aCircle.getNode() != null)
-    {
-      throw new RuntimeException("Unable to create Node due to aCircle");
-    }
     circle = aCircle;
-  }
-
-  public Node(String aName, MapSystem aMapSystem, String aNameForCircle, int positionX, int positionY)
-  {
-    name = aName;
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
     {
       throw new RuntimeException("Unable to create node due to mapSystem");
     }
     links = new ArrayList<Link>();
-    circle = new Circle(aNameForCircle, positionX, positionY, this);
   }
 
   //------------------------
@@ -66,9 +51,22 @@ public class Node
     return wasSet;
   }
 
+  public boolean setCircle(Circle aCircle)
+  {
+    boolean wasSet = false;
+    circle = aCircle;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getName()
   {
     return name;
+  }
+
+  public Circle getCircle()
+  {
+    return circle;
   }
 
   public MapSystem getMapSystem()
@@ -104,11 +102,6 @@ public class Node
   {
     int index = links.indexOf(aLink);
     return index;
-  }
-
-  public Circle getCircle()
-  {
-    return circle;
   }
 
   public boolean setMapSystem(MapSystem aMapSystem)
@@ -283,12 +276,6 @@ public class Node
         aLink.removeNode(this);
       }
     }
-    Circle existingCircle = circle;
-    circle = null;
-    if (existingCircle != null)
-    {
-      existingCircle.delete();
-    }
   }
 
 
@@ -297,8 +284,8 @@ public class Node
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "circle = "+(getCircle()!=null?Integer.toHexString(System.identityHashCode(getCircle())):"null")
+            "  " + "circle" + "=" + (getCircle() != null ? !getCircle().equals(this)  ? getCircle().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null")
      + outputString;
   }
 }
