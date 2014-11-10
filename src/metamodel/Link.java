@@ -1,14 +1,14 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 import java.sql.Time;
 import java.util.*;
 
-// line 15 "model.ump"
-// line 101 "model.ump"
-// line 171 "model.ump"
+// line 17 "model.ump"
+// line 103 "model.ump"
+// line 172 "model.ump"
 public class Link
 {
 
@@ -21,48 +21,29 @@ public class Link
   private Node origin;
   private Node destination;
   private double distance;
+  private TransportationType transportType;
 
   //Link Associations
   private List<Node> nodes;
   private MapSystem mapSystem;
-  private TransportationType transportationType;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, TransportationType aTransportationType)
+  public Link(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, TransportationType aTransportType, MapSystem aMapSystem)
   {
     travelTime = aTravelTime;
     origin = aOrigin;
     destination = aDestination;
     distance = aDistance;
+    transportType = aTransportType;
     nodes = new ArrayList<Node>();
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
     {
       throw new RuntimeException("Unable to create link due to mapSystem");
     }
-    if (aTransportationType == null || aTransportationType.getLink() != null)
-    {
-      throw new RuntimeException("Unable to create Link due to aTransportationType");
-    }
-    transportationType = aTransportationType;
-  }
-
-  public Link(Time aTravelTime, Node aOrigin, Node aDestination, double aDistance, MapSystem aMapSystem, String aNameForTransportationType, Symbol aSymbolForTransportationType)
-  {
-    travelTime = aTravelTime;
-    origin = aOrigin;
-    destination = aDestination;
-    distance = aDistance;
-    nodes = new ArrayList<Node>();
-    boolean didAddMapSystem = setMapSystem(aMapSystem);
-    if (!didAddMapSystem)
-    {
-      throw new RuntimeException("Unable to create link due to mapSystem");
-    }
-    transportationType = new TransportationType(aNameForTransportationType, aSymbolForTransportationType, this);
   }
 
   //------------------------
@@ -101,6 +82,14 @@ public class Link
     return wasSet;
   }
 
+  public boolean setTransportType(TransportationType aTransportType)
+  {
+    boolean wasSet = false;
+    transportType = aTransportType;
+    wasSet = true;
+    return wasSet;
+  }
+
   public Time getTravelTime()
   {
     return travelTime;
@@ -119,6 +108,11 @@ public class Link
   public double getDistance()
   {
     return distance;
+  }
+
+  public TransportationType getTransportType()
+  {
+    return transportType;
   }
 
   public Node getNode(int index)
@@ -154,11 +148,6 @@ public class Link
   public MapSystem getMapSystem()
   {
     return mapSystem;
-  }
-
-  public TransportationType getTransportationType()
-  {
-    return transportationType;
   }
 
   public boolean isNumberOfNodesValid()
@@ -317,12 +306,6 @@ public class Link
     MapSystem placeholderMapSystem = mapSystem;
     this.mapSystem = null;
     placeholderMapSystem.removeLink(this);
-    TransportationType existingTransportationType = transportationType;
-    transportationType = null;
-    if (existingTransportationType != null)
-    {
-      existingTransportationType.delete();
-    }
   }
 
 
@@ -334,8 +317,8 @@ public class Link
             "  " + "travelTime" + "=" + (getTravelTime() != null ? !getTravelTime().equals(this)  ? getTravelTime().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "origin" + "=" + (getOrigin() != null ? !getOrigin().equals(this)  ? getOrigin().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "destination" + "=" + (getDestination() != null ? !getDestination().equals(this)  ? getDestination().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "transportationType = "+(getTransportationType()!=null?Integer.toHexString(System.identityHashCode(getTransportationType())):"null")
+            "  " + "transportType" + "=" + (getTransportType() != null ? !getTransportType().equals(this)  ? getTransportType().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null")
      + outputString;
   }
 }

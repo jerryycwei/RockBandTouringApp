@@ -1,14 +1,14 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 import java.awt.geom.Point2D;
 import java.sql.Time;
 
 // line 197 "model.ump"
-// line 231 "model.ump"
-// line 273 "model.ump"
+// line 230 "model.ump"
+// line 272 "model.ump"
 public class SolidArrow extends DirectedArrow
 {
 
@@ -33,10 +33,10 @@ public class SolidArrow extends DirectedArrow
     mainRoute = aMainRoute;
   }
 
-  public SolidArrow(Point2D aBegin, Point2D aEnd, Time aTravelTimeForMainRoute, Node aOriginForMainRoute, Node aDestinationForMainRoute, double aDistanceForMainRoute, MapSystem aMapSystemForMainRoute, TransportationType aTransportationTypeForMainRoute)
+  public SolidArrow(Point2D aBegin, Point2D aEnd, Time aTravelTimeForMainRoute, Node aOriginForMainRoute, Node aDestinationForMainRoute, double aDistanceForMainRoute, TransportationType aTransportTypeForMainRoute, MapSystem aMapSystemForMainRoute)
   {
     super(aBegin, aEnd);
-    mainRoute = new MainRoute(aTravelTimeForMainRoute, aOriginForMainRoute, aDestinationForMainRoute, aDistanceForMainRoute, aMapSystemForMainRoute, aTransportationTypeForMainRoute, this);
+    mainRoute = new MainRoute(aTravelTimeForMainRoute, aOriginForMainRoute, aDestinationForMainRoute, aDistanceForMainRoute, aTransportTypeForMainRoute, aMapSystemForMainRoute, this);
   }
 
   //------------------------

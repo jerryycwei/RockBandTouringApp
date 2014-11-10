@@ -1,12 +1,11 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
-import java.sql.Time;
 
-// line 39 "model.ump"
-// line 117 "model.ump"
+// line 43 "model.ump"
+// line 120 "model.ump"
 public class TransportationType
 {
 
@@ -18,29 +17,14 @@ public class TransportationType
   private String name;
   private Symbol symbol;
 
-  //TransportationType Associations
-  private Link link;
-
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TransportationType(String aName, Symbol aSymbol, Link aLink)
+  public TransportationType(String aName, Symbol aSymbol)
   {
     name = aName;
     symbol = aSymbol;
-    if (aLink == null || aLink.getTransportationType() != null)
-    {
-      throw new RuntimeException("Unable to create TransportationType due to aLink");
-    }
-    link = aLink;
-  }
-
-  public TransportationType(String aName, Symbol aSymbol, Time aTravelTimeForLink, Node aOriginForLink, Node aDestinationForLink, int aDistanceForLink, MapSystem aMapSystemForLink)
-  {
-    name = aName;
-    symbol = aSymbol;
-    link = new Link(aTravelTimeForLink, aOriginForLink, aDestinationForLink, aDistanceForLink, aMapSystemForLink, this);
   }
 
   //------------------------
@@ -73,20 +57,8 @@ public class TransportationType
     return symbol;
   }
 
-  public Link getLink()
-  {
-    return link;
-  }
-
   public void delete()
-  {
-    Link existingLink = link;
-    link = null;
-    if (existingLink != null)
-    {
-      existingLink.delete();
-    }
-  }
+  {}
 
 
   public String toString()
@@ -94,8 +66,7 @@ public class TransportationType
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "symbol" + "=" + (getSymbol() != null ? !getSymbol().equals(this)  ? getSymbol().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "link = "+(getLink()!=null?Integer.toHexString(System.identityHashCode(getLink())):"null")
+            "  " + "symbol" + "=" + (getSymbol() != null ? !getSymbol().equals(this)  ? getSymbol().toString().replaceAll("  ","    ") : "this" : "null")
      + outputString;
   }
 }
