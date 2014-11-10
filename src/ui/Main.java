@@ -47,7 +47,7 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
-		initializeCities();
+		//initializeCities();
 		initialize();
 	}
 	
@@ -192,7 +192,7 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		visualOutput = new ImagePanel("images/map_bitches.jpg");
+		visualOutput = new ImagePanel("images/map.jpg");
 		splitPane.setLeftComponent(visualOutput);
 		
 		JLabel widthLabel = new JLabel("width " + frame.getWidth());
