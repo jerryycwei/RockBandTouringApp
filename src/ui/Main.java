@@ -6,8 +6,12 @@ import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+<<<<<<< Updated upstream
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+=======
+import java.util.HashMap;
+>>>>>>> Stashed changes
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -32,6 +36,8 @@ public class Main {
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
 	
+	private HashMap Cities = new HashMap(50);
+	
 	Graphics2D g2d;
 
 	/**
@@ -51,15 +57,20 @@ public class Main {
 		});
 	}
 
-	/*
+	/**
 	 * Initialize Cities as well as the venues and accomodations
-	 
-	private static void initializeCities() {
-		// TODO Auto-generated method stub
-		Circle losAngeles = new Circle("Los Angeles", 
-		City losAngeles = new City("Los Angeles", this, c, null, 0, null, null);
-		City chicago = new City()
-	}*/
+	 */
+	private void initializeCities() {
+		
+		City losAngeles = new City("Los Angeles", system, new Circle("Los Angeles", 0, 0, losAngeles), "California", 3884000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		
+		City chicago = new City("Chicago", system, new Circle("Chicago", 0, 0, chicago), "Illinois", 2790000, "Rainy", new Symbol("images/weatherRain.jpg"));
+		
+		City kansasCity = new City("Kansas City", system, new Circle("Kansas City", 0, 0, kansasCity), "Kansas", 467000, "Tornado", new Symbol("images/weatherTornado.jpg"));
+		
+		City newYork = new City("New York City", system, new Circle("New York City", 0, 0, newYork), "New York", 8400000, "Snow", new Symbol("images/weatherSnow.jpg"));
+
+	}
 
 	/**
 	 * Create the application.

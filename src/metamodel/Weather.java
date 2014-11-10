@@ -39,7 +39,7 @@ public class Weather
   {
     type = aType;
     symbol = aSymbol;
-    city = new City(aNameForCity, aMapSystemForCity, aCircleForCity, aRegionForCity, aPopulationForCity, this);
+    city = new City(aNameForCity, aCircleForCity, aMapSystemForCity, aRegionForCity, aPopulationForCity, this);
   }
 
   //------------------------

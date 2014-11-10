@@ -1,14 +1,13 @@
 package metamodel;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-// line 64 "model.ump"
-// line 139 "model.ump"
+// line 66 "model.ump"
+// line 141 "model.ump"
 public class City extends Node
 {
 
@@ -29,9 +28,9 @@ public class City extends Node
   // CONSTRUCTOR
   //------------------------
 
-  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, Weather aWeather)
+  public City(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
   {
-    super(aName, aMapSystem, aCircle);
+    super(aName, aCircle, aMapSystem);
     region = aRegion;
     population = aPopulation;
     if (aWeather == null || aWeather.getCity() != null)
@@ -43,9 +42,9 @@ public class City extends Node
     accomodations = new ArrayList<Accomodation>();
   }
 
-  public City(String aName, MapSystem aMapSystem, Circle aCircle, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
+  public City(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
   {
-    super(aName, aMapSystem, aCircle);
+    super(aName, aCircle, aMapSystem);
     region = aRegion;
     population = aPopulation;
     weather = new Weather(aTypeForWeather, aSymbolForWeather, this);
