@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -20,6 +22,7 @@ import metamodel.*;
 
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPanel;
 
 public class Main {
 
@@ -69,7 +72,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(0, 0, 1368, 730);
+		frame.setBounds(0, 0, 1280, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JSplitPane splitPane = new JSplitPane();
@@ -82,15 +85,20 @@ public class Main {
 		
 		JLabel heightLabel = new JLabel("height " + frame.getHeight());
 		
+		final Console console = new Console();
+		
 		GroupLayout gl_visualOutput = new GroupLayout(visualOutput);
 		gl_visualOutput.setHorizontalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_visualOutput.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_visualOutput.createParallelGroup(Alignment.LEADING)
-						.addComponent(widthLabel)
-						.addComponent(heightLabel))
-					.addContainerGap(1161, Short.MAX_VALUE))
+						.addGroup(gl_visualOutput.createSequentialGroup()
+							.addGroup(gl_visualOutput.createParallelGroup(Alignment.LEADING)
+								.addComponent(widthLabel)
+								.addComponent(heightLabel))
+							.addContainerGap(1048, Short.MAX_VALUE))
+						.addComponent(console, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1124, Short.MAX_VALUE)))
 		);
 		gl_visualOutput.setVerticalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
@@ -99,7 +107,8 @@ public class Main {
 					.addComponent(widthLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(heightLabel)
-					.addContainerGap(635, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
+					.addComponent(console, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
 		);
 		visualOutput.setLayout(gl_visualOutput);
 		
@@ -170,6 +179,23 @@ public class Main {
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
 		mnHelp.add(mntmWalkthrough);
+		
+		System.out.println("Frame created");
+		
+		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
+				new MouseAdapter() { 
+	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
+	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
+	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+	                        console.setText("X: " + x + "\nY: " + y + "\n");
+	                        visualOutput.repaint(); // added because display was buggy                                
+	                }
+	            }
+	        );
+	}
+	
+	public void setVisualOutput(ImagePanel aVisualOutput) {
+		visualOutput = aVisualOutput;
 	}
 	
 	public JFrame getFrame() {
