@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -30,8 +31,8 @@ import javax.swing.JTextArea;
 public class Main {
 
 	private JFrame frame;
-	private Map map;
-	private MapSystem system;
+	private Map map = new Map(600, 110, new ImageIcon("images/map.jpg").getImage());
+	private MapSystem system;// = new MapSystem(map, infoLabel);
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
 	
