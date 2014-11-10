@@ -51,17 +51,15 @@ public class MenuListener implements ActionListener {
 			//TODO: implements click stack to redo
 			break;
 			
-//		case "Create Tour":
-//			parent.getSystem().setCreateMode(true);
-//			caller.setEnabled(false);
-//			parent.getEndTour().setEnabled(true);
-//			break;
-//			
-//		case "End Create Tour":
-//			parent.getSystem().setCreateMode(false)
-//			caller.setEnabled(false);
-//			parent.getCreateTour().setEnabled(true);
-//			break;
+		case "Create Tour":
+			parent.setIsCreateTourModeOn(true);
+			caller.setText("End Tour");
+			break;
+			
+		case "End Tour":
+			parent.setIsCreateTourModeOn(false);
+			caller.setText("Create Tour");
+			break;
 		
 			
 		default:
