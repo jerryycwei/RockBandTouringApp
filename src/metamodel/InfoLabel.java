@@ -3,12 +3,13 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 // line 93 "model.ump"
 // line 291 "model.ump"
 // line 297 "model.ump"
-public class InfoLabel
+public class InfoLabel extends JPanel
 {
 
   //------------------------

@@ -25,6 +25,7 @@ import metamodel.*;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class Main {
 
@@ -46,7 +47,7 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
-		initializeCities();
+		//initializeCities();
 		initialize();
 	}
 	
@@ -191,14 +192,15 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		visualOutput = new ImagePanel("images/map_bitches.jpg");
-		splitPane.setRightComponent(visualOutput);
+		visualOutput = new ImagePanel("images/map.jpg");
+		splitPane.setLeftComponent(visualOutput);
 		
 		JLabel widthLabel = new JLabel("width " + frame.getWidth());
 		
 		JLabel heightLabel = new JLabel("height " + frame.getHeight());
 		
 		final Console console = new Console();
+		visualOutput.add(console);
 		
 		GroupLayout gl_visualOutput = new GroupLayout(visualOutput);
 		gl_visualOutput.setHorizontalGroup(
@@ -206,12 +208,9 @@ public class Main {
 				.addGroup(gl_visualOutput.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_visualOutput.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_visualOutput.createSequentialGroup()
-							.addGroup(gl_visualOutput.createParallelGroup(Alignment.LEADING)
-								.addComponent(widthLabel)
-								.addComponent(heightLabel))
-							.addContainerGap(1048, Short.MAX_VALUE))
-						.addComponent(console, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1124, Short.MAX_VALUE)))
+						.addComponent(widthLabel)
+						.addComponent(heightLabel))
+					.addContainerGap(1048, Short.MAX_VALUE))
 		);
 		gl_visualOutput.setVerticalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
@@ -220,53 +219,19 @@ public class Main {
 					.addComponent(widthLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(heightLabel)
-					.addPreferredGap(ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
-					.addComponent(console, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(640, Short.MAX_VALUE))
 		);
 		visualOutput.setLayout(gl_visualOutput);
 		
-		JMenuBar menuContainer = new JMenuBar();
-		splitPane.setLeftComponent(menuContainer);
-		GroupLayout gl_menuContainer = new GroupLayout(menuContainer);
+		JPanel infoLabel = new JPanel();
+		//frame.getContentPane().add(infoLabel, BorderLayout.SOUTH);
+		splitPane.setRightComponent(infoLabel);
 		
-		JMenu mnLink = new JMenu("Link");
-		JMenu mnCity = new JMenu("City");
-
-		gl_menuContainer.setHorizontalGroup(
-			gl_menuContainer.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_menuContainer.createSequentialGroup()
-					.addComponent(mnCity, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_menuContainer.createSequentialGroup()
-					.addComponent(mnLink, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_menuContainer.setVerticalGroup(
-			gl_menuContainer.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_menuContainer.createSequentialGroup()
-					.addGap(5)
-					.addComponent(mnCity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(5)
-					.addComponent(mnLink, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(205))
-		);
-		
-		JMenuItem mntmMainRoute = new JMenuItem("Main route");
-		mntmMainRoute.setIcon(null);
-		mnLink.add(mntmMainRoute);
-		
-		JMenuItem mntmAlternativeRoute = new JMenuItem("Alternative route");
-		mnLink.add(mntmAlternativeRoute);
-				
-		JMenuItem mntmStart = new JMenuItem("Start");
-		mnCity.add(mntmStart);
-		
-		JMenuItem mntmEnd = new JMenuItem("End");
-		mnCity.add(mntmEnd);
-		
-		JMenuItem mntmTransferPoint = new JMenuItem("Transfer Point");
-		mnCity.add(mntmTransferPoint);
-		menuContainer.setLayout(gl_menuContainer);
+		JTextArea cityInfo = new JTextArea();
+		cityInfo.setText("City: Jersey");
+		cityInfo.setColumns(10);
+		cityInfo.setRows(100);
+		infoLabel.add(cityInfo);
 		
 		JToolBar toolBar = new JToolBar();
 		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -274,15 +239,27 @@ public class Main {
 		JMenuBar menuBar = new JMenuBar();
 		toolBar.add(menuBar);
 		
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
+		JMenu fileMenu = new JMenu("File");
+		menuBar.add(fileMenu);
 		
-		JMenuItem mntmNew = new JMenuItem("New");
-		mntmNew.addActionListener(menuListener);
-		mnFile.add(mntmNew);
+		JMenuItem clearMenuItem = new JMenuItem("Clear Map");
+		clearMenuItem.addActionListener(menuListener);
+		fileMenu.add(clearMenuItem);
 		
-		JMenu mnEdit = new JMenu("Edit");
-		menuBar.add(mnEdit);
+		JMenu editMenu = new JMenu("Edit");
+		menuBar.add(editMenu);
+		
+		JMenuItem undoMenuItem = new JMenuItem("Undo");
+		editMenu.add(undoMenuItem);
+		
+		JMenu tourMenu = new JMenu("Tour");
+		menuBar.add(tourMenu);
+		
+		JMenuItem createTourMenuItem = new JMenuItem("Create Tour");
+		tourMenu.add(createTourMenuItem);
+		
+		JMenuItem alternateRouteMenuItem = new JMenuItem("Alternate Route");
+		tourMenu.add(alternateRouteMenuItem);
 		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
