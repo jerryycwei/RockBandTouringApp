@@ -3,6 +3,8 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -29,6 +31,14 @@ public class InfoLabel extends JPanel
   public InfoLabel(JTextArea aInfo, MapSystem aMapSystem)
   {
     info = aInfo;
+	info.setText("City: Jersey");
+	info.setBackground(new Color(0, 0, 0));
+	info.setColumns(10);
+	info.setRows(100);
+	info.setVisible(true);
+    this.add(info);
+    this.setVisible(true);
+    
     if (aMapSystem == null || aMapSystem.getInfoLabel() != null)
     {
       throw new RuntimeException("Unable to create InfoLabel due to aMapSystem");
@@ -39,6 +49,13 @@ public class InfoLabel extends JPanel
   public InfoLabel(JTextArea aInfo, Map aMapForMapSystem)
   {
     info = aInfo;
+	info.setText("City: Jersey");
+	info.setColumns(10);
+	info.setRows(100);
+	info.setVisible(true);
+    this.add(info);
+    this.setVisible(true);
+    
     mapSystem = new MapSystem(aMapForMapSystem, this);
   }
 
