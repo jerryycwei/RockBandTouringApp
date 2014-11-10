@@ -133,6 +133,48 @@ public class Main {
 		Cities.add(atlanta);
 		Cities.add(lasVegas);
 		Cities.add(sanJose);
+		
+		losAngeles.addAccomodation("Hilton", "Hotel", 150);
+		chicago.addAccomodation("Hilton", "Hotel", 150);
+		newYork.addAccomodation("Hilton", "Hotel", 150);
+		kansasCity.addAccomodation("Hilton", "Hotel", 150);
+		toronto.addAccomodation("Hilton", "Hotel", 150);
+		montreal.addAccomodation("Hilton", "Hotel", 150);
+		houston.addAccomodation("Hilton", "Hotel", 150);
+		philadelphia.addAccomodation("Hilton", "Hotel", 150);
+		phoenix.addAccomodation("Hilton", "Hotel", 150);
+		sanDiego.addAccomodation("Hilton", "Hotel", 150);
+		sanFrancisco.addAccomodation("Hilton", "Hotel", 150);
+		ottawa.addAccomodation("Hilton", "Hotel", 150);
+		quebecCity.addAccomodation("Hilton", "Hotel", 150);
+		vancouver.addAccomodation("Hilton", "Hotel", 150);
+		detroit.addAccomodation("Hilton", "Hotel", 150);
+		seattle.addAccomodation("Hilton", "Hotel", 150);
+		dallas.addAccomodation("Hilton", "Hotel", 150);
+		atlanta.addAccomodation("Hilton", "Hotel", 150);
+		lasVegas.addAccomodation("Hilton", "Hotel", 150);
+		sanJose.addAccomodation("Hilton", "Hotel", 150);
+		
+		losAngeles.addVenue("Wei", "Stadium", 200000);
+		chicago.addVenue("Wei", "Stadium", 200000);
+		newYork.addVenue("Wei", "Stadium", 200000);
+		kansasCity.addVenue("Wei", "Stadium", 200000);
+		toronto.addVenue("Wei", "Stadium", 200000);
+		montreal.addVenue("Wei", "Stadium", 200000);
+		houston.addVenue("Wei", "Stadium", 200000);
+		philadelphia.addVenue("Wei", "Stadium", 200000);
+		phoenix.addVenue("Wei", "Stadium", 200000);
+		sanDiego.addVenue("Wei", "Stadium", 200000);
+		sanFrancisco.addVenue("Wei", "Stadium", 200000);
+		ottawa.addVenue("Wei", "Stadium", 200000);
+		quebecCity.addVenue("Wei", "Stadium", 200000);
+		vancouver.addVenue("Wei", "Stadium", 200000);
+		detroit.addVenue("Wei", "Stadium", 200000);
+		seattle.addVenue("Wei", "Stadium", 200000);
+		dallas.addVenue("Wei", "Stadium", 200000);
+		lasVegas.addVenue("Wei", "Stadium", 200000);
+		atlanta.addVenue("Wei", "Stadium", 200000);
+		sanJose.addVenue("Wei", "Stadium", 200000);
 	}
 
 	
