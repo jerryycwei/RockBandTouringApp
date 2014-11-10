@@ -32,14 +32,14 @@ public class Main {
 
 	private JFrame frame;
 	private Map map = new Map(600, 110, new ImageIcon("images/map.jpg").getImage());
-	private MapSystem system;// = new MapSystem(map, infoLabel);
+	private InfoLabel infoLabel = new InfoLabel(new JTextArea(), map);
+	private MapSystem system = new MapSystem(map, infoLabel.getInfo());
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
-	
 	/**
-	 * HashMap of all Cities added in initializeCities()
+	 * ArrayList of all Cities added in initializeCities()
 	 */
-	private ArrayList<City> Cities = new ArrayList<City>();
+	private ArrayList<City> cities = new ArrayList<City>();
 	
 	Graphics2D g2d;
 	
@@ -48,7 +48,7 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
-		//initializeCities();
+		initializeCities();
 		initialize();
 	}
 	
@@ -115,26 +115,26 @@ public class Main {
 		
 		City sanJose = new City("San Jose", new Circle("San Jose", 50, 337), system, "San Jose", 998537, "Sunny", new Symbol("images/weatherSunny.jpg"));
 		
-		Cities.add(losAngeles);
-		Cities.add(chicago);
-		Cities.add(kansasCity);
-		Cities.add(newYork);
-		Cities.add(toronto);
-		Cities.add(montreal);
-		Cities.add(houston);
-		Cities.add(philadelphia);
-		Cities.add(phoenix);
-		Cities.add(sanDiego);
-		Cities.add(sanFrancisco);
-		Cities.add(ottawa);
-		Cities.add(quebecCity);
-		Cities.add(vancouver);
-		Cities.add(detroit);
-		Cities.add(seattle);
-		Cities.add(dallas);
-		Cities.add(atlanta);
-		Cities.add(lasVegas);
-		Cities.add(sanJose);
+		cities.add(losAngeles);
+		cities.add(chicago);
+		cities.add(kansasCity);
+		cities.add(newYork);
+		cities.add(toronto);
+		cities.add(montreal);
+		cities.add(houston);
+		cities.add(philadelphia);
+		cities.add(phoenix);
+		cities.add(sanDiego);
+		cities.add(sanFrancisco);
+		cities.add(ottawa);
+		cities.add(quebecCity);
+		cities.add(vancouver);
+		cities.add(detroit);
+		cities.add(seattle);
+		cities.add(dallas);
+		cities.add(atlanta);
+		cities.add(lasVegas);
+		cities.add(sanJose);
 		
 		losAngeles.addAccomodation("Hilton", "Hotel", 150);
 		chicago.addAccomodation("Hilton", "Hotel", 150);
@@ -179,9 +179,6 @@ public class Main {
 		sanJose.addVenue("Wei", "Stadium", 200000);
 	}
 
-	
-
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -224,15 +221,7 @@ public class Main {
 		);
 		visualOutput.setLayout(gl_visualOutput);
 		
-		JPanel infoLabel = new JPanel();
-		//frame.getContentPane().add(infoLabel, BorderLayout.SOUTH);
-		splitPane.setRightComponent(infoLabel);
-		
-		JTextArea cityInfo = new JTextArea();
-		cityInfo.setText("City: Jersey");
-		cityInfo.setColumns(10);
-		cityInfo.setRows(100);
-		infoLabel.add(cityInfo);
+		splitPane.setRightComponent(infoLabel.getInfo());//infoLabel);
 		
 		JToolBar toolBar = new JToolBar();
 		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -290,6 +279,10 @@ public class Main {
 		visualOutput = aVisualOutput;
 	}
 	
+	//------------------------
+	// INTERFACE
+	//------------------------
+	
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -300,6 +293,10 @@ public class Main {
 	
 	public ImagePanel getVisualOutput() {
 		return visualOutput;
+	}
+	
+	public ArrayList<City> getCities() {
+		return cities;
 	}
 	
     public void paint(Graphics g) { // the paint method draws shapes and other images onto the GUI

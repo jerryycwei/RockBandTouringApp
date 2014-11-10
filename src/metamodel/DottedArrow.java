@@ -1,14 +1,14 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 import java.awt.geom.Point2D;
 import java.sql.Time;
 
 // line 202 "model.ump"
-// line 236 "model.ump"
-// line 278 "model.ump"
+// line 235 "model.ump"
+// line 277 "model.ump"
 public class DottedArrow extends DirectedArrow
 {
 
@@ -33,10 +33,10 @@ public class DottedArrow extends DirectedArrow
     alternateRoute = aAlternateRoute;
   }
 
-  public DottedArrow(Point2D aBegin, Point2D aEnd, Time aTravelTimeForAlternateRoute, Node aOriginForAlternateRoute, Node aDestinationForAlternateRoute, double aDistanceForAlternateRoute, MapSystem aMapSystemForAlternateRoute, TransportationType aTransportationTypeForAlternateRoute)
+  public DottedArrow(Point2D aBegin, Point2D aEnd, Time aTravelTimeForAlternateRoute, Node aOriginForAlternateRoute, Node aDestinationForAlternateRoute, double aDistanceForAlternateRoute, TransportationType aTransportTypeForAlternateRoute, MapSystem aMapSystemForAlternateRoute)
   {
     super(aBegin, aEnd);
-    alternateRoute = new AlternateRoute(aTravelTimeForAlternateRoute, aOriginForAlternateRoute, aDestinationForAlternateRoute, aDistanceForAlternateRoute, aMapSystemForAlternateRoute, aTransportationTypeForAlternateRoute, this);
+    alternateRoute = new AlternateRoute(aTravelTimeForAlternateRoute, aOriginForAlternateRoute, aDestinationForAlternateRoute, aDistanceForAlternateRoute, aTransportTypeForAlternateRoute, aMapSystemForAlternateRoute, this);
   }
 
   //------------------------
