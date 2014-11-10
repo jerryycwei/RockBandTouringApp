@@ -36,7 +36,7 @@ public class ImagePanel extends JPanel {
 		if (system != null) {
 			for (Node n : system.getNodes()) {
 				//TODO: add boolean selected for Node
-				//n.getCircle().drawCircle(g2d, isSelected);
+				n.getCircle().drawCircle(g2d, n.getSelected());
 			}
 			for (Link l : system.getLinks()) {
 				if (l instanceof MainRoute) {

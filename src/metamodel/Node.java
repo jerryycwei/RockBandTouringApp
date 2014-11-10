@@ -1,13 +1,12 @@
 package metamodel;
-
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 import java.util.*;
 
 // line 10 "model.ump"
-// line 161 "model.ump"
+// line 162 "model.ump"
 public class Node
 {
 
@@ -18,6 +17,7 @@ public class Node
   //Node Attributes
   private String name;
   private Circle circle;
+  private boolean selected;
 
   //Node Associations
   private MapSystem mapSystem;
@@ -27,10 +27,11 @@ public class Node
   // CONSTRUCTOR
   //------------------------
 
-  public Node(String aName, Circle aCircle, MapSystem aMapSystem)
+  public Node(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem)
   {
     name = aName;
     circle = aCircle;
+    selected = aSelected;
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
     {
@@ -59,6 +60,14 @@ public class Node
     return wasSet;
   }
 
+  public boolean setSelected(boolean aSelected)
+  {
+    boolean wasSet = false;
+    selected = aSelected;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getName()
   {
     return name;
@@ -67,6 +76,11 @@ public class Node
   public Circle getCircle()
   {
     return circle;
+  }
+
+  public boolean getSelected()
+  {
+    return selected;
   }
 
   public MapSystem getMapSystem()
@@ -283,7 +297,8 @@ public class Node
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
+            "name" + ":" + getName()+ "," +
+            "selected" + ":" + getSelected()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "circle" + "=" + (getCircle() != null ? !getCircle().equals(this)  ? getCircle().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "mapSystem = "+(getMapSystem()!=null?Integer.toHexString(System.identityHashCode(getMapSystem())):"null")
      + outputString;

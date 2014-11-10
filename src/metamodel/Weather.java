@@ -1,11 +1,11 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 
-// line 72 "model.ump"
-// line 145 "model.ump"
+// line 75 "model.ump"
+// line 148 "model.ump"
 public class Weather
 {
 
@@ -35,11 +35,11 @@ public class Weather
     city = aCity;
   }
 
-  public Weather(String aType, Symbol aSymbol, String aNameForCity, MapSystem aMapSystemForCity, Circle aCircleForCity, String aRegionForCity, int aPopulationForCity)
+  public Weather(String aType, Symbol aSymbol, String aNameForCity, Circle aCircleForCity, boolean aSelectedForCity, MapSystem aMapSystemForCity, String aRegionForCity, int aPopulationForCity)
   {
     type = aType;
     symbol = aSymbol;
-    city = new City(aNameForCity, aCircleForCity, aMapSystemForCity, aRegionForCity, aPopulationForCity, this);
+    city = new City(aNameForCity, aCircleForCity, aSelectedForCity, aMapSystemForCity, aRegionForCity, aPopulationForCity, this);
   }
 
   //------------------------

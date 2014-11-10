@@ -1,13 +1,12 @@
 package metamodel;
-
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
 import java.util.*;
 
-// line 56 "model.ump"
-// line 131 "model.ump"
+// line 57 "model.ump"
+// line 132 "model.ump"
 public class StartPoint extends City
 {
 
@@ -19,9 +18,9 @@ public class StartPoint extends City
   // CONSTRUCTOR
   //------------------------
 
-  public StartPoint(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
+  public StartPoint(String aName, Circle aCircle, boolean aSelected, MapSystem aMapSystem, String aRegion, int aPopulation, Weather aWeather)
   {
-    super(aName, aCircle, aMapSystem, aRegion, aPopulation, aWeather);
+    super(aName, aCircle, aSelected, aMapSystem, aRegion, aPopulation, aWeather);
   }
 
   //------------------------
