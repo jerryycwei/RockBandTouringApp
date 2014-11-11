@@ -91,6 +91,7 @@ public class Circle
      + outputString;
   }
   
+  //ADDED METHOD
   public void drawCircle(Graphics2D g, boolean isSelected) {
 		int r = 5;
 		int startX = positionX - (r/2);

@@ -36,6 +36,7 @@ public class Main {
 	private MapSystem system = new MapSystem(map, infoLabel.getInfo());
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
+	private MouseListener mouseListener;
 	/**
 	 * ArrayList of all Cities added in initializeCities()
 	 */
@@ -199,6 +200,9 @@ public class Main {
 		
 		final Console console = new Console();
 		visualOutput.add(console);
+		mouseListener = new MouseListener(this, visualOutput, console);
+		visualOutput.addMouseListener(mouseListener);
+		visualOutput.addMouseMotionListener(mouseListener);
 		
 		GroupLayout gl_visualOutput = new GroupLayout(visualOutput);
 		gl_visualOutput.setHorizontalGroup(
@@ -263,16 +267,16 @@ public class Main {
 		
 		System.out.println("Frame created");
 		
-		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
-				new MouseAdapter() { 
-	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
-	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
-	                        console.setText("X: " + x + "\nY: " + y + "\n");
-	                        visualOutput.repaint(); // added because display was buggy                                
-	                }
-	            }
-	        );
+//		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
+//				new MouseAdapter() { 
+//	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
+//	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
+//	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+//	                        console.setText("X: " + x + "\nY: " + y + "\n");
+//	                        visualOutput.repaint(); // added because display was buggy                                
+//	                }
+//	            }
+//	        );
 	}
 	
 	public void setVisualOutput(ImagePanel aVisualOutput) {
