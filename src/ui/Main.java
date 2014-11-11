@@ -314,6 +314,7 @@ public class Main {
 		                        	system.addLink(solidArrow.getMainRoute());
 
 	                        		origin = destination;
+	                        		begin = end;
 	                        	}
 	                        }
 	                        
