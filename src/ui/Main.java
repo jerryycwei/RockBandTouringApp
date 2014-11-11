@@ -11,6 +11,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +48,7 @@ public class Main {
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
 	private static boolean isAlternateRouteModeOn = false;
+	private Console console;
 
 	/**
 	 * ArrayList of all Cities added in initializeCities()
@@ -116,7 +121,7 @@ public class Main {
 		
 		splitPane.setLeftComponent(visualOutput);
 		
-		final Console console = new Console();
+		console = new Console();
 		visualOutput.add(console);
 		mouseListener = new MouseListener(this, visualOutput, console);
 		visualOutput.addMouseListener(mouseListener);
@@ -148,6 +153,10 @@ public class Main {
 		JMenuItem clearMenuItem = new JMenuItem("Clear Map");
 		clearMenuItem.addActionListener(menuListener);
 		fileMenu.add(clearMenuItem);
+		
+		JMenuItem saveMenuItem = new JMenuItem("Save To File");
+		saveMenuItem.addActionListener(menuListener);
+		fileMenu.add(saveMenuItem);
 		
 		JMenu editMenu = new JMenu("Edit");
 		menuBar.add(editMenu);
@@ -187,6 +196,27 @@ public class Main {
 	
 	public void setVisualOutput(ImagePanel aVisualOutput) {
 		visualOutput = aVisualOutput;
+	}
+	
+	public void saveModelToFile() {
+		// Writing "foo" to a stream (for example, a file) 
+		// Step 1. Create an output stream 
+		// that is, create bucket to receive the bytes 
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream("fooFile");
+			// Step 2. Create ObjectOutputStream 
+			// that is, create a hose and put its head in the bucket 
+			ObjectOutputStream os = new ObjectOutputStream(out); 
+			// Step 3. Write a string and an object to the stream 
+			// that is, let the stream flow into the bucket
+			os.writeObject(system); 
+			// Step 4. Flush the data to its destination 
+			os.flush(); 
+			console.setText("Model saved to file successfully.");
+		} catch (IOException e) {
+			console.setText("Error saving model to file." + e.getMessage());
+		}
 	}
 	
 	//------------------------
