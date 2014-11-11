@@ -49,6 +49,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         
         if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
         	for (City city : parent.getCities()) {
+        		console.setText("Create Tour Mode On");
         		int cityX = city.getCircle().getPositionX();
         		int cityY = city.getCircle().getPositionY();
         		
