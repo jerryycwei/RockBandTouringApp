@@ -3,11 +3,16 @@ package ui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.Point2D;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import metamodel.Accomodation;
 import metamodel.City;
+import metamodel.SolidArrow;
+import metamodel.Symbol;
+import metamodel.TransportationType;
 
 public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private ImagePanel imgPanel;
@@ -16,16 +21,19 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private boolean insideMap;
 	private static final int CLICK_RADIUS = 10;
 	private static final int HOVER_RADIUS = 10;
-	
+	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
 	private ArrayList<MouseEvent> mouseUndoStack = new ArrayList<MouseEvent>();
 	private ArrayList<MouseEvent> mouseRedoStack = new ArrayList<MouseEvent>();
 	private ArrayList<City> undoCity = new ArrayList<City>();
+	private City origin;
+	private Point2D.Double begin;
 	
 	public MouseListener(Main parent, ImagePanel imgPanel, Console console) {
 		this.parent = parent;
 		this.imgPanel = imgPanel;
 		this.console = console;
+		clickCounter = 0;
 		mouseUndoStack = new ArrayList<MouseEvent>();
 		mouseRedoStack = new ArrayList<MouseEvent>();
 		undoCity = new ArrayList<City>();
@@ -37,15 +45,38 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
         int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
         console.setText("Xclicked: " + x + "\nYclicked: " + y + "\n");
-        imgPanel.repaint(); // added because display was buggy
-        for (City city : parent.getCities()) {
-        	if (x < (city.getCircle().getPositionX() + CLICK_RADIUS) && x > (city.getCircle().getPositionX() - CLICK_RADIUS) &&
-        			y < (city.getCircle().getPositionY() + CLICK_RADIUS) && y > (city.getCircle().getPositionY() - CLICK_RADIUS)) {
-        		console.setText("added city " + city.getName());
-        		//city.setSelected(true);
-        		//mouseMap.put(e, city);
-        		//repaint();
+        //if(parent.getIsCreateTourModeOn()) {
+        if(true) {
+        	for (City city : parent.getCities()) {
+        		if (x < (city.getCircle().getPositionX() + CLICK_RADIUS) && x > (city.getCircle().getPositionX() - CLICK_RADIUS) &&
+        				y < (city.getCircle().getPositionY() + CLICK_RADIUS) && y > (city.getCircle().getPositionY() - CLICK_RADIUS)) {
+        			console.setText("added city " + city.getName());
+        			switch(clickCounter) {
+        			case 0:
+        				System.out.println("origin set");
+        				this.origin = city;
+        				begin = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
+        				clickCounter++;
+        				break;
+        			default:
+        				System.out.println("destination set");
+        				City destination = city;
+        				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
+        				Time travelTime = null;
+        				int distance = 0;
+        				TransportationType transportType = new TransportationType("plane", new Symbol("images/airplane.png"));
+                		SolidArrow solidArrow = new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
+                		this.origin = destination;
+                		this.begin = end;
+        				break;
+        			}
+        			city.setSelected(true);
+        			//mouseMap.put(e, city);
+        			repaint();
+        		}
         	}
+        } else {
+        	clickCounter = 0;
         }
 	}
 	
