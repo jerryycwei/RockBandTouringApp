@@ -40,8 +40,8 @@ public class MenuListener implements ActionListener {
 			MapSystem system = parent.getSystem();
 			if (system != null) {
 				system.clearLists();
-				parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg", system));
 				parent.getVisualOutput().repaint();
+				parent.getMouseListener().resetClickCount();
 			}
 			break;
 		case "Undo":
