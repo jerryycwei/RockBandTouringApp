@@ -92,6 +92,7 @@ public class Main {
 	private void initialize() {
 		//textArea.setMinimumSize(new Dimension(60, 15));
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(0, 0, 1280, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
