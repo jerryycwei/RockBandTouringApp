@@ -94,6 +94,28 @@ public class CityBuilder {
 		lasVegas.addAccomodation("Hilton", "Hotel", 150);
 		sanJose.addAccomodation("Hilton", "Hotel", 150);
 
+		losAngeles.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		chicago.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		newYork.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		kansasCity.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		toronto.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		montreal.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		houston.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		phoenix.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		philadelphia.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		sanDiego.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		sanFrancisco.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		ottawa.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		quebecCity.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		vancouver.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		detroit.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		seattle.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		dallas.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		atlanta.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		lasVegas.addAccomodation("Ritz-Carlton", "Hotel", 300);
+		sanJose.addAccomodation("Ritz-Carlton", "Hotel", 300);
+
+		
 		losAngeles.addVenue("Wei", "Stadium", 200000);
 		chicago.addVenue("Wei", "Stadium", 200000);
 		newYork.addVenue("Wei", "Stadium", 200000);
@@ -114,6 +136,8 @@ public class CityBuilder {
 		lasVegas.addVenue("Wei", "Stadium", 200000);
 		atlanta.addVenue("Wei", "Stadium", 200000);
 		sanJose.addVenue("Wei", "Stadium", 200000);
+		
+		
 	}
 
 }
