@@ -13,6 +13,7 @@ import metamodel.City;
 import metamodel.SolidArrow;
 import metamodel.Symbol;
 import metamodel.TransportationType;
+import metamodel.Venue;
 
 public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private ImagePanel imgPanel;
@@ -97,7 +98,13 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
 	        		
 	        		for (Accomodation accomodation : city.getAccomodations()){
-	        			printedText = printedText + "\n" + accomodation.getName();
+	        			printedText = printedText + "\n" + accomodation.getName() + " $" + accomodation.getCost();
+	        		}
+	        		
+	        		printedText = printedText +"\n" +"\n" + "VENUE:";
+	        		
+	        		for (Venue venue : city.getVenues()){
+	        			printedText = printedText + "\n" + venue.getName() + " $" + venue.getCost();
 	        		}
 	        		
 	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
