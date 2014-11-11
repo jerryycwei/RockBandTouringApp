@@ -52,12 +52,12 @@ public class MenuListener implements ActionListener {
 			break;
 			
 		case "Create Tour":
-//			parent.setIsCreateTourModeOn(true);
+			parent.setIsCreateTourModeOn(true);
 			caller.setText("End Tour");
 			break;
 			
 		case "End Tour":
-//			parent.setIsCreateTourModeOn(false);
+			parent.setIsCreateTourModeOn(false);
 			caller.setText("Create Tour");
 			break;
 		

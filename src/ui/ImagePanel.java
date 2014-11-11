@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -35,6 +36,7 @@ public class ImagePanel extends JPanel {
 				if (l instanceof MainRoute) {
 					Path2D head = ((MainRoute) l).getSolidArrow().getHead();
 					Path2D line = ((MainRoute) l).getSolidArrow().getLine();
+					g2d.setColor(Color.RED);
 					g2d.draw(head);
 					g2d.draw(line);
 				}

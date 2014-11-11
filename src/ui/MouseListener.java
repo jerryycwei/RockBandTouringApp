@@ -45,21 +45,18 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
         int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
         console.setText("Xclicked: " + x + "\nYclicked: " + y + "\n");
-        //if(parent.getIsCreateTourModeOn()) {
-        if(true) {
+        if(parent.getIsCreateTourModeOn()) {
         	for (City city : parent.getCities()) {
         		if (x < (city.getCircle().getPositionX() + CLICK_RADIUS) && x > (city.getCircle().getPositionX() - CLICK_RADIUS) &&
         				y < (city.getCircle().getPositionY() + CLICK_RADIUS) && y > (city.getCircle().getPositionY() - CLICK_RADIUS)) {
         			console.setText("added city " + city.getName());
         			switch(clickCounter) {
         			case 0:
-        				System.out.println("origin set");
         				this.origin = city;
         				begin = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				clickCounter++;
         				break;
         			default:
-        				System.out.println("destination set");
         				City destination = city;
         				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				Time travelTime = null;
