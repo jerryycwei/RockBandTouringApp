@@ -11,6 +11,7 @@ import java.util.HashMap;
 import metamodel.Accomodation;
 import metamodel.City;
 import metamodel.DottedArrow;
+import metamodel.Link;
 import metamodel.SolidArrow;
 import metamodel.Symbol;
 import metamodel.TransportationType;
@@ -28,7 +29,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private HashMap<City, City> destinationMap;
 	private ArrayList<MouseEvent> mouseUndoStack;
 	private ArrayList<MouseEvent> mouseRedoStack;
-	private ArrayList<City> undoCity;
+	private ArrayList<City> undoCities;
+	private ArrayList<Link> undoLinks;
 	private City origin;
 	private Point2D.Double begin;
 	
@@ -41,7 +43,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		destinationMap = new HashMap<City, City>();
 		mouseUndoStack = new ArrayList<MouseEvent>();
 		mouseRedoStack = new ArrayList<MouseEvent>();
-		undoCity = new ArrayList<City>();
+		undoCities = new ArrayList<City>();
+		undoLinks = new ArrayList<Link>();
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -82,9 +85,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				origin.setEndPoint(false);
         				destination.setEndPoint(true);
         				//undo stack
-        				//destinationMap.put(destination, origin);
-            			//mouseMap.put(e, city);
-            			//pushMouseEvent(mouseUndoStack, e);
+        				destinationMap.put(destination, origin);
+            			mouseMap.put(e, city);
+            			pushMouseEvent(mouseUndoStack, e);
         				this.origin = destination;
                 		this.begin = end;
         				break;
@@ -139,24 +142,38 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	}
 	
 	public void undo(){
-		MouseEvent mouseUndoPopped = mouseUndoStack.get(mouseRedoStack.size() - 1);
+		System.out.println("Undo");
+		MouseEvent mouseUndoPopped = mouseUndoStack.remove(mouseUndoStack.size() - 1);
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
 		City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-		for(int i = 0; i < parent.getSystem().getLinks().size(); i++){
-			//Link link 
+		for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
+			Link link = parent.getSystem().getLink(i);
+			if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
+				link.setLinkActive(false);
+				undoLinks.add(link);
+				if(undoLinks.size() > 5) {
+					parent.getSystem().removeLink(undoLinks.remove(0));
+				}
+				break;
+			}
 		}
-		pushCityStack(undoCity, cityToBeUndo);
+		origin = originOfUndoLink;
+		pushCityStack(undoCities, cityToBeUndo);
 		repaint();
 	}
 	
 	public void redo(){
-		MouseEvent mouseRedoPopped = mouseRedoStack.get(mouseRedoStack.size() - 1);
+		System.out.println("Redo");
+		MouseEvent mouseRedoPopped = mouseRedoStack.remove(mouseRedoStack.size() - 1);
 		pushMouseEvent(mouseUndoStack, mouseRedoPopped);
-		City redoCity = undoCity.remove(undoCity.size() - 1);
+		City redoCity = undoCities.remove(undoCities.size() - 1);
 		redoCity.setSelected(true);
-		mouseMap.put(mouseRedoPopped, redoCity);	
+		undoLinks.remove(undoLinks.size() - 1).setLinkActive(true);
+		mouseMap.put(mouseRedoPopped, redoCity);
+		destinationMap.put(redoCity, origin);
+		origin = redoCity;
 		repaint();
 	}
 	

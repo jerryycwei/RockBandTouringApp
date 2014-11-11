@@ -153,7 +153,12 @@ public class Main {
 		menuBar.add(editMenu);
 		
 		JMenuItem undoMenuItem = new JMenuItem("Undo");
+		undoMenuItem.addActionListener(menuListener);
 		editMenu.add(undoMenuItem);
+		
+		JMenuItem redoMenuItem = new JMenuItem("Redo");
+		redoMenuItem.addActionListener(menuListener);
+		editMenu.add(redoMenuItem);
 		
 		JMenu tourMenu = new JMenu("Tour");
 		menuBar.add(tourMenu);

@@ -23,12 +23,12 @@ import metamodel.SolidArrow;
 public class ImagePanel extends JPanel {
 	private Image image;
 	private MapSystem system;
-	
+
 	public ImagePanel(String imagePath, MapSystem system) {
 		this.image = new ImageIcon(imagePath).getImage();
 		this.system = system;
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -37,37 +37,40 @@ public class ImagePanel extends JPanel {
 		g2d.drawImage(image, 0, 0, null);
 		if (system != null) {
 			for (Node n : system.getNodes()) {
-				//TODO: add boolean selected for Node
-				n.getCircle().drawCircle(g2d, n.getSelected(), ((City) n).getStartPoint(), ((City) n).getEndPoint());
+				if(n instanceof City) {
+					n.getCircle().drawCircle(g2d, n.getSelected(), ((City) n).getStartPoint(), ((City) n).getEndPoint());
+				}
 			}
 			for (Link l : system.getLinks()) {
-				if (l instanceof MainRoute) {
-					SolidArrow arrow = ((MainRoute) l).getSolidArrow();
-					Path2D head = arrow.getHead();
-					Path2D line = arrow.getLine();
-					g2d.setColor(Color.RED);
-					g2d.setStroke(defaultStroke);
-					g2d.draw(head);
-					g2d.draw(line);
-					
-					Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
-					int x = (int) arrow.getMiddlePoint().getX();
-					int y = (int) arrow.getMiddlePoint().getY();
-					g2d.drawImage(img, x, y, null);
-				}
-				if (l instanceof AlternateRoute) {
-					DottedArrow arrow = ((AlternateRoute) l).getDottedArrow();
-					Path2D head = arrow.getHead();
-					Path2D line = arrow.getLine();
-					g2d.setColor(Color.MAGENTA);
-					g2d.setStroke(dashed);
-			        g2d.draw(head);
-			        g2d.draw(line);
-			        
-			        Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
-					int x = (int) arrow.getMiddlePoint().getX();
-					int y = (int) arrow.getMiddlePoint().getY();
-					g2d.drawImage(img, x, y, null);
+				if(l.getLinkActive()) {
+					if (l instanceof MainRoute) {
+						SolidArrow arrow = ((MainRoute) l).getSolidArrow();
+						Path2D head = arrow.getHead();
+						Path2D line = arrow.getLine();
+						g2d.setColor(Color.RED);
+						g2d.setStroke(defaultStroke);
+						g2d.draw(head);
+						g2d.draw(line);
+
+						Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
+						int x = (int) arrow.getMiddlePoint().getX();
+						int y = (int) arrow.getMiddlePoint().getY();
+						g2d.drawImage(img, x, y, null);
+					}
+					if (l instanceof AlternateRoute) {
+						DottedArrow arrow = ((AlternateRoute) l).getDottedArrow();
+						Path2D head = arrow.getHead();
+						Path2D line = arrow.getLine();
+						g2d.setColor(Color.MAGENTA);
+						g2d.setStroke(dashed);
+						g2d.draw(head);
+						g2d.draw(line);
+
+						Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
+						int x = (int) arrow.getMiddlePoint().getX();
+						int y = (int) arrow.getMiddlePoint().getY();
+						g2d.drawImage(img, x, y, null);
+					}
 				}
 			}
 		}

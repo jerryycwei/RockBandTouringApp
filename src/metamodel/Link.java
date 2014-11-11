@@ -1,14 +1,14 @@
 package metamodel;
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
+/*This code was generated using the UMPLE 1.21.0.4738 modeling language!*/
 
 
 import java.sql.Time;
 import java.util.*;
 
 // line 17 "model.ump"
-// line 103 "model.ump"
-// line 172 "model.ump"
+// line 104 "model.ump"
+// line 173 "model.ump"
 public class Link
 {
 
@@ -22,6 +22,7 @@ public class Link
   private Node destination;
   private double distance;
   private TransportationType transportType;
+  private boolean linkActive;
 
   //Link Associations
   private List<Node> nodes;
@@ -38,6 +39,7 @@ public class Link
     destination = aDestination;
     distance = aDistance;
     transportType = aTransportType;
+    linkActive = true;
     nodes = new ArrayList<Node>();
     boolean didAddMapSystem = setMapSystem(aMapSystem);
     if (!didAddMapSystem)
@@ -90,6 +92,14 @@ public class Link
     return wasSet;
   }
 
+  public boolean setLinkActive(boolean aLinkActive)
+  {
+    boolean wasSet = false;
+    linkActive = aLinkActive;
+    wasSet = true;
+    return wasSet;
+  }
+
   public Time getTravelTime()
   {
     return travelTime;
@@ -113,6 +123,11 @@ public class Link
   public TransportationType getTransportType()
   {
     return transportType;
+  }
+
+  public boolean getLinkActive()
+  {
+    return linkActive;
   }
 
   public Node getNode(int index)
@@ -313,7 +328,8 @@ public class Link
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "distance" + ":" + getDistance()+ "]" + System.getProperties().getProperty("line.separator") +
+            "distance" + ":" + getDistance()+ "," +
+            "linkActive" + ":" + getLinkActive()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "travelTime" + "=" + (getTravelTime() != null ? !getTravelTime().equals(this)  ? getTravelTime().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "origin" + "=" + (getOrigin() != null ? !getOrigin().equals(this)  ? getOrigin().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "destination" + "=" + (getDestination() != null ? !getDestination().equals(this)  ? getDestination().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
