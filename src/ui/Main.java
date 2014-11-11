@@ -8,6 +8,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +40,8 @@ public class Main {
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
 	private MouseListener mouseListener;
+	private static boolean isCreateTourModeOn = false;
+	
 	/**
 	 * ArrayList of all Cities added in initializeCities()
 	 */
@@ -44,6 +49,14 @@ public class Main {
 	
 	Graphics2D g2d;
 	
+	
+	public void setIsCreateTourModeOn(boolean mode) {
+		isCreateTourModeOn = mode;
+	}
+	
+	public boolean getIsCreateTourModeOn() {
+		return isCreateTourModeOn;
+	}
 	
 	/**
 	 * Create the application.
@@ -191,7 +204,7 @@ public class Main {
 		JSplitPane splitPane = new JSplitPane();
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		visualOutput = new ImagePanel("images/map.jpg");
+		visualOutput = new ImagePanel("images/map.jpg", system);
 		splitPane.setLeftComponent(visualOutput);
 		
 		JLabel widthLabel = new JLabel("width " + frame.getWidth());
@@ -267,16 +280,47 @@ public class Main {
 		
 		System.out.println("Frame created");
 		
-//		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
-//				new MouseAdapter() { 
-//	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
-//	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-//	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
-//	                        console.setText("X: " + x + "\nY: " + y + "\n");
-//	                        visualOutput.repaint(); // added because display was buggy                                
-//	                }
-//	            }
-//	        );
+		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
+				new MouseAdapter() { 
+					int counter = 0;
+                	Node origin;
+                	Node destination;
+                	Point2D begin;
+                	Point2D end;
+                	Time travelTime;
+                	double distance;
+                	TransportationType transportType;
+                	SolidArrow solidArrow;
+                	
+	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
+	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
+	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+	                        console.setText("X: " + x + "\nY: " + y + "\n");
+	                        
+	                        if (/*getIsCreateTourModeOn()*/true) {
+	                        	counter++;
+	                        	
+	                        	if (counter < 2) {
+	                        		begin = new Point2D.Double(x, y);
+	                        		origin = new Node("Some city", new Circle("Some circle", x, y), system);
+	                        	} else {
+	                        		destination = new Node("Some other city", new Circle("Some other circle", x, y), system);
+	                        		travelTime = null;
+	                        		distance = 0;
+	                        		transportType = new TransportationType("plane", new Symbol(""));
+	                        		end = new Point2D.Double(x, y);
+	                        		solidArrow = new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, system);
+	                        		
+		                        	system.addLink(solidArrow.getMainRoute());
+
+	                        		origin = destination;
+	                        	}
+	                        }
+	                        
+	                        visualOutput.repaint(); // added because display was buggy                                
+	                }
+	            }
+	        );
 	}
 	
 	public void setVisualOutput(ImagePanel aVisualOutput) {
@@ -308,7 +352,7 @@ public class Main {
 	}
 	
     public void paint(Graphics g) { // the paint method draws shapes and other images onto the GUI
-        g2d = ( Graphics2D ) g; // Graphics2D is accessed for more options
+          g2d = ( Graphics2D ) g;// Graphics2D is accessed for more options
 //        g2d.setColor(new Color(205,127,50)); // the color of the graphics is set
 //        if (point == true) {
 //            g2d.fillOval(xPoints[coord-1]-2, yPoints[coord-1]-2, 4, 4);
