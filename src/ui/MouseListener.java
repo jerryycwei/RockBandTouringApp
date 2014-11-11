@@ -82,6 +82,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				}
         				origin.setEndPoint(false);
         				destination.setEndPoint(true);
+        				
+        				if (destination.getStartPoint()) {  destination.setStartPoint(false); }
+        				
         				destinationMap.put(destination, origin); //undo stack
 
         				this.origin = destination;
@@ -148,14 +151,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
-		if (cityToBeUndo.getEndPoint()) {
-			cityToBeUndo.setEndPoint(false);
-		}
+		
+		if (cityToBeUndo.getEndPoint()) { cityToBeUndo.setEndPoint(false); }
+		
 		if (destinationMap.containsKey(cityToBeUndo)) {
+			System.out.println("destinationMap has key " + cityToBeUndo.getName());
 			City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-			for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
+			for(int i = parent.getSystem().numberOfLinks() - 1; i > 0; i--){
 				Link link = parent.getSystem().getLink(i);
 				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
+					System.out.println("link found origin: " +link.getOrigin().getName() + " destination: " + link.getDestination().getName());
 					link.setLinkActive(false);
 					undoLinks.add(link);
 					if(undoLinks.size() > 5) {
