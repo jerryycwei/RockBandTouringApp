@@ -17,15 +17,8 @@ public class ImagePanel extends JPanel {
 	private Image image;
 	private MapSystem system;
 	
-	public ImagePanel(String imagePath) {
-		this(new ImageIcon(imagePath).getImage());
-	}
-	
-	public ImagePanel(Image img) {
-		this.image = img;
-	}
-	
-	public ImagePanel(MapSystem system) {
+	public ImagePanel(String imagePath, MapSystem system) {
+		this.image = new ImageIcon(imagePath).getImage();
 		this.system = system;
 	}
 	
@@ -42,7 +35,8 @@ public class ImagePanel extends JPanel {
 				if (l instanceof MainRoute) {
 					Path2D head = ((MainRoute) l).getSolidArrow().getHead();
 					Path2D line = ((MainRoute) l).getSolidArrow().getLine();
-					//TODO: use g to draw the arrow
+					g2d.draw(head);
+					g2d.draw(line);
 				}
 			}
 		}

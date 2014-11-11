@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import metamodel.Accomodation;
 import metamodel.City;
 
 public class MouseListener extends MouseAdapter implements MouseMotionListener{
@@ -58,8 +59,17 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
 	        for (City city : parent.getCities()) {
 	        	if (x < (city.getCircle().getPositionX() + HOVER_RADIUS) && x > (city.getCircle().getPositionX() - HOVER_RADIUS) &&
-	        			y < (city.getCircle().getPositionY() + HOVER_RADIUS) && y > (city.getCircle().getPositionY() - HOVER_RADIUS)) {	     
-	        		parent.getInfoLabel().getInfo().setText(city.getName() +"\n" + city.getAccomodation(0).getName());
+	        			y < (city.getCircle().getPositionY() + HOVER_RADIUS) && y > (city.getCircle().getPositionY() - HOVER_RADIUS)) {
+	        		
+	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
+	        		
+	        		for (Accomodation accomodation : city.getAccomodations()){
+	        			printedText = printedText + "\n" + accomodation.getName();
+	        		}
+	        		
+	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
+	        		
+	        		parent.getInfoLabel().getInfo().setText(printedText);
 	        	}
 	        }
 		}
