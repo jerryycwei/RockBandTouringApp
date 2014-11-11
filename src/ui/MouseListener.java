@@ -23,7 +23,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private Main parent;
 	private boolean insideMap;
 	private static final int CLICK_RADIUS = 7;
-	private static final int HOVER_RADIUS = 7;
 	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
 	private HashMap<City, City> destinationMap;
@@ -32,7 +31,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private ArrayList<City> undoCities;
 	private ArrayList<Link> undoLinks;
 	private City origin;
-	private Point2D.Double begin;
 	
 	public MouseListener(Main parent, ImagePanel imgPanel, Console console) {
 		this.parent = parent;
@@ -63,7 +61,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
-        				begin = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				origin.setStartPoint(true);
         				clickCounter++;
         				break;
@@ -72,6 +69,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				if (destination.equals(origin)) {
         					break;
         				}
+        				Point2D.Double begin = new Point2D.Double(origin.getCircle().getPositionX(), origin.getCircle().getPositionY());
         				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				Time travelTime = null;
         				int distance = 0;
@@ -84,10 +82,12 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				}
         				origin.setEndPoint(false);
         				destination.setEndPoint(true);
+        				
+        				if (destination.getStartPoint()) {  destination.setStartPoint(false); }
+        				
         				destinationMap.put(destination, origin); //undo stack
 
         				this.origin = destination;
-                		this.begin = end;
         				break;
         			}
         			mouseMap.put(e, city); //undo stack
@@ -133,9 +133,12 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
 	        		
 	        		parent.getInfoLabel().getInfo().setText(printedText);
-	        	}
+	        		break;
+	        	} else {
+	    			parent.getInfoLabel().getInfo().setText("");
+	    		}
 	        }
-		}
+		} 
 	}
 	
 	public void mouseExited(MouseEvent e) {
@@ -148,14 +151,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
-		if (cityToBeUndo.getEndPoint()) {
-			cityToBeUndo.setEndPoint(false);
-		}
+		
+		if (cityToBeUndo.getEndPoint()) { cityToBeUndo.setEndPoint(false); }
+		
 		if (destinationMap.containsKey(cityToBeUndo)) {
+			System.out.println("destinationMap has key " + cityToBeUndo.getName());
 			City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-			for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
+			for(int i = parent.getSystem().numberOfLinks() - 1; i > 0; i--){
 				Link link = parent.getSystem().getLink(i);
 				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
+					System.out.println("link found origin: " +link.getOrigin().getName() + " destination: " + link.getDestination().getName());
 					link.setLinkActive(false);
 					undoLinks.add(link);
 					if(undoLinks.size() > 5) {
