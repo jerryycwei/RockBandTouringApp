@@ -11,6 +11,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +37,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import com.thoughtworks.xstream.XStream;
+
 public class Main {
 
 	private JFrame frame;
@@ -44,6 +51,7 @@ public class Main {
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
 	private static boolean isAlternateRouteModeOn = false;
+	private static File saveFile = new File("tour.xml");
 
 	/**
 	 * ArrayList of all Cities added in initializeCities()
@@ -149,6 +157,14 @@ public class Main {
 		clearMenuItem.addActionListener(menuListener);
 		fileMenu.add(clearMenuItem);
 		
+		JMenuItem saveMenuItem = new JMenuItem("Save");
+		saveMenuItem.addActionListener(menuListener);
+		fileMenu.add(saveMenuItem);
+		
+		JMenuItem loadMenuItem = new JMenuItem("Load");
+		loadMenuItem.addActionListener(menuListener);
+		fileMenu.add(loadMenuItem);
+		
 		JMenu editMenu = new JMenu("Edit");
 		menuBar.add(editMenu);
 		
@@ -215,5 +231,34 @@ public class Main {
 	
     public MouseListener getMouseListener() {
     	return mouseListener;
+    }
+    
+    public boolean save(MapSystem sys) {
+    	XStream xs = new XStream();
+    	try {
+    		Writer writer = new FileWriter(saveFile);
+			xs.toXML(sys, writer);
+			writer.close();
+			System.out.println("Saved.");
+			return true;
+		} catch (IOException e) {
+			System.out.println("Nope. Didn't work.");
+			return false;
+		}
+    }
+    
+    public boolean load() {
+    	
+    	XStream xs = new XStream();
+    	try {
+    		system = (MapSystem) xs.fromXML(new FileInputStream(saveFile));
+//    		System.out.println(system.getLinks().size());
+    		visualOutput.repaint();
+    		System.out.println("Loaded.");
+    		return true;
+    	} catch (Exception e) {
+    		System.out.println("Nope. Didn't work.");
+    		return false;
+    	}
     }
 }

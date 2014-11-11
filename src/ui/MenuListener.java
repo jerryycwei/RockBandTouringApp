@@ -77,6 +77,13 @@ public class MenuListener implements ActionListener {
 			parent.getMouseListener().resetClickCount();
 			break;
 		
+		case "Save":
+			parent.save(parent.getSystem());
+			break;
+			
+		case "Load":
+			parent.load();
+			break;
 			
 		default:
 			break;
