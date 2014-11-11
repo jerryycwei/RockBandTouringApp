@@ -84,17 +84,18 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				}
         				origin.setEndPoint(false);
         				destination.setEndPoint(true);
-        				//undo stack
-        				destinationMap.put(destination, origin);
-            			mouseMap.put(e, city);
-            			pushMouseEvent(mouseUndoStack, e);
+        				destinationMap.put(destination, origin); //undo stack
+
         				this.origin = destination;
                 		this.begin = end;
         				break;
         			}
+        			mouseMap.put(e, city); //undo stack
+        			pushMouseEvent(mouseUndoStack, e); //undo stack
         			repaint();
         			break;
         		}
+        		
         	}
         } else {
         	clickCounter = 0;
@@ -147,33 +148,51 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
-		City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-		for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
-			Link link = parent.getSystem().getLink(i);
-			if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
-				link.setLinkActive(false);
-				undoLinks.add(link);
-				if(undoLinks.size() > 5) {
-					parent.getSystem().removeLink(undoLinks.remove(0));
-				}
-				break;
-			}
+		if (cityToBeUndo.getEndPoint()) {
+			cityToBeUndo.setEndPoint(false);
 		}
-		origin = originOfUndoLink;
+		if (destinationMap.containsKey(cityToBeUndo)) {
+			City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
+			for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
+				Link link = parent.getSystem().getLink(i);
+				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
+					link.setLinkActive(false);
+					undoLinks.add(link);
+					if(undoLinks.size() > 5) {
+						parent.getSystem().removeLink(undoLinks.remove(0));
+					}
+					break;
+				}
+			}
+			origin = originOfUndoLink;
+			if (!origin.getStartPoint()) {
+				origin.setEndPoint(true);
+			}	
+		} else {
+			origin = null;
+			resetClickCount();
+		}
 		pushCityStack(undoCities, cityToBeUndo);
+		console.setText("CREATE TOUR MODE ACTIVE\nUndo: removed " + cityToBeUndo.getName());
 		repaint();
 	}
 	
 	public void redo(){
-		System.out.println("Redo");
 		MouseEvent mouseRedoPopped = mouseRedoStack.remove(mouseRedoStack.size() - 1);
 		pushMouseEvent(mouseUndoStack, mouseRedoPopped);
 		City redoCity = undoCities.remove(undoCities.size() - 1);
 		redoCity.setSelected(true);
-		undoLinks.remove(undoLinks.size() - 1).setLinkActive(true);
-		mouseMap.put(mouseRedoPopped, redoCity);
-		destinationMap.put(redoCity, origin);
+		if(redoCity.getStartPoint()) {
+			clickCounter++;
+		} else if (origin.getEndPoint() || origin.getStartPoint()) {
+			origin.setEndPoint(false);
+			redoCity.setEndPoint(true);
+			undoLinks.remove(undoLinks.size() - 1).setLinkActive(true);
+			destinationMap.put(redoCity, origin);
+		}
 		origin = redoCity;
+		mouseMap.put(mouseRedoPopped, redoCity);
+		console.setText("CREATE TOUR MODE ACTIVE\nRedo: added " + redoCity.getName());
 		repaint();
 	}
 	
