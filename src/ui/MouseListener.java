@@ -32,7 +32,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private ArrayList<City> undoCities;
 	private ArrayList<Link> undoLinks;
 	private City origin;
-	private Point2D.Double begin;
 	
 	public MouseListener(Main parent, ImagePanel imgPanel, Console console) {
 		this.parent = parent;
@@ -63,7 +62,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
-        				begin = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				origin.setStartPoint(true);
         				clickCounter++;
         				break;
@@ -72,6 +70,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				if (destination.equals(origin)) {
         					break;
         				}
+        				Point2D.Double begin = new Point2D.Double(origin.getCircle().getPositionX(), origin.getCircle().getPositionY());
         				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				Time travelTime = null;
         				int distance = 0;
@@ -87,7 +86,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				destinationMap.put(destination, origin); //undo stack
 
         				this.origin = destination;
-                		this.begin = end;
         				break;
         			}
         			mouseMap.put(e, city); //undo stack
