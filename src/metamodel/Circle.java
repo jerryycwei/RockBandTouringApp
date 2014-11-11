@@ -92,12 +92,24 @@ public class Circle
   }
   
   //ADDED METHOD
-  public void drawCircle(Graphics2D g, boolean isSelected) {
+  public void drawCircle(Graphics2D g, boolean isSelected, boolean isStartPoint, boolean isEndPoint) {
 		int r = 8;
 		int startX = positionX - (r/2);
 		int startY = positionY - (r/2);
 		if (isSelected) {
-			g.setColor(Color.blue);
+			if (isStartPoint) {
+				r = 10;
+				startX = positionX - (r/2);
+				startY = positionY - (r/2);
+				g.setColor(Color.GREEN);
+			} else if (isEndPoint) {
+				r = 10;
+				startX = positionX - (r/2);
+				startY = positionY - (r/2);
+				g.setColor(Color.YELLOW);
+			} else {
+				g.setColor(Color.blue);
+			}
 		} else {
 			g.setColor(Color.red);
 		}

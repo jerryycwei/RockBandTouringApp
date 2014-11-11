@@ -327,4 +327,23 @@ public class City extends Node
             "  " + "weather = "+(getWeather()!=null?Integer.toHexString(System.identityHashCode(getWeather())):"null")
      + outputString;
   }
+  
+  //ADDED ATTRIBUTES AND METHODS
+  private boolean isStartPoint = false;
+  private boolean isEndPoint = false;
+  public boolean getStartPoint() {
+	  return isStartPoint;
+  }
+  public boolean getEndPoint() {
+	  return isEndPoint;
+  }
+  public void setStartPoint(boolean isStart) {
+	  isStartPoint = isStart;
+  }
+  public void setEndPoint(boolean isEnd) {
+	  isEndPoint = isEnd;
+  }
+  
+  
+  
 }

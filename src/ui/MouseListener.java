@@ -49,16 +49,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         
         if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
         	for (City city : parent.getCities()) {
-        		console.setText("Create Tour Mode On");
         		int cityX = city.getCircle().getPositionX();
         		int cityY = city.getCircle().getPositionY();
         		
         		if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
-        			console.setText("added city " + city.getName());
+        			console.setText("CREATE TOUR MODE ACTIVE\nadded city " + city.getName());
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
         				begin = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
+        				origin.setStartPoint(true);
         				clickCounter++;
         				break;
         			default:
@@ -73,7 +73,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				} else {
         					new DottedArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
         				}
-        				
+        				origin.setEndPoint(false);
+        				destination.setEndPoint(true);
         				this.origin = destination;
                 		this.begin = end;
         				break;
@@ -85,6 +86,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         	}
         } else {
         	clickCounter = 0;
+        	console.setText("CREATE TOUR IS NOT ACTIVE");
         }
 	}
 	

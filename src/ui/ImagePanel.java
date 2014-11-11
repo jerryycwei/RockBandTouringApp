@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import metamodel.AlternateRoute;
+import metamodel.City;
+import metamodel.DottedArrow;
 import metamodel.Link;
 import metamodel.MainRoute;
 import metamodel.MapSystem;
@@ -36,7 +38,7 @@ public class ImagePanel extends JPanel {
 		if (system != null) {
 			for (Node n : system.getNodes()) {
 				//TODO: add boolean selected for Node
-				n.getCircle().drawCircle(g2d, n.getSelected());
+				n.getCircle().drawCircle(g2d, n.getSelected(), ((City) n).getStartPoint(), ((City) n).getEndPoint());
 			}
 			for (Link l : system.getLinks()) {
 				if (l instanceof MainRoute) {
@@ -54,7 +56,7 @@ public class ImagePanel extends JPanel {
 					g2d.drawImage(img, x, y, null);
 				}
 				if (l instanceof AlternateRoute) {
-					SolidArrow arrow = ((MainRoute) l).getSolidArrow();
+					DottedArrow arrow = ((AlternateRoute) l).getDottedArrow();
 					Path2D head = arrow.getHead();
 					Path2D line = arrow.getLine();
 					g2d.setColor(Color.MAGENTA);
