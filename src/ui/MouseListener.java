@@ -25,9 +25,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private static final int HOVER_RADIUS = 7;
 	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
-	private ArrayList<MouseEvent> mouseUndoStack = new ArrayList<MouseEvent>();
-	private ArrayList<MouseEvent> mouseRedoStack = new ArrayList<MouseEvent>();
-	private ArrayList<City> undoCity = new ArrayList<City>();
+	private HashMap<City, City> destinationMap;
+	private ArrayList<MouseEvent> mouseUndoStack;
+	private ArrayList<MouseEvent> mouseRedoStack;
+	private ArrayList<City> undoCity;
 	private City origin;
 	private Point2D.Double begin;
 	
@@ -36,13 +37,14 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		this.imgPanel = imgPanel;
 		this.console = console;
 		clickCounter = 0;
+		mouseMap = new HashMap<MouseEvent, City>();
+		destinationMap = new HashMap<City, City>();
 		mouseUndoStack = new ArrayList<MouseEvent>();
 		mouseRedoStack = new ArrayList<MouseEvent>();
 		undoCity = new ArrayList<City>();
 	}
 	
 	public void mouseClicked(MouseEvent e) {
-		//pushMouseEvent(mouseUndoStack, e);
 		int mouseX = e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
         int mouseY = e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
         console.setText("Xclicked: " + mouseX + "\nYclicked: " + mouseY + "\n");
@@ -54,6 +56,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         		
         		if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
         			console.setText("CREATE TOUR MODE ACTIVE\nadded city " + city.getName());
+        			city.setSelected(true);
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
@@ -63,6 +66,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				break;
         			default:
         				City destination = city;
+        				if (destination.equals(origin)) {
+        					break;
+        				}
         				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				Time travelTime = null;
         				int distance = 0;
@@ -75,13 +81,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				}
         				origin.setEndPoint(false);
         				destination.setEndPoint(true);
+        				//undo stack
+        				//destinationMap.put(destination, origin);
+            			//mouseMap.put(e, city);
+            			//pushMouseEvent(mouseUndoStack, e);
         				this.origin = destination;
                 		this.begin = end;
         				break;
         			}
-        			city.setSelected(true);
-        			//mouseMap.put(e, city);
         			repaint();
+        			break;
         		}
         	}
         } else {
@@ -134,7 +143,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
-		mouseMap.remove(mouseUndoPopped);
+		City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
+		for(int i = 0; i < parent.getSystem().getLinks().size(); i++){
+			//Link link 
+		}
 		pushCityStack(undoCity, cityToBeUndo);
 		repaint();
 	}
