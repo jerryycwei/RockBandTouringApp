@@ -295,6 +295,10 @@ public class Main {
 		return visualOutput;
 	}
 	
+	public InfoLabel getInfoLabel() {
+		return infoLabel;
+	}
+	
 	public ArrayList<City> getCities() {
 		return cities;
 	}

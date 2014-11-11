@@ -32,12 +32,9 @@ public class InfoLabel extends JPanel
   {
     info = aInfo;
 	info.setText("City: Jersey");
-	info.setBackground(new Color(0, 0, 0));
 	info.setColumns(10);
 	info.setRows(100);
-	info.setVisible(true);
     this.add(info);
-    this.setVisible(true);
     
     if (aMapSystem == null || aMapSystem.getInfoLabel() != null)
     {
@@ -52,9 +49,7 @@ public class InfoLabel extends JPanel
 	info.setText("City: Jersey");
 	info.setColumns(10);
 	info.setRows(100);
-	info.setVisible(true);
     this.add(info);
-    this.setVisible(true);
     
     mapSystem = new MapSystem(aMapForMapSystem, this);
   }
