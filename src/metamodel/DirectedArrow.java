@@ -76,6 +76,12 @@ public class DirectedArrow {
 		double b = end.getY() - begin.getY();
 		return Math.sqrt(a * a + b * b);
 	}
+	
+	public Point2D getMiddlePoint() {
+		double widthHalf = (end.getX() - begin.getX()) / 2;
+		double heightHalf = (end.getY() - begin.getY()) / 2;
+		return new Point2D.Double(begin.getX() + widthHalf, begin.getY() + heightHalf);
+	}
 
 	public void delete() {
 	}
