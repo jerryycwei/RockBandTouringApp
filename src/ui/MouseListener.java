@@ -23,7 +23,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private Main parent;
 	private boolean insideMap;
 	private static final int CLICK_RADIUS = 7;
-	private static final int HOVER_RADIUS = 7;
 	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
 	private HashMap<City, City> destinationMap;
@@ -131,9 +130,12 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
 	        		
 	        		parent.getInfoLabel().getInfo().setText(printedText);
-	        	}
+	        		break;
+	        	} else {
+	    			parent.getInfoLabel().getInfo().setText("");
+	    		}
 	        }
-		}
+		} 
 	}
 	
 	public void mouseExited(MouseEvent e) {
