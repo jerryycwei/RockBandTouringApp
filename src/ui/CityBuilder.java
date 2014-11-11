@@ -31,26 +31,26 @@ public class CityBuilder {
 	 */
 	private void initializeCities() {
 
-		City losAngeles = new City("Los Angeles", new Circle("Los Angeles", 121, 415), system, "California", 3884000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City chicago = new City("Chicago", new Circle("Chicago", 717, 221), system, "Illinois", 2790000, "Rainy", new Symbol("images/weatherRain.jpg"));
-		City kansasCity = new City("Kansas City", new Circle("Kansas City", 582, 293), system, "Kansas", 467000, "Tornado", new Symbol("images/weatherTornado.jpg"));
-		City newYork = new City("New York City", new Circle("New York City", 982, 252), system, "New York", 8400000, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City toronto = new City("Toronto", new Circle("Toronto", 878, 175), system, "Toronto", 2500000, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City montreal = new City("Montreal", new Circle("Montreal", 990, 125), system, "Montreal", 1600000, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City houston = new City("Houston", new Circle("Houston", 566, 514), system, "Houston", 2196000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City philadelphia = new City("Philadelphia", new Circle("Philadelphia", 960, 271), system, "Philadelphia", 1553000, "Rainy", new Symbol("images/weatherRain.jpg"));
-		City phoenix = new City("Phoenix", new Circle("Phoenix", 242, 430), system, "Phoenix", 1513000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City sanDiego = new City("San Diego", new Circle("San Diego", 142, 446), system, "San Diego", 1356000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City sanFrancisco = new City("San Francisco", new Circle("San Francisco", 40, 326), system, "San Francisco", 837442, "Rainy", new Symbol("images/weatherRain.jpg"));
-		City ottawa = new City("Ottawa", new Circle("Ottawa", 949, 126), system, "Ottawa", 883391, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City quebecCity = new City("Quebec City", new Circle("Quebec City", 1035, 88), system, "Quebec City", 491140, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City vancouver = new City("Vancouver", new Circle("Vancouver", 27, 16), system, "Vancouver", 578040, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City detroit = new City("Detroit", new Circle("Detroit", 806, 210), system, "Detroit", 688701, "Snow", new Symbol("images/weatherSnow.jpg"));
-		City seattle = new City("Seattle", new Circle("Seattle", 42, 64), system, "Seattle", 652405, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City dallas = new City("Dallas", new Circle("Dallas", 538, 444), system, "Dallas", 1258000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City atlanta = new City("Atlanta", new Circle("Atlanta", 780, 421), system, "Atlanta", 447841, "Rainy", new Symbol("images/weatherRain.jpg"));
-		City lasVegas = new City("Las Vegas", new Circle("Las Vegas", 182, 364), system, "Las Vegas", 603488, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City sanJose = new City("San Jose", new Circle("San Jose", 50, 337), system, "San Jose", 998537, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City losAngeles = new City("Los Angeles", new Circle("Los Angeles", 120, 413), system, "California", 3884000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City chicago = new City("Chicago", new Circle("Chicago", 716, 220), system, "Illinois", 2790000, "Rainy", new Symbol("images/weatherRain.jpg"));
+		City kansasCity = new City("Kansas City", new Circle("Kansas City", 581, 291), system, "Kansas", 467000, "Tornado", new Symbol("images/weatherTornado.jpg"));
+		City newYork = new City("New York City", new Circle("New York City", 981, 250), system, "New York", 8400000, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City toronto = new City("Toronto", new Circle("Toronto", 876, 173), system, "Toronto", 2500000, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City montreal = new City("Montreal", new Circle("Montreal", 989, 123), system, "Montreal", 1600000, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City houston = new City("Houston", new Circle("Houston", 565, 512), system, "Houston", 2196000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City philadelphia = new City("Philadelphia", new Circle("Philadelphia", 959, 270), system, "Philadelphia", 1553000, "Rainy", new Symbol("images/weatherRain.jpg"));
+		City phoenix = new City("Phoenix", new Circle("Phoenix", 241, 428), system, "Phoenix", 1513000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City sanDiego = new City("San Diego", new Circle("San Diego", 141, 445), system, "San Diego", 1356000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City sanFrancisco = new City("San Francisco", new Circle("San Francisco", 38, 324), system, "San Francisco", 837442, "Rainy", new Symbol("images/weatherRain.jpg"));
+		City ottawa = new City("Ottawa", new Circle("Ottawa", 948, 124), system, "Ottawa", 883391, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City quebecCity = new City("Quebec City", new Circle("Quebec City", 1034, 86), system, "Quebec City", 491140, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City vancouver = new City("Vancouver", new Circle("Vancouver", 26, 15), system, "Vancouver", 578040, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City detroit = new City("Detroit", new Circle("Detroit", 804, 208), system, "Detroit", 688701, "Snow", new Symbol("images/weatherSnow.jpg"));
+		City seattle = new City("Seattle", new Circle("Seattle", 40, 63), system, "Seattle", 652405, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City dallas = new City("Dallas", new Circle("Dallas", 537, 443), system, "Dallas", 1258000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City atlanta = new City("Atlanta", new Circle("Atlanta", 779, 420), system, "Atlanta", 447841, "Rainy", new Symbol("images/weatherRain.jpg"));
+		City lasVegas = new City("Las Vegas", new Circle("Las Vegas", 181, 363), system, "Las Vegas", 603488, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City sanJose = new City("San Jose", new Circle("San Jose", 49, 335), system, "San Jose", 998537, "Sunny", new Symbol("images/weatherSunny.jpg"));
 
 		cities.add(losAngeles);
 		cities.add(chicago);
