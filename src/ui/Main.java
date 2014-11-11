@@ -23,6 +23,7 @@ import java.io.ObjectOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -283,7 +284,7 @@ public class Main {
     	XStream xs = new XStream();
     	try {
     		system = (MapSystem) xs.fromXML(new FileInputStream(saveFile));
-//    		System.out.println(system.getLinks().size());
+    		visualOutput.setSystem(system);
     		visualOutput.repaint();
     		System.out.println("Loaded.");
     		return true;

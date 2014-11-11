@@ -28,6 +28,11 @@ public class ImagePanel extends JPanel {
 		this.image = new ImageIcon(imagePath).getImage();
 		this.system = system;
 	}
+	
+	public boolean setSystem(MapSystem system) {
+		this.system = system;
+		return true;
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
