@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -35,7 +36,8 @@ public class Main {
 
 	private JFrame frame;
 	private Map map = new Map(600, 110, new ImageIcon("images/map.jpg").getImage());
-	private InfoLabel infoLabel = new InfoLabel(new JTextArea(), map);
+	private JTextArea textArea = new JTextArea();
+	private InfoLabel infoLabel = new InfoLabel(textArea, map);
 	private MapSystem system = new MapSystem(map, infoLabel.getInfo());
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
@@ -88,6 +90,7 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//textArea.setMinimumSize(new Dimension(60, 15));
 		frame = new JFrame();
 		frame.setBounds(0, 0, 1280, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +100,10 @@ public class Main {
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
 		visualOutput = new ImagePanel("images/map.jpg", system);
+		//visualOutput.setSize(1100, 631);
+		//visualOutput.setMinimumSize(new Dimension(1100, 601));
+		//visualOutput.setBounds(0, 0, 1000, 700);
+		
 		splitPane.setLeftComponent(visualOutput);
 		
 		final Console console = new Console();
@@ -108,7 +115,7 @@ public class Main {
 		GroupLayout gl_visualOutput = new GroupLayout(visualOutput);
 		gl_visualOutput.setHorizontalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 1136, Short.MAX_VALUE)
+				.addGap(0, 1101, Short.MAX_VALUE)
 		);
 		gl_visualOutput.setVerticalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
