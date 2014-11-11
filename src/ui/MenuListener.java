@@ -70,6 +70,7 @@ public class MenuListener implements ActionListener {
 		case "End Alternate":
 			parent.setIsAlternateRouteModeOn(false);
 			caller.setText("Alternate Route");
+			parent.getMouseListener().resetClickCount();
 			break;
 		
 			
