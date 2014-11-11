@@ -93,14 +93,11 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JSplitPane splitPane = new JSplitPane();
+		splitPane.setEnabled(false);
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
 		visualOutput = new ImagePanel("images/map.jpg", system);
 		splitPane.setLeftComponent(visualOutput);
-		
-		JLabel widthLabel = new JLabel("width " + frame.getWidth());
-		
-		JLabel heightLabel = new JLabel("height " + frame.getHeight());
 		
 		final Console console = new Console();
 		visualOutput.add(console);
@@ -111,27 +108,18 @@ public class Main {
 		GroupLayout gl_visualOutput = new GroupLayout(visualOutput);
 		gl_visualOutput.setHorizontalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_visualOutput.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_visualOutput.createParallelGroup(Alignment.LEADING)
-						.addComponent(widthLabel)
-						.addComponent(heightLabel))
-					.addContainerGap(1048, Short.MAX_VALUE))
+				.addGap(0, 1136, Short.MAX_VALUE)
 		);
 		gl_visualOutput.setVerticalGroup(
 			gl_visualOutput.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_visualOutput.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(widthLabel)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(heightLabel)
-					.addContainerGap(640, Short.MAX_VALUE))
+				.addGap(0, 688, Short.MAX_VALUE)
 		);
 		visualOutput.setLayout(gl_visualOutput);
 		
 		splitPane.setRightComponent(infoLabel.getInfo());//infoLabel);
 		
 		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
 		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -154,6 +142,7 @@ public class Main {
 		menuBar.add(tourMenu);
 		
 		JMenuItem createTourMenuItem = new JMenuItem("Create Tour");
+		createTourMenuItem.addActionListener(menuListener);
 		tourMenu.add(createTourMenuItem);
 		
 		JMenuItem alternateRouteMenuItem = new JMenuItem("Alternate Route");

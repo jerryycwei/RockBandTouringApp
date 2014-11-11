@@ -49,7 +49,7 @@ public class InfoLabel extends JPanel
 	info.setText("City: Jersey");
 	info.setColumns(10);
 	info.setRows(100);
-    this.add(info);
+    //this.add(info);
     
     mapSystem = new MapSystem(aMapForMapSystem, this);
   }
