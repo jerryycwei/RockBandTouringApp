@@ -38,7 +38,7 @@ public class ImagePanel extends JPanel {
 		if (system != null) {
 			for (Node n : system.getNodes()) {
 				if(n instanceof City) {
-					n.getCircle().drawCircle(g2d, n.getSelected(), ((City) n).getStartPoint(), ((City) n).getEndPoint());
+					n.getCircle().drawCircle(g2d, n.getSelected(), ((City) n).getStartNode(), ((City) n).getEndNode());
 				}
 			}
 			for (Link l : system.getLinks()) {

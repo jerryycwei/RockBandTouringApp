@@ -16,6 +16,10 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,13 +49,14 @@ public class Main {
 	private Map map = new Map(600, 110, new ImageIcon("images/map.jpg").getImage());
 	private JTextArea textArea = new JTextArea();
 	private InfoLabel infoLabel = new InfoLabel(textArea, map);
-	private MapSystem system = new MapSystem(map, infoLabel.getInfo());
+	private MapSystem system = infoLabel.getMapSystem();
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
 	private static boolean isAlternateRouteModeOn = false;
 	private static File saveFile = new File("tour.xml");
+	private Console console;
 
 	/**
 	 * ArrayList of all Cities added in initializeCities()
@@ -124,7 +129,7 @@ public class Main {
 		
 		splitPane.setLeftComponent(visualOutput);
 		
-		final Console console = new Console();
+		console = new Console();
 		visualOutput.add(console);
 		mouseListener = new MouseListener(this, visualOutput, console);
 		visualOutput.addMouseListener(mouseListener);
@@ -205,6 +210,32 @@ public class Main {
 		visualOutput = aVisualOutput;
 	}
 	
+	public void saveModelToFile() {
+		// Writing "foo" to a stream (for example, a file) 
+		// Step 1. Create an output stream 
+		// that is, create bucket to receive the bytes 
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream("fooFile");
+			// Step 2. Create ObjectOutputStream 
+			// that is, create a hose and put its head in the bucket 
+			ObjectOutputStream os = new ObjectOutputStream(out); 
+			// Step 3. Write a string and an object to the stream 
+			// that is, let the stream flow into the bucket
+			os.writeObject(system); 
+			// Step 4. Flush the data to its destination 
+			os.flush(); 
+			console.setText("Model saved to file successfully.");
+		} catch (IOException e) {
+			console.setText("Error saving model to file." + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadModelToFile() {
+		//TODO: load file into system, reassign the current infoLabel to the new infoLabel of loaded system
+	}
+	
 	//------------------------
 	// INTERFACE
 	//------------------------
@@ -260,5 +291,10 @@ public class Main {
     		System.out.println("Nope. Didn't work.");
     		return false;
     	}
+    }
+
+    public Console getConsole() {
+    	return console;
+
     }
 }

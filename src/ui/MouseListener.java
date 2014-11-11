@@ -61,7 +61,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
-        				origin.setStartPoint(true);
+        				origin.setStartNode(true);
         				clickCounter++;
         				break;
         			default:
@@ -80,8 +80,11 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				} else {
         					new DottedArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
         				}
-        				origin.setEndPoint(false);
-        				destination.setEndPoint(true);
+        				origin.setEndNode(false);
+        				destination.setEndNode(true);
+        				
+        				if (destination.getStartNode()) {  destination.setStartNode(false); }
+        				
         				destinationMap.put(destination, origin); //undo stack
 
         				this.origin = destination;
@@ -148,14 +151,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseRedoStack, mouseUndoPopped);
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
-		if (cityToBeUndo.getEndPoint()) {
-			cityToBeUndo.setEndPoint(false);
-		}
+		
+		if (cityToBeUndo.getEndNode()) { cityToBeUndo.setEndNode(false); }
+		
 		if (destinationMap.containsKey(cityToBeUndo)) {
+			System.out.println("destinationMap has key " + cityToBeUndo.getName());
 			City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-			for(int i = 0; i < parent.getSystem().numberOfLinks(); i++){
+			for(int i = parent.getSystem().numberOfLinks() - 1; i > 0; i--){
 				Link link = parent.getSystem().getLink(i);
 				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
+					System.out.println("link found origin: " +link.getOrigin().getName() + " destination: " + link.getDestination().getName());
 					link.setLinkActive(false);
 					undoLinks.add(link);
 					if(undoLinks.size() > 5) {
@@ -165,8 +170,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 				}
 			}
 			origin = originOfUndoLink;
-			if (!origin.getStartPoint()) {
-				origin.setEndPoint(true);
+			if (!origin.getStartNode()) {
+				origin.setEndNode(true);
 			}	
 		} else {
 			origin = null;
@@ -182,11 +187,11 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseUndoStack, mouseRedoPopped);
 		City redoCity = undoCities.remove(undoCities.size() - 1);
 		redoCity.setSelected(true);
-		if(redoCity.getStartPoint()) {
+		if(redoCity.getStartNode()) {
 			clickCounter++;
-		} else if (origin.getEndPoint() || origin.getStartPoint()) {
-			origin.setEndPoint(false);
-			redoCity.setEndPoint(true);
+		} else if (origin.getEndNode() || origin.getStartNode()) {
+			origin.setEndNode(false);
+			redoCity.setEndNode(true);
 			undoLinks.remove(undoLinks.size() - 1).setLinkActive(true);
 			destinationMap.put(redoCity, origin);
 		}
