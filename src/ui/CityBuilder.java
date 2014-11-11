@@ -115,6 +115,29 @@ public class CityBuilder {
 		lasVegas.addAccomodation("Ritz-Carlton Las Vegas", "Hotel", 300);
 		sanJose.addAccomodation("Ritz-Carlton San Jose", "Hotel", 300);
 
+		losAngeles.addAccomodation("Travelodge", "Hotel", 90);
+		chicago.addAccomodation("Travelodge", "Hotel", 90);
+		newYork.addAccomodation("Travelodge", "Hotel", 90);
+		kansasCity.addAccomodation("Travelodge", "Hotel", 90);
+		toronto.addAccomodation("Travelodge", "Hotel", 90);
+		montreal.addAccomodation("Travelodge", "Hotel", 90);
+		houston.addAccomodation("Travelodge", "Hotel", 90);
+		phoenix.addAccomodation("Travelodge", "Hotel", 90);
+		philadelphia.addAccomodation("Travelodge", "Hotel", 90);
+		sanDiego.addAccomodation("Travelodge", "Hotel", 90);
+		sanFrancisco.addAccomodation("Travelodge", "Hotel", 90);
+		ottawa.addAccomodation("Travelodge", "Hotel", 90);
+		quebecCity.addAccomodation("Travelodge", "Hotel", 90);
+		vancouver.addAccomodation("Travelodge", "Hotel", 90);
+		detroit.addAccomodation("Travelodge", "Hotel", 90);
+		seattle.addAccomodation("Travelodge", "Hotel", 90);
+		dallas.addAccomodation("Travelodge", "Hotel", 90);
+		atlanta.addAccomodation("Travelodge", "Hotel", 90);
+		lasVegas.addAccomodation("Travelodge", "Hotel", 90);
+		sanJose.addAccomodation("Travelodge", "Hotel", 90);
+
+		
+		
 		losAngeles.addVenue("Wei Field", "Stadium", 200000);
 		chicago.addVenue("Wei Square Garden", "Stadium", 200000);
 		newYork.addVenue("Wei Stadium", "Stadium", 200000);
