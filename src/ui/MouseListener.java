@@ -39,16 +39,18 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		undoCity = new ArrayList<City>();
 	}
 	
-	
 	public void mouseClicked(MouseEvent e) {
 		//pushMouseEvent(mouseUndoStack, e);
-		int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
-        console.setText("Xclicked: " + x + "\nYclicked: " + y + "\n");
+		int mouseX = e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
+        int mouseY = e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+        console.setText("Xclicked: " + mouseX + "\nYclicked: " + mouseY + "\n");
+        
         if(parent.getIsCreateTourModeOn()) {
         	for (City city : parent.getCities()) {
-        		if (x < (city.getCircle().getPositionX() + CLICK_RADIUS) && x > (city.getCircle().getPositionX() - CLICK_RADIUS) &&
-        				y < (city.getCircle().getPositionY() + CLICK_RADIUS) && y > (city.getCircle().getPositionY() - CLICK_RADIUS)) {
+        		int cityX = city.getCircle().getPositionX();
+        		int cityY = city.getCircle().getPositionY();
+        		
+        		if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
         			console.setText("added city " + city.getName());
         			switch(clickCounter) {
         			case 0:
@@ -62,7 +64,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				Time travelTime = null;
         				int distance = 0;
         				TransportationType transportType = new TransportationType("plane", new Symbol("images/airplane.png"));
-                		SolidArrow solidArrow = new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
+                		new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
                 		this.origin = destination;
                 		this.begin = end;
         				break;
@@ -83,11 +85,14 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	
 	public void mouseMoved(MouseEvent e) {
 		if(insideMap) {
-			int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-	        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+			int mouseX = e.getX();
+	        int mouseY = e.getY();
+	        
 	        for (City city : parent.getCities()) {
-	        	if (x < (city.getCircle().getPositionX() + HOVER_RADIUS) && x > (city.getCircle().getPositionX() - HOVER_RADIUS) &&
-	        			y < (city.getCircle().getPositionY() + HOVER_RADIUS) && y > (city.getCircle().getPositionY() - HOVER_RADIUS)) {
+	        	int cityX = city.getCircle().getPositionX();
+	        	int cityY = city.getCircle().getPositionY();
+	        	
+	        	if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
 	        		
 	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
 	        		
@@ -144,5 +149,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		}
 	}
 	
+	private boolean hasClickedOnCity(int mouseX, int mouseY, int cityX, int cityY) {
+		return mouseX < (cityX + CLICK_RADIUS) && mouseX > (cityX - CLICK_RADIUS) &&
+				mouseY < (cityY + CLICK_RADIUS) && mouseY > (cityY - CLICK_RADIUS);
+	}
 	
 }
