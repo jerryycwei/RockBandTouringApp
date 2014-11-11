@@ -70,6 +70,12 @@ public class DirectedArrow {
 	public Path2D getLine() {
 		return line;
 	}
+	
+	public double getLength() {
+		double a = end.getX() - begin.getX();
+		double b = end.getY() - begin.getY();
+		return Math.sqrt(a * a + b * b);
+	}
 
 	public void delete() {
 	}
