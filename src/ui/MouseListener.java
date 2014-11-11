@@ -61,7 +61,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         			switch(clickCounter) {
         			case 0:
         				this.origin = city;
-        				origin.setStartPoint(true);
+        				origin.setStartNode(true);
         				clickCounter++;
         				break;
         			default:
@@ -80,10 +80,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				} else {
         					new DottedArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
         				}
-        				origin.setEndPoint(false);
-        				destination.setEndPoint(true);
+        				origin.setEndNode(false);
+        				destination.setEndNode(true);
         				
-        				if (destination.getStartPoint()) {  destination.setStartPoint(false); }
+        				if (destination.getStartNode()) {  destination.setStartNode(false); }
         				
         				destinationMap.put(destination, origin); //undo stack
 
@@ -152,7 +152,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		City cityToBeUndo = mouseMap.get(mouseUndoPopped);
 		cityToBeUndo.setSelected(false);
 		
-		if (cityToBeUndo.getEndPoint()) { cityToBeUndo.setEndPoint(false); }
+		if (cityToBeUndo.getEndNode()) { cityToBeUndo.setEndNode(false); }
 		
 		if (destinationMap.containsKey(cityToBeUndo)) {
 			System.out.println("destinationMap has key " + cityToBeUndo.getName());
@@ -170,8 +170,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 				}
 			}
 			origin = originOfUndoLink;
-			if (!origin.getStartPoint()) {
-				origin.setEndPoint(true);
+			if (!origin.getStartNode()) {
+				origin.setEndNode(true);
 			}	
 		} else {
 			origin = null;
@@ -187,11 +187,11 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		pushMouseEvent(mouseUndoStack, mouseRedoPopped);
 		City redoCity = undoCities.remove(undoCities.size() - 1);
 		redoCity.setSelected(true);
-		if(redoCity.getStartPoint()) {
+		if(redoCity.getStartNode()) {
 			clickCounter++;
-		} else if (origin.getEndPoint() || origin.getStartPoint()) {
-			origin.setEndPoint(false);
-			redoCity.setEndPoint(true);
+		} else if (origin.getEndNode() || origin.getStartNode()) {
+			origin.setEndNode(false);
+			redoCity.setEndNode(true);
 			undoLinks.remove(undoLinks.size() - 1).setLinkActive(true);
 			destinationMap.put(redoCity, origin);
 		}
