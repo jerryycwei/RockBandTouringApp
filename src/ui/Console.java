@@ -12,7 +12,7 @@ public class Console extends JPanel {
 	
 	public Console() {
 		this.setBounds(0, 602, 1100, 80); //update to reflect infoLabel
-		textArea = new JTextArea(20, 100);
+		textArea = new JTextArea(2, 100);
 		textArea.setSize( new Dimension(1001, 80) );
 		//new TextArea("Coordinates clicked:\nShape 1:\n", 6, 40, ta.SCROLLBARS_VERTICAL_ONLY); 
 		//textArea.setBounds(0, 602, 1100, 80);

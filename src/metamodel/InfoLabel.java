@@ -32,10 +32,7 @@ public class InfoLabel extends JPanel
   public InfoLabel(JTextArea aInfo, MapSystem aMapSystem)
   {
     info = aInfo;
-	info.setText("City: Jersey");
-	info.setColumns(10);
-	info.setRows(100);
-    this.add(info);
+    setupTextArea();
     
     if (aMapSystem == null || aMapSystem.getInfoLabel() != null)
     {
@@ -47,13 +44,18 @@ public class InfoLabel extends JPanel
   public InfoLabel(JTextArea aInfo, Map aMapForMapSystem)
   {
     info = aInfo;
-	info.setText("City: Jersey");
-	info.setColumns(10);
-	info.setRows(100);
-	info.setMinimumSize(new Dimension(110,110));
-    //this.add(info);
-    
+    setupTextArea();
+   
     mapSystem = new MapSystem(aMapForMapSystem, this);
+  }
+  
+  public void setupTextArea() {
+	  info.setText("Hover over a city to get its details!");
+	  info.setColumns(10);
+	  info.setRows(100);
+	  info.setLineWrap(true);
+	  info.setWrapStyleWord(true);
+	  //this.add(info);
   }
 
   //------------------------
