@@ -45,12 +45,14 @@ public class MenuListener implements ActionListener {
 			}
 			break;
 		case "Undo":
-			//TODO: implements click stack to undo
-			parent.getMouseListener().undo();
+			if (parent.getMouseListener().canUndo()) {
+				parent.getMouseListener().undo();
+			}
 			break;
 		case "Redo":
-			//TODO: implements click stack to redo
-			parent.getMouseListener().redo();
+			if (parent.getMouseListener().canRedo()){
+				parent.getMouseListener().redo();
+			}
 			break;
 			
 		case "Create Tour":

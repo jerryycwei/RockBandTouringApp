@@ -204,4 +204,20 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		clickCounter = 0;
 	}
 	
+	public boolean canUndo() {
+		boolean canUndo = (parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) && !mouseUndoStack.isEmpty();
+		if(!canUndo) {
+			console.setText("Cannot undo: Create tour is not active or nothing to undo");
+		}
+		return canUndo;
+	}
+	
+	public boolean canRedo() {
+		boolean canRedo = (parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) && !mouseRedoStack.isEmpty();
+		if(!canRedo) {
+			console.setText("Cannot redo: Create tour is not active or nothing to redo");
+		}
+		return canRedo;
+	}
+	
 }
