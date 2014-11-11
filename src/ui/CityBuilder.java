@@ -115,6 +115,29 @@ public class CityBuilder {
 		lasVegas.addAccomodation("Ritz-Carlton Las Vegas", "Hotel", 300);
 		sanJose.addAccomodation("Ritz-Carlton San Jose", "Hotel", 300);
 
+		losAngeles.addAccomodation("Travelodge", "Hotel", 90);
+		chicago.addAccomodation("Travelodge", "Hotel", 90);
+		newYork.addAccomodation("Travelodge", "Hotel", 90);
+		kansasCity.addAccomodation("Travelodge", "Hotel", 90);
+		toronto.addAccomodation("Travelodge", "Hotel", 90);
+		montreal.addAccomodation("Travelodge", "Hotel", 90);
+		houston.addAccomodation("Travelodge", "Hotel", 90);
+		phoenix.addAccomodation("Travelodge", "Hotel", 90);
+		philadelphia.addAccomodation("Travelodge", "Hotel", 90);
+		sanDiego.addAccomodation("Travelodge", "Hotel", 90);
+		sanFrancisco.addAccomodation("Travelodge", "Hotel", 90);
+		ottawa.addAccomodation("Travelodge", "Hotel", 90);
+		quebecCity.addAccomodation("Travelodge", "Hotel", 90);
+		vancouver.addAccomodation("Travelodge", "Hotel", 90);
+		detroit.addAccomodation("Travelodge", "Hotel", 90);
+		seattle.addAccomodation("Travelodge", "Hotel", 90);
+		dallas.addAccomodation("Travelodge", "Hotel", 90);
+		atlanta.addAccomodation("Travelodge", "Hotel", 90);
+		lasVegas.addAccomodation("Travelodge", "Hotel", 90);
+		sanJose.addAccomodation("Travelodge", "Hotel", 90);
+
+		
+		
 		losAngeles.addVenue("Wei Field", "Stadium", 200000);
 		chicago.addVenue("Wei Square Garden", "Stadium", 200000);
 		newYork.addVenue("Wei Stadium", "Stadium", 200000);
@@ -157,6 +180,26 @@ public class CityBuilder {
 		atlanta.addVenue("Georgia Dome", "Stadium", 200000);
 		sanJose.addVenue("SAP Center", "Stadium", 200000);
 		
+		losAngeles.addVenue("Dao Field", "Stadium", 200000);
+		chicago.addVenue("Dao Stadium", "Stadium", 200000);
+		newYork.addVenue("Dao Speedway", "Stadium", 200000);
+		kansasCity.addVenue("Dao Centre", "Stadium", 200000);
+		toronto.addVenue("Dao Stade", "Stadium", 200000);
+		montreal.addVenue("Dao Bowl", "Stadium", 200000);
+		houston.addVenue("Dao Field", "Stadium", 200000);
+		philadelphia.addVenue("Dao Field", "Stadium", 200000);
+		phoenix.addVenue("Dao Square", "Stadium", 200000);
+		sanDiego.addVenue("Dao World", "Stadium", 200000);
+		sanFrancisco.addVenue("Dao Emporium", "Stadium", 200000);
+		ottawa.addVenue("Dao Rink", "Stadium", 200000);
+		quebecCity.addVenue("Dao Pitch", "Stadium", 200000);
+		vancouver.addVenue("Dao Place", "Stadium", 200000);
+		detroit.addVenue("Dao Dome", "Stadium", 200000);
+		seattle.addVenue("Dao Courts", "Stadium", 200000);
+		dallas.addVenue("Dao Links", "Stadium", 200000);
+		lasVegas.addVenue("Dao Motor Speedway", "Stadium", 200000);
+		atlanta.addVenue("Dao Plaza", "Plaza", 200000);
+		sanJose.addVenue("Dao Mall", "Mall", 200000);
 		
 	}
 
