@@ -19,8 +19,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private Console console;
 	private Main parent;
 	private boolean insideMap;
-	private static final int CLICK_RADIUS = 10;
-	private static final int HOVER_RADIUS = 10;
+	private static final int CLICK_RADIUS = 7;
+	private static final int HOVER_RADIUS = 7;
 	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
 	private ArrayList<MouseEvent> mouseUndoStack = new ArrayList<MouseEvent>();
@@ -152,6 +152,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private boolean hasClickedOnCity(int mouseX, int mouseY, int cityX, int cityY) {
 		return mouseX < (cityX + CLICK_RADIUS) && mouseX > (cityX - CLICK_RADIUS) &&
 				mouseY < (cityY + CLICK_RADIUS) && mouseY > (cityY - CLICK_RADIUS);
+	}
+	
+	public void resetClickCount() {
+		clickCounter = 0;
 	}
 	
 }
