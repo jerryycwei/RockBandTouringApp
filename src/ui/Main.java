@@ -41,6 +41,7 @@ public class Main {
 	private MenuListener menuListener = new MenuListener(this);
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
+	private static boolean isAlternateRouteModeOn = false;
 
 	/**
 	 * ArrayList of all Cities added in initializeCities()
@@ -56,6 +57,14 @@ public class Main {
 	
 	public boolean getIsCreateTourModeOn() {
 		return isCreateTourModeOn;
+	}
+	
+	public void setIsAlternateRouteModeOn(boolean mode) {
+		isAlternateRouteModeOn = mode;
+	}
+	
+	public boolean getIsAlternateRouteModeOn() {
+		return isAlternateRouteModeOn;
 	}
 	
 	/**
@@ -146,6 +155,7 @@ public class Main {
 		tourMenu.add(createTourMenuItem);
 		
 		JMenuItem alternateRouteMenuItem = new JMenuItem("Alternate Route");
+		alternateRouteMenuItem.addActionListener(menuListener);
 		tourMenu.add(alternateRouteMenuItem);
 		
 		JMenu mnHelp = new JMenu("Help");
