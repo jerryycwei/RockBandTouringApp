@@ -63,6 +63,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				break;
         			default:
         				City destination = city;
+        				if (destination.getName().equals(origin.getName())) {
+        					break;
+        				}
         				Point2D.Double end = new Point2D.Double(city.getCircle().getPositionX(), city.getCircle().getPositionY());
         				Time travelTime = null;
         				int distance = 0;
