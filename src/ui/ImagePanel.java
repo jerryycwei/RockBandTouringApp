@@ -16,6 +16,7 @@ import metamodel.Link;
 import metamodel.MainRoute;
 import metamodel.MapSystem;
 import metamodel.Node;
+import metamodel.SolidArrow;
 
 public class ImagePanel extends JPanel {
 	private Image image;
@@ -39,20 +40,32 @@ public class ImagePanel extends JPanel {
 			}
 			for (Link l : system.getLinks()) {
 				if (l instanceof MainRoute) {
-					Path2D head = ((MainRoute) l).getSolidArrow().getHead();
-					Path2D line = ((MainRoute) l).getSolidArrow().getLine();
+					SolidArrow arrow = ((MainRoute) l).getSolidArrow();
+					Path2D head = arrow.getHead();
+					Path2D line = arrow.getLine();
 					g2d.setColor(Color.RED);
 					g2d.setStroke(defaultStroke);
 					g2d.draw(head);
 					g2d.draw(line);
+					
+					Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
+					int x = (int) arrow.getMiddlePoint().getX();
+					int y = (int) arrow.getMiddlePoint().getY();
+					g2d.drawImage(img, x, y, null);
 				}
 				if (l instanceof AlternateRoute) {
-					Path2D head = ((AlternateRoute) l).getDottedArrow().getHead();
-					Path2D line = ((AlternateRoute) l).getDottedArrow().getLine();
+					SolidArrow arrow = ((MainRoute) l).getSolidArrow();
+					Path2D head = arrow.getHead();
+					Path2D line = arrow.getLine();
 					g2d.setColor(Color.MAGENTA);
 					g2d.setStroke(dashed);
 			        g2d.draw(head);
 			        g2d.draw(line);
+			        
+			        Image img = new ImageIcon(l.getTransportType().getSymbol().getIconPath()).getImage();
+					int x = (int) arrow.getMiddlePoint().getX();
+					int y = (int) arrow.getMiddlePoint().getY();
+					g2d.drawImage(img, x, y, null);
 				}
 			}
 		}
