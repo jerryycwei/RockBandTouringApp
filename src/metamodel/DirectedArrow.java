@@ -11,8 +11,8 @@ import java.awt.geom.Point2D;
 // line 253 "model.ump"
 public class DirectedArrow {
 	
-	private static final double ANGLE = 45;
-	private static final double LENGTH = 20;
+	private static final double ANGLE = 25;
+	private static final double LENGTH = 15;
 
 	// ------------------------
 	// MEMBER VARIABLES
