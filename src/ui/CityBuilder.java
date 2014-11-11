@@ -157,6 +157,26 @@ public class CityBuilder {
 		atlanta.addVenue("Georgia Dome", "Stadium", 200000);
 		sanJose.addVenue("SAP Center", "Stadium", 200000);
 		
+		losAngeles.addVenue("Dao Field", "Stadium", 200000);
+		chicago.addVenue("Dao Stadium", "Stadium", 200000);
+		newYork.addVenue("Dao Speedway", "Stadium", 200000);
+		kansasCity.addVenue("Dao Centre", "Stadium", 200000);
+		toronto.addVenue("Dao Stade", "Stadium", 200000);
+		montreal.addVenue("Dao Bowl", "Stadium", 200000);
+		houston.addVenue("Dao Field", "Stadium", 200000);
+		philadelphia.addVenue("Dao Field", "Stadium", 200000);
+		phoenix.addVenue("Dao Square", "Stadium", 200000);
+		sanDiego.addVenue("Dao World", "Stadium", 200000);
+		sanFrancisco.addVenue("Dao Emporium", "Stadium", 200000);
+		ottawa.addVenue("Dao Rink", "Stadium", 200000);
+		quebecCity.addVenue("Dao Pitch", "Stadium", 200000);
+		vancouver.addVenue("Dao Place", "Stadium", 200000);
+		detroit.addVenue("Dao Dome", "Stadium", 200000);
+		seattle.addVenue("Dao Courts", "Stadium", 200000);
+		dallas.addVenue("Dao Links", "Stadium", 200000);
+		lasVegas.addVenue("Dao Motor Speedway", "Stadium", 200000);
+		atlanta.addVenue("Dao Plaza", "Plaza", 200000);
+		sanJose.addVenue("Dao Mall", "Mall", 200000);
 		
 	}
 
