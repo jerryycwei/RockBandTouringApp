@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import metamodel.Accomodation;
 import metamodel.City;
 
 public class MouseListener extends MouseAdapter implements MouseMotionListener{
@@ -45,7 +46,16 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        for (City city : parent.getCities()) {
 	        	if (x < (city.getCircle().getPositionX() + HOVER_RADIUS) && x > (city.getCircle().getPositionX() - HOVER_RADIUS) &&
 	        			y < (city.getCircle().getPositionY() + HOVER_RADIUS) && y > (city.getCircle().getPositionY() - HOVER_RADIUS)) {
-	        		parent.getInfoLabel().getInfo().setText(city.getName() +"\n" + city.getAccomodation(0).getName());
+	        		
+	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
+	        		
+	        		for (Accomodation accomodation : city.getAccomodations()){
+	        			printedText = printedText + "\n" + accomodation.getName();
+	        		}
+	        		
+	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
+	        		
+	        		parent.getInfoLabel().getInfo().setText(printedText);
 	        	}
 	        }
 		}
