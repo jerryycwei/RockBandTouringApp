@@ -160,48 +160,6 @@ public class Main {
 		
 		System.out.println("Frame created");
 		
-		visualOutput.addMouseListener( // a MouseListener is added, which takes in clicks from the user's mouse
-				new MouseAdapter() { 
-					int counter = 0;
-                	Node origin;
-                	Node destination;
-                	Point2D begin;
-                	Point2D end;
-                	Time travelTime;
-                	double distance;
-                	TransportationType transportType;
-                	SolidArrow solidArrow;
-                	
-	                public void mouseClicked( MouseEvent e ) { // this method takes in a MouseEvent (when the mouse is clicked)
-	                        int x =e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-	                        int y =e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
-	                        console.setText("X: " + x + "\nY: " + y + "\n");
-	                        
-	                        if (/*getIsCreateTourModeOn()*/true) {
-	                        	counter++;
-	                        	
-	                        	if (counter < 2) {
-	                        		begin = new Point2D.Double(x, y);
-	                        		origin = new Node("Some city", new Circle("Some circle", x, y), system);
-	                        	} else {
-	                        		destination = new Node("Some other city", new Circle("Some other circle", x, y), system);
-	                        		travelTime = null;
-	                        		distance = 0;
-	                        		transportType = new TransportationType("plane", new Symbol(""));
-	                        		end = new Point2D.Double(x, y);
-	                        		solidArrow = new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, system);
-	                        		
-		                        	system.addLink(solidArrow.getMainRoute());
-
-	                        		origin = destination;
-	                        		begin = end;
-	                        	}
-	                        }
-	                        
-	                        visualOutput.repaint(); // added because display was buggy                                
-	                }
-	            }
-	        );
 	}
 	
 	public void setVisualOutput(ImagePanel aVisualOutput) {
