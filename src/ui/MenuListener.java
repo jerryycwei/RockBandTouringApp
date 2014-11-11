@@ -58,9 +58,19 @@ public class MenuListener implements ActionListener {
 			caller.setText("End Tour");
 			break;
 			
+		case "Alternate Route":
+			parent.setIsAlternateRouteModeOn(true);
+			caller.setText("End Alternate");
+			break;
+			
 		case "End Tour":
 			parent.setIsCreateTourModeOn(false);
 			caller.setText("Create Tour");
+			break;
+			
+		case "End Alternate":
+			parent.setIsAlternateRouteModeOn(false);
+			caller.setText("Alternate Route");
 			break;
 		
 			

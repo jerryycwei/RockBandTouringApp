@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import metamodel.Accomodation;
 import metamodel.City;
+import metamodel.DottedArrow;
 import metamodel.SolidArrow;
 import metamodel.Symbol;
 import metamodel.TransportationType;
@@ -45,7 +46,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         int mouseY = e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
         console.setText("Xclicked: " + mouseX + "\nYclicked: " + mouseY + "\n");
         
-        if(parent.getIsCreateTourModeOn()) {
+        if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
         	for (City city : parent.getCities()) {
         		int cityX = city.getCircle().getPositionX();
         		int cityY = city.getCircle().getPositionY();
@@ -64,8 +65,14 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				Time travelTime = null;
         				int distance = 0;
         				TransportationType transportType = new TransportationType("plane", new Symbol("images/airplane.png"));
-                		new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
-                		this.origin = destination;
+                		
+        				if (parent.getIsCreateTourModeOn()) {
+        					new SolidArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
+        				} else {
+        					new DottedArrow(begin, end, travelTime, origin, destination, distance, transportType, parent.getSystem());
+        				}
+        				
+        				this.origin = destination;
                 		this.begin = end;
         				break;
         			}
