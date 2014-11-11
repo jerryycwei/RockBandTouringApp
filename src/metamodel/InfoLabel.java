@@ -4,6 +4,7 @@ package metamodel;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -49,6 +50,7 @@ public class InfoLabel extends JPanel
 	info.setText("City: Jersey");
 	info.setColumns(10);
 	info.setRows(100);
+	info.setMinimumSize(new Dimension(110,110));
     //this.add(info);
     
     mapSystem = new MapSystem(aMapForMapSystem, this);
