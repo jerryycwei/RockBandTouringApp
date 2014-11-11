@@ -42,7 +42,7 @@ public class Main {
 	private Map map = new Map(600, 110, new ImageIcon("images/map.jpg").getImage());
 	private JTextArea textArea = new JTextArea();
 	private InfoLabel infoLabel = new InfoLabel(textArea, map);
-	private MapSystem system = new MapSystem(map, infoLabel.getInfo());
+	private MapSystem system = infoLabel.getMapSystem();
 	private ImagePanel visualOutput;
 	private MenuListener menuListener = new MenuListener(this);
 	private MouseListener mouseListener;
@@ -216,7 +216,12 @@ public class Main {
 			console.setText("Model saved to file successfully.");
 		} catch (IOException e) {
 			console.setText("Error saving model to file." + e.getMessage());
+			e.printStackTrace();
 		}
+	}
+	
+	public void loadModelToFile() {
+		//TODO: load file into system, reassign the current infoLabel to the new infoLabel of loaded system
 	}
 	
 	//------------------------
@@ -245,5 +250,9 @@ public class Main {
 	
     public MouseListener getMouseListener() {
     	return mouseListener;
+    }
+    
+    public Console getConsole() {
+    	return console;
     }
 }
