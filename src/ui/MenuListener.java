@@ -37,11 +37,13 @@ public class MenuListener implements ActionListener {
 			aboutDialog.add(panel);
 			aboutDialog.setVisible(true);
 			break;
-		case "New":
+		case "Clear Map":
+			System.out.println("clear");
 			MapSystem system = parent.getSystem();
 			if (system != null) {
 				system.clearLists();
 				parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg", system));
+				parent.getVisualOutput().repaint();
 			}
 			break;
 		case "Undo":
