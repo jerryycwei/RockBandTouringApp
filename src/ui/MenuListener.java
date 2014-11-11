@@ -19,7 +19,6 @@ public class MenuListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("called");
 		if (e.getSource() instanceof JMenuItem) {
 			caller = (JMenuItem) e.getSource();
 		}
@@ -38,12 +37,11 @@ public class MenuListener implements ActionListener {
 			aboutDialog.setVisible(true);
 			break;
 		case "Clear Map":
-			System.out.println("clear");
 			MapSystem system = parent.getSystem();
 			if (system != null) {
 				system.clearLists();
-				parent.setVisualOutput(new ImagePanel("images/map_bitches.jpg", system));
 				parent.getVisualOutput().repaint();
+				parent.getMouseListener().resetClickCount();
 			}
 			break;
 		case "Undo":
@@ -66,6 +64,7 @@ public class MenuListener implements ActionListener {
 		case "End Tour":
 			parent.setIsCreateTourModeOn(false);
 			caller.setText("Create Tour");
+			parent.getMouseListener().resetClickCount();
 			break;
 			
 		case "End Alternate":

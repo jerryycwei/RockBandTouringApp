@@ -14,14 +14,15 @@ import metamodel.DottedArrow;
 import metamodel.SolidArrow;
 import metamodel.Symbol;
 import metamodel.TransportationType;
+import metamodel.Venue;
 
 public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private ImagePanel imgPanel;
 	private Console console;
 	private Main parent;
 	private boolean insideMap;
-	private static final int CLICK_RADIUS = 10;
-	private static final int HOVER_RADIUS = 10;
+	private static final int CLICK_RADIUS = 7;
+	private static final int HOVER_RADIUS = 7;
 	private int clickCounter;
 	private HashMap<MouseEvent, City> mouseMap;
 	private ArrayList<MouseEvent> mouseUndoStack = new ArrayList<MouseEvent>();
@@ -104,7 +105,13 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
 	        		
 	        		for (Accomodation accomodation : city.getAccomodations()){
-	        			printedText = printedText + "\n" + accomodation.getName();
+	        			printedText = printedText + "\n" + accomodation.getName() + " $" + accomodation.getCost();
+	        		}
+	        		
+	        		printedText = printedText +"\n" +"\n" + "VENUE:";
+	        		
+	        		for (Venue venue : city.getVenues()){
+	        			printedText = printedText + "\n" + venue.getName() + " $" + venue.getCost();
 	        		}
 	        		
 	        		printedText = printedText +"\n" +"\n" + "WEATHER:" + "\n" + city.getWeather().getType();
@@ -159,6 +166,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	private boolean hasClickedOnCity(int mouseX, int mouseY, int cityX, int cityY) {
 		return mouseX < (cityX + CLICK_RADIUS) && mouseX > (cityX - CLICK_RADIUS) &&
 				mouseY < (cityY + CLICK_RADIUS) && mouseY > (cityY - CLICK_RADIUS);
+	}
+	
+	public void resetClickCount() {
+		clickCounter = 0;
 	}
 	
 }

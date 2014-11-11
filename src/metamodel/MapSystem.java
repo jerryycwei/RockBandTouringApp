@@ -307,6 +307,8 @@ public class MapSystem
   //ADDED METHOD
   public void clearLists() {
 	  this.links.clear();
-	  this.nodes.clear();
+	  for(Node node : nodes) {
+		  node.setSelected(false);
+	  }
   }
 }
