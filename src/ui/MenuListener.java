@@ -77,6 +77,9 @@ public class MenuListener implements ActionListener {
 			parent.getMouseListener().resetClickCount();
 			break;
 		
+		case "Save To File":
+			parent.saveModelToFile();
+			break;
 			
 		default:
 			break;
