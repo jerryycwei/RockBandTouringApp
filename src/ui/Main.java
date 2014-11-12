@@ -211,32 +211,6 @@ public class Main {
 		visualOutput = aVisualOutput;
 	}
 	
-	public void saveModelToFile() {
-		// Writing "foo" to a stream (for example, a file) 
-		// Step 1. Create an output stream 
-		// that is, create bucket to receive the bytes 
-		FileOutputStream out;
-		try {
-			out = new FileOutputStream("fooFile");
-			// Step 2. Create ObjectOutputStream 
-			// that is, create a hose and put its head in the bucket 
-			ObjectOutputStream os = new ObjectOutputStream(out); 
-			// Step 3. Write a string and an object to the stream 
-			// that is, let the stream flow into the bucket
-			os.writeObject(system); 
-			// Step 4. Flush the data to its destination 
-			os.flush(); 
-			console.setText("Model saved to file successfully.");
-		} catch (IOException e) {
-			console.setText("Error saving model to file." + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
-	public void loadModelToFile() {
-		//TODO: load file into system, reassign the current infoLabel to the new infoLabel of loaded system
-	}
-	
 	//------------------------
 	// INTERFACE
 	//------------------------
@@ -258,6 +232,14 @@ public class Main {
 	}
 	
 	public ArrayList<City> getCities() {
+		return cities;
+	}
+	
+	private ArrayList<City> loadCities() {
+		cities.clear();
+		for (int i = 0; i < system.numberOfNodes(); i++) {
+			cities.add(i, (City) system.getNode(i));
+		}
 		return cities;
 	}
 	
@@ -284,13 +266,17 @@ public class Main {
     	XStream xs = new XStream();
     	try {
     		system = (MapSystem) xs.fromXML(new FileInputStream(saveFile));
+    		loadCities();
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
-    		System.out.println("Loaded.");
-    		mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
+    		mouseListener.loadMouseListener();
+    		if (isCreateTourModeOn || isAlternateRouteModeOn) {
+    			mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
+    		}
     		return true;
     	} catch (Exception e) {
     		System.out.println("Nope. Didn't work.");
+    		e.printStackTrace();
     		return false;
     	}
     }

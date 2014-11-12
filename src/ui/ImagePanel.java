@@ -29,9 +29,8 @@ public class ImagePanel extends JPanel {
 		this.system = system;
 	}
 	
-	public boolean setSystem(MapSystem system) {
+	public void setSystem(MapSystem system) {
 		this.system = system;
-		return true;
 	}
 
 	@Override

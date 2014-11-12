@@ -51,7 +51,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         console.setText("Xclicked: " + mouseX + "\nYclicked: " + mouseY + "\n");
         
         if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
-        	for (City city : parent.getCities()) {
+        	for (int i = 0; i < parent.getSystem().numberOfNodes(); i++) {
+        		City city = (City) parent.getSystem().getNode(i);
         		int cityX = city.getCircle().getPositionX();
         		int cityY = city.getCircle().getPositionY();
         		
@@ -82,7 +83,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         				}
         				origin.setEndNode(false);
         				destination.setEndNode(true);
-        				
         				if (destination.getStartNode()) {  destination.setStartNode(false); }
         				
         				destinationMap.put(destination, origin); //undo stack
@@ -157,7 +157,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		if (destinationMap.containsKey(cityToBeUndo)) {
 			System.out.println("destinationMap has key " + cityToBeUndo.getName());
 			City originOfUndoLink = destinationMap.remove(mouseMap.remove(mouseUndoPopped));
-			for(int i = parent.getSystem().numberOfLinks() - 1; i > 0; i--){
+			for(int i = parent.getSystem().numberOfLinks() - 1; i >= 0; i--){
 				Link link = parent.getSystem().getLink(i);
 				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
 					System.out.println("link found origin: " +link.getOrigin().getName() + " destination: " + link.getDestination().getName());
@@ -247,6 +247,31 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	public void setOrigin(City origin) {
 		this.origin = origin;
 		this.clickCounter = 1;
+	}
+	
+	public void loadMouseListener() {
+		mouseUndoStack.clear();
+		mouseRedoStack.clear();
+		mouseMap.clear();
+		destinationMap.clear();
+		undoCities.clear();
+		undoLinks.clear();
+		int size = 0;
+		for(int i = 1; i < 6 && i < parent.getSystem().numberOfLinks() + 1; i++ ) {
+			Link link = parent.getSystem().getLink(parent.getSystem().numberOfLinks() - i);
+			destinationMap.put((City) link.getDestination(), (City) link.getOrigin());
+			System.out.println(link.getDestination().getName() + " " + link.getOrigin().getName());
+			City city = (City) link.getDestination();
+			MouseEvent e = new MouseEvent(imgPanel, 0, 0, 0, city.getCircle().getPositionX(), city.getCircle().getPositionY(), 0, false);
+			mouseMap.put(e, city);
+			mouseUndoStack.add(0, e);
+			if (parent.getSystem().indexOfLink(link) == 0 || i == 5) {
+				city = (City) link.getOrigin();
+				e = new MouseEvent(imgPanel, 0, 0, 0, city.getCircle().getPositionX(), city.getCircle().getPositionY(), 0, false);
+				mouseMap.put(e, city);
+				mouseUndoStack.add(0, e);
+			}
+		}
 	}
 	
 }
