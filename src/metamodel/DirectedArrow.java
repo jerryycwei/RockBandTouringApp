@@ -110,13 +110,6 @@ public class DirectedArrow {
 	// HELPER
 	// ------------------------
 	
-	private static Path2D createLine(double beginX, double beginY, double endX, double endY) {
-		Path2D line = new Path2D.Double();
-		line.moveTo(beginX, beginY);
-		line.lineTo(endX, endY);
-		return line;
-	}
-	
 	private static double getAngle(Point2D begin, Point2D end) {
 		double width = end.getX() - begin.getX();
 		double height = end.getY() - begin.getY();
