@@ -95,6 +95,7 @@ public class MenuListener implements ActionListener {
                     null, null);
 			}
 			if (saveFileName != null) {
+		    	parent.getConsole().setText("\tSaving to " + saveFileName + ".tour");
 				parent.save(parent.getSystem(), saveFileName);
 			}
 			
@@ -113,6 +114,7 @@ public class MenuListener implements ActionListener {
                     null, null);
 			}
 			if (loadFileName != null) {
+		    	parent.getConsole().setText("Loading to " + loadFileName + ".tour");
 				parent.load(loadFileName);
 			}
 			break;

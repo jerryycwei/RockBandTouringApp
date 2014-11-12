@@ -250,7 +250,6 @@ public class Main {
     }
     
     public boolean load(String fileName) {
-    	
     	XStream xs = new XStream();
     	try {
     		File loadFile = new File(fileName + ".tour");
