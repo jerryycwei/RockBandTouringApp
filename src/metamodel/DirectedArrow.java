@@ -21,8 +21,6 @@ public class DirectedArrow {
 	// DirectedArrow Attributes
 	private Point2D begin;
 	private Point2D end;
-	private Path2D head;
-	private Path2D line;
 
 	// ------------------------
 	// CONSTRUCTOR
@@ -31,10 +29,6 @@ public class DirectedArrow {
 	public DirectedArrow(Point2D aBegin, Point2D aEnd) {
 		begin = aBegin;
 		end = aEnd;
-
-		double angle = getAngle(aBegin, aEnd);
-        line = createLine(aBegin, aEnd);
-        head = createHead(aEnd, angle, LENGTH, ANGLE);
 	}
 
 	// ------------------------
@@ -64,11 +58,11 @@ public class DirectedArrow {
 	}
 	
 	public Path2D getHead() {
-		return head;
+        return createHead(end, getAngle(begin, end), LENGTH, ANGLE);
 	}
 	
 	public Path2D getLine() {
-		return line;
+        return createLine(begin, end);
 	}
 	
 	public double getLength() {
