@@ -48,7 +48,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	public void mouseClicked(MouseEvent e) {
 		int mouseX = e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
         int mouseY = e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
-        console.setText("Xclicked: " + mouseX + "\nYclicked: " + mouseY + "\n");
         
         if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
         	for (int i = 0; i < parent.getSystem().numberOfNodes(); i++) {
@@ -57,7 +56,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         		int cityY = city.getCircle().getPositionY();
         		
         		if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
-        			console.setText("CREATE TOUR MODE ACTIVE\nadded city " + city.getName());
+        			console.setText("\tCREATE TOUR MODE ACTIVE\n\tAdded city " + city.getName() + "\n\n\tClick Tour -> End Tour to end the tour creation.");
         			city.setSelected(true);
         			switch(clickCounter) {
         			case 0:
@@ -99,7 +98,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         	}
         } else {
         	clickCounter = 0;
-        	console.setText("CREATE TOUR IS NOT ACTIVE");
+        	console.setText("\tClick Tour -> Create Tour to begin creating a tour.");
         }
 	}
 	

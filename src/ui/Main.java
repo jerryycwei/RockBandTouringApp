@@ -40,7 +40,7 @@ public class Main {
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
 	private static boolean isAlternateRouteModeOn = false;
-	private static File saveFile = new File("tour.xml");
+	private static File saveFile;
 	private Console console;
 
 	/**
@@ -234,16 +234,17 @@ public class Main {
     	return mouseListener;
     }
     
-    public boolean save(MapSystem sys) {
+    public boolean save(MapSystem sys, String name) {
     	XStream xs = new XStream();
     	try {
+    		saveFile = new File(name + ".xml");
     		Writer writer = new FileWriter(saveFile);
 			xs.toXML(sys, writer);
 			writer.close();
-			console.setText("Tour saved.");
+			console.setText("\tFile " + name + ".xml saved successfully.");
 			return true;
 		} catch (IOException e) {
-			console.setText("Could not save the tour");
+			console.setText("\tError saving file.");
 			return false;
 		}
     }

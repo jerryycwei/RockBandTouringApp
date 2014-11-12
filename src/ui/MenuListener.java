@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -59,6 +60,7 @@ public class MenuListener implements ActionListener {
 			parent.setIsCreateTourModeOn(true);
 			caller.setText("End Tour");
 			parent.getMouseListener().resetClickCount();
+			parent.getConsole().setText("\tCREATE TOUR MODE ACTIVE");
 			break;
 			
 		case "Alternate Route":
@@ -70,6 +72,8 @@ public class MenuListener implements ActionListener {
 		case "End Tour":
 			parent.setIsCreateTourModeOn(false);
 			caller.setText("Create Tour");
+			parent.getMouseListener().resetClickCount();
+			parent.getConsole().setText("\tTour Creation Ended.");
 			break;
 			
 		case "End Alternate":
@@ -78,7 +82,22 @@ public class MenuListener implements ActionListener {
 			break;
 		
 		case "Save":
-			parent.save(parent.getSystem());
+			String s = "";
+			while(s != null && s.length() == 0) {
+				s = (String)JOptionPane.showInputDialog(
+                    parent.getFrame(),
+                    "Enter the filename:\n"
+                    + "(overwrites old files of the same name)\n"
+                    + "Extension .tour will be added automatically.",
+                    "Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null, null);
+			}
+			if (s != null) {
+				parent.save(parent.getSystem(), s);
+			}
+			
 			break;
 			
 		case "Load":
