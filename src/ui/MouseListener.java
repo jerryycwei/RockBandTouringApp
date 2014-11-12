@@ -46,8 +46,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	}
 	
 	public void mouseClicked(MouseEvent e) {
-		int mouseX = e.getX(); // the specific x coordinate of the point clicked is stored in a place in the array
-        int mouseY = e.getY(); // the specific y coordinate of the point clicked is stored in a place in the array
+		int mouseX = e.getX();
+        int mouseY = e.getY();
         
         if(parent.getIsCreateTourModeOn() || parent.getIsAlternateRouteModeOn()) {
         	for (int i = 0; i < parent.getSystem().numberOfNodes(); i++) {
@@ -254,7 +254,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		destinationMap.clear();
 		undoCities.clear();
 		undoLinks.clear();
-		int size = 0;
+
 		for(int i = 1; i < 6 && i < parent.getSystem().numberOfLinks() + 1; i++ ) {
 			Link link = parent.getSystem().getLink(parent.getSystem().numberOfLinks() - i);
 			destinationMap.put((City) link.getDestination(), (City) link.getOrigin());
