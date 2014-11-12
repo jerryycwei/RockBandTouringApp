@@ -287,6 +287,7 @@ public class Main {
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
     		System.out.println("Loaded.");
+    		mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
     		return true;
     	} catch (Exception e) {
     		System.out.println("Nope. Didn't work.");

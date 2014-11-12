@@ -244,4 +244,9 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		return canRedo;
 	}
 	
+	public void setOrigin(City origin) {
+		this.origin = origin;
+		this.clickCounter = 1;
+	}
+	
 }

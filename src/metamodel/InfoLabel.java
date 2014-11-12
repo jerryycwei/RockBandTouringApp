@@ -55,6 +55,7 @@ public class InfoLabel extends JPanel
 	  info.setRows(100);
 	  info.setLineWrap(true);
 	  info.setWrapStyleWord(true);
+	  info.setEditable(false);
 	  //this.add(info);
   }
 
