@@ -1,13 +1,12 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.TextArea;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class Console extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JTextArea textArea;
 	
 	public Console() {

@@ -4,7 +4,6 @@ package metamodel;
 
 
 import java.sql.Time;
-import java.util.*;
 
 // line 35 "model.ump"
 // line 115 "model.ump"

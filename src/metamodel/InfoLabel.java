@@ -3,9 +3,6 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4727 modeling language!*/
 
 
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -15,7 +12,9 @@ import javax.swing.JTextArea;
 public class InfoLabel extends JPanel
 {
 
-  //------------------------
+  private static final long serialVersionUID = 1L;
+
+//------------------------
   // MEMBER VARIABLES
   //------------------------
 

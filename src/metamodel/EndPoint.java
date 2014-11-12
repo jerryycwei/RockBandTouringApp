@@ -3,8 +3,6 @@ package metamodel;
 /*This code was generated using the UMPLE 1.21.0.4733 modeling language!*/
 
 
-import java.util.*;
-
 // line 62 "model.ump"
 // line 137 "model.ump"
 public class EndPoint extends City

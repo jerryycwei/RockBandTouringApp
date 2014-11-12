@@ -5,7 +5,6 @@ package metamodel;
 
 import java.awt.geom.Point2D;
 import java.sql.Time;
-import java.util.*;
 
 // line 87 "model.ump"
 // line 177 "model.ump"
