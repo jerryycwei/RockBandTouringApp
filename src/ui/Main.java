@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -40,7 +41,6 @@ public class Main {
 	private MouseListener mouseListener;
 	private static boolean isCreateTourModeOn = false;
 	private static boolean isAlternateRouteModeOn = false;
-	private static File saveFile;
 	private Console console;
 
 	/**
@@ -237,11 +237,11 @@ public class Main {
     public boolean save(MapSystem sys, String name) {
     	XStream xs = new XStream();
     	try {
-    		saveFile = new File(name + ".xml");
+    		File saveFile = new File(name + ".tour");
     		Writer writer = new FileWriter(saveFile);
 			xs.toXML(sys, writer);
 			writer.close();
-			console.setText("\tFile " + name + ".xml saved successfully.");
+			console.setText("\tFile " + name + ".tour saved successfully.");
 			return true;
 		} catch (IOException e) {
 			console.setText("\tError saving file.");
@@ -254,18 +254,30 @@ public class Main {
     	XStream xs = new XStream();
     	try {
     		system = (MapSystem) xs.fromXML(new FileInputStream(toLoad));
+//=======
+//    public boolean load(String fileName) {
+//    	XStream xs = new XStream();
+//    	try {
+//    		File loadFile = new File(fileName + ".tour");
+//    		if (!loadFile.exists()) {
+//    			console.setText("\tCould not load: " + fileName + ".tour not found");
+//    			return false;
+//    		}
+//    		system = (MapSystem) xs.fromXML(new FileInputStream(loadFile));
+//>>>>>>> 1e85751062fd638bce9ea4fb0cba30c16bc50801
     		loadCities();
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
     		mouseListener.loadMouseListener();
 			console.setText("\tFile " + toLoad.getName() + " loaded successfully.");
+
     		if (isCreateTourModeOn || isAlternateRouteModeOn) {
     			mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
     		}
     		return true;
     	} catch (Exception e) {
-    		console.setText("\tError loading the chosen file.");
-    		//e.printStackTrace();
+    		console.setText("\tError loading the file " + toLoad.getName());
+    		//e.printStackTrace();1
     		return false;
     	}
     }

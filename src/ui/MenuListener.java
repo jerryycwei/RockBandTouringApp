@@ -84,9 +84,9 @@ public class MenuListener implements ActionListener {
 			break;
 		
 		case "Save":
-			String s = "";
-			while(s != null && s.length() == 0) {
-				s = (String)JOptionPane.showInputDialog(
+			String saveFileName = "";
+			while(saveFileName != null && saveFileName.length() == 0) {
+				saveFileName = (String)JOptionPane.showInputDialog(
                     parent.getFrame(),
                     "Enter the filename:\n"
                     + "(overwrites old files of the same name)\n"
@@ -96,8 +96,9 @@ public class MenuListener implements ActionListener {
                     null,
                     null, null);
 			}
-			if (s != null) {
-				parent.save(parent.getSystem(), s);
+			if (saveFileName != null) {
+		    	parent.getConsole().setText("\tSaving to " + saveFileName + ".tour");
+				parent.save(parent.getSystem(), saveFileName);
 			}
 			
 			break;

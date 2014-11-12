@@ -159,7 +159,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 			for(int i = parent.getSystem().numberOfLinks() - 1; i >= 0; i--){
 				Link link = parent.getSystem().getLink(i);
 				if(link.getOrigin().equals(originOfUndoLink) && link.getDestination().equals(cityToBeUndo)) {
-					System.out.println("link found origin: " +link.getOrigin().getName() + " destination: " + link.getDestination().getName());
 					link.setLinkActive(false);
 					undoLinks.add(link);
 					if(undoLinks.size() > 5) {
@@ -259,7 +258,6 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 		for(int i = 1; i < 6 && i < parent.getSystem().numberOfLinks() + 1; i++ ) {
 			Link link = parent.getSystem().getLink(parent.getSystem().numberOfLinks() - i);
 			destinationMap.put((City) link.getDestination(), (City) link.getOrigin());
-			System.out.println(link.getDestination().getName() + " " + link.getOrigin().getName());
 			City city = (City) link.getDestination();
 			MouseEvent e = new MouseEvent(imgPanel, 0, 0, 0, city.getCircle().getPositionX(), city.getCircle().getPositionY(), 0, false);
 			mouseMap.put(e, city);
