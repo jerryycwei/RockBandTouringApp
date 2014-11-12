@@ -21,6 +21,7 @@ import metamodel.Node;
 import metamodel.SolidArrow;
 
 public class ImagePanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private Image image;
 	private MapSystem system;
 
