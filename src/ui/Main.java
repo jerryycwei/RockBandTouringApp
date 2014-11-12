@@ -69,6 +69,9 @@ public class Main {
 	
 	public void setIsCreateTourModeOn(boolean mode) {
 		isCreateTourModeOn = mode;
+		if (isCreateTourModeOn) {
+			mouseListener.resetClickCount();
+		}
 	}
 	
 	public boolean getIsCreateTourModeOn() {
@@ -253,10 +256,10 @@ public class Main {
     		Writer writer = new FileWriter(saveFile);
 			xs.toXML(sys, writer);
 			writer.close();
-			System.out.println("Saved.");
+			console.setText("Tour saved.");
 			return true;
 		} catch (IOException e) {
-			System.out.println("Nope. Didn't work.");
+			console.setText("Could not save the tour");
 			return false;
 		}
     }
@@ -270,12 +273,13 @@ public class Main {
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
     		mouseListener.loadMouseListener();
+			console.setText("Tour loaded.");
     		if (isCreateTourModeOn || isAlternateRouteModeOn) {
     			mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
     		}
     		return true;
     	} catch (Exception e) {
-    		System.out.println("Nope. Didn't work.");
+    		console.setText("Could not load the tour.");
     		e.printStackTrace();
     		return false;
     	}
