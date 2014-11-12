@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import metamodel.MapSystem;
 
@@ -101,7 +103,16 @@ public class MenuListener implements ActionListener {
 			break;
 			
 		case "Load":
-			parent.load();
+		    JFileChooser chooser = new JFileChooser();
+		    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+		        "JPG & GIF Images", "xml");
+		    chooser.setFileFilter(filter);
+		    int returnVal = chooser.showOpenDialog(parent.getFrame());
+		    if(returnVal == JFileChooser.APPROVE_OPTION) {
+		    	parent.getConsole().setText("\tYou chose to open this file: " +
+		    		   chooser.getSelectedFile().getName());
+		    	parent.load(chooser.getSelectedFile());
+		    }
 			break;
 			
 		default:

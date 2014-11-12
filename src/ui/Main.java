@@ -249,23 +249,23 @@ public class Main {
 		}
     }
     
-    public boolean load() {
+    public boolean load(File toLoad) {
     	
     	XStream xs = new XStream();
     	try {
-    		system = (MapSystem) xs.fromXML(new FileInputStream(saveFile));
+    		system = (MapSystem) xs.fromXML(new FileInputStream(toLoad));
     		loadCities();
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
     		mouseListener.loadMouseListener();
-			console.setText("Tour loaded.");
+			console.setText("\tFile " + toLoad.getName() + " loaded successfully.");
     		if (isCreateTourModeOn || isAlternateRouteModeOn) {
     			mouseListener.setOrigin((City) system.getLink(system.numberOfLinks()-1).getDestination());
     		}
     		return true;
     	} catch (Exception e) {
-    		console.setText("Could not load the tour.");
-    		e.printStackTrace();
+    		console.setText("\tError loading the chosen file.");
+    		//e.printStackTrace();
     		return false;
     	}
     }
