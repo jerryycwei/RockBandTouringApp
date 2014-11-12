@@ -3,6 +3,7 @@ package ui;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -45,6 +46,7 @@ public class MenuListener implements ActionListener {
 				system.clearLists();
 				parent.getVisualOutput().repaint();
 				parent.getMouseListener().resetClickCount();
+				parent.getConsole().setText("\tConsole Cleared");
 			}
 			break;
 		case "Undo":
@@ -90,7 +92,7 @@ public class MenuListener implements ActionListener {
                     parent.getFrame(),
                     "Enter the filename:\n"
                     + "(overwrites old files of the same name)\n"
-                    + "Extension .tour will be added automatically.",
+                    + "Extension .gtr will be added automatically.",
                     "Customized Dialog",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
@@ -106,8 +108,9 @@ public class MenuListener implements ActionListener {
 		case "Load":
 		    JFileChooser chooser = new JFileChooser();
 		    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-		        "JPG & GIF Images", "xml");
+		        "GunTour Model Files (.gtr)", "gtr");
 		    chooser.setFileFilter(filter);
+		    chooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		    int returnVal = chooser.showOpenDialog(parent.getFrame());
 		    if(returnVal == JFileChooser.APPROVE_OPTION) {
 		    	parent.getConsole().setText("\tYou chose to open this file: " +

@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -100,7 +99,6 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//textArea.setMinimumSize(new Dimension(60, 15));
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(0, 0, 1280, 740);
@@ -111,9 +109,6 @@ public class Main {
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 		
 		visualOutput = new ImagePanel("images/map.jpg", system);
-		//visualOutput.setSize(1100, 631);
-		//visualOutput.setMinimumSize(new Dimension(1100, 601));
-		//visualOutput.setBounds(0, 0, 1000, 700);
 		
 		splitPane.setLeftComponent(visualOutput);
 		
@@ -189,9 +184,6 @@ public class Main {
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
 		mnHelp.add(mntmWalkthrough);
-		
-		System.out.println("Frame created");
-		
 	}
 	
 	public void setVisualOutput(ImagePanel aVisualOutput) {
@@ -237,7 +229,7 @@ public class Main {
     public boolean save(MapSystem sys, String name) {
     	XStream xs = new XStream();
     	try {
-    		File saveFile = new File(name + ".tour");
+    		File saveFile = new File(name + ".gtr");
     		Writer writer = new FileWriter(saveFile);
 			xs.toXML(sys, writer);
 			writer.close();
@@ -254,17 +246,6 @@ public class Main {
     	XStream xs = new XStream();
     	try {
     		system = (MapSystem) xs.fromXML(new FileInputStream(toLoad));
-//=======
-//    public boolean load(String fileName) {
-//    	XStream xs = new XStream();
-//    	try {
-//    		File loadFile = new File(fileName + ".tour");
-//    		if (!loadFile.exists()) {
-//    			console.setText("\tCould not load: " + fileName + ".tour not found");
-//    			return false;
-//    		}
-//    		system = (MapSystem) xs.fromXML(new FileInputStream(loadFile));
-//>>>>>>> 1e85751062fd638bce9ea4fb0cba30c16bc50801
     		loadCities();
     		visualOutput.setSystem(system);
     		visualOutput.repaint();
@@ -277,7 +258,6 @@ public class Main {
     		return true;
     	} catch (Exception e) {
     		console.setText("\tError loading the file " + toLoad.getName());
-    		//e.printStackTrace();1
     		return false;
     	}
     }
