@@ -28,7 +28,7 @@ public class CityBuilder {
 	}
 
 	/**
-	 * Initialize Cities as well as the venues and accomodations
+	 * Initialize Cities as well as the venues and accommodations
 	 */
 	private void initializeCities() {
 		
@@ -77,68 +77,68 @@ public class CityBuilder {
 		cities.add(sanJose);
 
 		
-		losAngeles.addAccomodation("Hilton Courtyard", "Hotel", generator.nextInt(100) + 150);
-		chicago.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		newYork.addAccomodation("Hilton Conrad", "Hotel", generator.nextInt(100) + 150);
-		kansasCity.addAccomodation("Hilton Hotel", "Hotel", generator.nextInt(100) + 150);
-		toronto.addAccomodation("Hilton Resort", "Hotel", generator.nextInt(100) + 150);
-		montreal.addAccomodation("DoubleTree by Hilton", "Hotel", generator.nextInt(100) + 150);
-		houston.addAccomodation("Embassy Suites by Hilton", "Hotel", generator.nextInt(100) + 150);
-		philadelphia.addAccomodation("Curio by Hilton", "Hotel", generator.nextInt(100) + 150);
-		phoenix.addAccomodation("Hilton Inn", "Hotel", generator.nextInt(100) + 150);
-		sanDiego.addAccomodation("Hilton House", "Hotel", generator.nextInt(100) + 150);
-		sanFrancisco.addAccomodation("Hilton Suites", "Hotel", generator.nextInt(100) + 150);
-		ottawa.addAccomodation("Hilton Grand Vacations", "Hotel", generator.nextInt(100) + 150);
-		quebecCity.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		vancouver.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		detroit.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		seattle.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		dallas.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		atlanta.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		lasVegas.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
-		sanJose.addAccomodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		losAngeles.addAccommodation("Hilton Courtyard", "Hotel", generator.nextInt(100) + 150);
+		chicago.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		newYork.addAccommodation("Hilton Conrad", "Hotel", generator.nextInt(100) + 150);
+		kansasCity.addAccommodation("Hilton Hotel", "Hotel", generator.nextInt(100) + 150);
+		toronto.addAccommodation("Hilton Resort", "Hotel", generator.nextInt(100) + 150);
+		montreal.addAccommodation("DoubleTree by Hilton", "Hotel", generator.nextInt(100) + 150);
+		houston.addAccommodation("Embassy Suites by Hilton", "Hotel", generator.nextInt(100) + 150);
+		philadelphia.addAccommodation("Curio by Hilton", "Hotel", generator.nextInt(100) + 150);
+		phoenix.addAccommodation("Hilton Inn", "Hotel", generator.nextInt(100) + 150);
+		sanDiego.addAccommodation("Hilton House", "Hotel", generator.nextInt(100) + 150);
+		sanFrancisco.addAccommodation("Hilton Suites", "Hotel", generator.nextInt(100) + 150);
+		ottawa.addAccommodation("Hilton Grand Vacations", "Hotel", generator.nextInt(100) + 150);
+		quebecCity.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		vancouver.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		detroit.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		seattle.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		dallas.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		atlanta.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		lasVegas.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
+		sanJose.addAccommodation("Hilton Garden Inn", "Hotel", generator.nextInt(100) + 150);
 
-		losAngeles.addAccomodation("Ritz-Carlton Los Angeles", "Hotel", generator.nextInt(200) + 300);
-		chicago.addAccomodation("Ritz-Carlton Chicago", "Hotel", generator.nextInt(200) + 300);
-		newYork.addAccomodation("Ritz-Carlton New York", "Hotel", generator.nextInt(200) + 300);
-		kansasCity.addAccomodation("Ritz-Carlton Kansas City", "Hotel", generator.nextInt(200) + 300);
-		toronto.addAccomodation("Ritz-Carlton Toronto", "Hotel", generator.nextInt(200) + 300);
-		montreal.addAccomodation("Ritz-Carlton Montreal", "Hotel", generator.nextInt(200) + 300);
-		houston.addAccomodation("Ritz-Carlton Houston", "Hotel", generator.nextInt(200) + 300);
-		phoenix.addAccomodation("Ritz-Carlton Phoenix", "Hotel", generator.nextInt(200) + 300);
-		philadelphia.addAccomodation("Ritz-Carlton Philadelphia", "Hotel", generator.nextInt(200) + 300);
-		sanDiego.addAccomodation("Ritz-Carlton San Diego", "Hotel", generator.nextInt(200) + 300);
-		sanFrancisco.addAccomodation("Ritz-Carlton San Francisco", "Hotel", generator.nextInt(200) + 300);
-		ottawa.addAccomodation("Ritz-Carlton Ottawa", "Hotel", generator.nextInt(200) + 300);
-		quebecCity.addAccomodation("Ritz-Carlton Quebec City", "Hotel", generator.nextInt(200) + 300);
-		vancouver.addAccomodation("Ritz-Carlton Vancouver", "Hotel", generator.nextInt(200) + 300);
-		detroit.addAccomodation("Ritz-Carlton Detroit", "Hotel", generator.nextInt(200) + 300);
-		seattle.addAccomodation("Ritz-Carlton Seattle", "Hotel", generator.nextInt(200) + 300);
-		dallas.addAccomodation("Ritz-Carlton Dallas", "Hotel", generator.nextInt(200) + 300);
-		atlanta.addAccomodation("Ritz-Carlton Atlanta", "Hotel", generator.nextInt(200) + 300);
-		lasVegas.addAccomodation("Ritz-Carlton Las Vegas", "Hotel", generator.nextInt(200) + 300);
-		sanJose.addAccomodation("Ritz-Carlton San Jose", "Hotel", generator.nextInt(200) + 300);
+		losAngeles.addAccommodation("Ritz-Carlton Los Angeles", "Hotel", generator.nextInt(200) + 300);
+		chicago.addAccommodation("Ritz-Carlton Chicago", "Hotel", generator.nextInt(200) + 300);
+		newYork.addAccommodation("Ritz-Carlton New York", "Hotel", generator.nextInt(200) + 300);
+		kansasCity.addAccommodation("Ritz-Carlton Kansas City", "Hotel", generator.nextInt(200) + 300);
+		toronto.addAccommodation("Ritz-Carlton Toronto", "Hotel", generator.nextInt(200) + 300);
+		montreal.addAccommodation("Ritz-Carlton Montreal", "Hotel", generator.nextInt(200) + 300);
+		houston.addAccommodation("Ritz-Carlton Houston", "Hotel", generator.nextInt(200) + 300);
+		phoenix.addAccommodation("Ritz-Carlton Phoenix", "Hotel", generator.nextInt(200) + 300);
+		philadelphia.addAccommodation("Ritz-Carlton Philadelphia", "Hotel", generator.nextInt(200) + 300);
+		sanDiego.addAccommodation("Ritz-Carlton San Diego", "Hotel", generator.nextInt(200) + 300);
+		sanFrancisco.addAccommodation("Ritz-Carlton San Francisco", "Hotel", generator.nextInt(200) + 300);
+		ottawa.addAccommodation("Ritz-Carlton Ottawa", "Hotel", generator.nextInt(200) + 300);
+		quebecCity.addAccommodation("Ritz-Carlton Quebec City", "Hotel", generator.nextInt(200) + 300);
+		vancouver.addAccommodation("Ritz-Carlton Vancouver", "Hotel", generator.nextInt(200) + 300);
+		detroit.addAccommodation("Ritz-Carlton Detroit", "Hotel", generator.nextInt(200) + 300);
+		seattle.addAccommodation("Ritz-Carlton Seattle", "Hotel", generator.nextInt(200) + 300);
+		dallas.addAccommodation("Ritz-Carlton Dallas", "Hotel", generator.nextInt(200) + 300);
+		atlanta.addAccommodation("Ritz-Carlton Atlanta", "Hotel", generator.nextInt(200) + 300);
+		lasVegas.addAccommodation("Ritz-Carlton Las Vegas", "Hotel", generator.nextInt(200) + 300);
+		sanJose.addAccommodation("Ritz-Carlton San Jose", "Hotel", generator.nextInt(200) + 300);
 
-		losAngeles.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		chicago.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		newYork.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		kansasCity.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		toronto.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		montreal.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		houston.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		phoenix.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		philadelphia.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		sanDiego.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		sanFrancisco.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		ottawa.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		quebecCity.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		vancouver.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		detroit.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		seattle.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		dallas.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		atlanta.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		lasVegas.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
-		sanJose.addAccomodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		losAngeles.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		chicago.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		newYork.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		kansasCity.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		toronto.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		montreal.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		houston.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		phoenix.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		philadelphia.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		sanDiego.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		sanFrancisco.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		ottawa.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		quebecCity.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		vancouver.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		detroit.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		seattle.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		dallas.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		atlanta.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		lasVegas.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
+		sanJose.addAccommodation("Travelodge", "Hotel", generator.nextInt(60) + 70);
 
 		
 		

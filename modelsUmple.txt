@@ -45,7 +45,7 @@ class TransportationType
   1 -- 1 Link;
 }
 
-class Accomodation
+class Accommodation
 {
   name;
   type;
@@ -111,10 +111,10 @@ class TransportationType
   position.association Link__TransportationType 135,34 0,47;
 }
 
-class Accomodation
+class Accommodation
 {
   position 812 269 113 96;
-  position.association Accomodation__City 0,48 153,42;
+  position.association Accommodation__City 0,48 153,42;
 }
 
 class StartPoint
@@ -230,7 +230,7 @@ class PermanentLabel
 class CircleLabel
 { 
     City city;
-    Accomodation accomodation;
+    Accommodation accommodation;
     Venue venue;
     isA PopupLabel;
 }

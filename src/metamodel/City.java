@@ -23,7 +23,7 @@ public class City extends Node
   //City Associations
   private Weather weather;
   private List<Venue> venues;
-  private List<Accomodation> accomodations;
+  private List<Accommodation> accommodations;
 
   //------------------------
   // CONSTRUCTOR
@@ -42,7 +42,7 @@ public class City extends Node
     }
     weather = aWeather;
     venues = new ArrayList<Venue>();
-    accomodations = new ArrayList<Accomodation>();
+    accommodations = new ArrayList<Accommodation>();
   }
 
   public City(String aName, Circle aCircle, MapSystem aMapSystem, String aRegion, int aPopulation, String aTypeForWeather, Symbol aSymbolForWeather)
@@ -54,7 +54,7 @@ public class City extends Node
     endNode = false;
     weather = new Weather(aTypeForWeather, aSymbolForWeather, this);
     venues = new ArrayList<Venue>();
-    accomodations = new ArrayList<Accomodation>();
+    accommodations = new ArrayList<Accommodation>();
   }
 
   //------------------------
@@ -148,33 +148,33 @@ public class City extends Node
     return index;
   }
 
-  public Accomodation getAccomodation(int index)
+  public Accommodation getAccommodation(int index)
   {
-    Accomodation aAccomodation = accomodations.get(index);
-    return aAccomodation;
+    Accommodation aAccommodation = accommodations.get(index);
+    return aAccommodation;
   }
 
-  public List<Accomodation> getAccomodations()
+  public List<Accommodation> getAccommodations()
   {
-    List<Accomodation> newAccomodations = Collections.unmodifiableList(accomodations);
-    return newAccomodations;
+    List<Accommodation> newAccommodations = Collections.unmodifiableList(accommodations);
+    return newAccommodations;
   }
 
-  public int numberOfAccomodations()
+  public int numberOfAccommodations()
   {
-    int number = accomodations.size();
+    int number = accommodations.size();
     return number;
   }
 
-  public boolean hasAccomodations()
+  public boolean hasAccommodations()
   {
-    boolean has = accomodations.size() > 0;
+    boolean has = accommodations.size() > 0;
     return has;
   }
 
-  public int indexOfAccomodation(Accomodation aAccomodation)
+  public int indexOfAccommodation(Accommodation aAccommodation)
   {
-    int index = accomodations.indexOf(aAccomodation);
+    int index = accommodations.indexOf(aAccommodation);
     return index;
   }
 
@@ -250,74 +250,74 @@ public class City extends Node
     return wasAdded;
   }
 
-  public static int minimumNumberOfAccomodations()
+  public static int minimumNumberOfAccommodations()
   {
     return 0;
   }
 
-  public Accomodation addAccomodation(String aName, String aType, double aCost)
+  public Accommodation addAccommodation(String aName, String aType, double aCost)
   {
-    return new Accomodation(aName, aType, aCost, this);
+    return new Accommodation(aName, aType, aCost, this);
   }
 
-  public boolean addAccomodation(Accomodation aAccomodation)
+  public boolean addAccommodation(Accommodation aAccommodation)
   {
     boolean wasAdded = false;
-    if (accomodations.contains(aAccomodation)) { return false; }
-    City existingCity = aAccomodation.getCity();
+    if (accommodations.contains(aAccommodation)) { return false; }
+    City existingCity = aAccommodation.getCity();
     boolean isNewCity = existingCity != null && !this.equals(existingCity);
     if (isNewCity)
     {
-      aAccomodation.setCity(this);
+      aAccommodation.setCity(this);
     }
     else
     {
-      accomodations.add(aAccomodation);
+      accommodations.add(aAccommodation);
     }
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeAccomodation(Accomodation aAccomodation)
+  public boolean removeAccommodation(Accommodation aAccommodation)
   {
     boolean wasRemoved = false;
-    //Unable to remove aAccomodation, as it must always have a city
-    if (!this.equals(aAccomodation.getCity()))
+    //Unable to remove aAccommodation, as it must always have a city
+    if (!this.equals(aAccommodation.getCity()))
     {
-      accomodations.remove(aAccomodation);
+      accommodations.remove(aAccommodation);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addAccomodationAt(Accomodation aAccomodation, int index)
+  public boolean addAccommodationAt(Accommodation aAccommodation, int index)
   {  
     boolean wasAdded = false;
-    if(addAccomodation(aAccomodation))
+    if(addAccommodation(aAccommodation))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfAccomodations()) { index = numberOfAccomodations() - 1; }
-      accomodations.remove(aAccomodation);
-      accomodations.add(index, aAccomodation);
+      if(index > numberOfAccommodations()) { index = numberOfAccommodations() - 1; }
+      accommodations.remove(aAccommodation);
+      accommodations.add(index, aAccommodation);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveAccomodationAt(Accomodation aAccomodation, int index)
+  public boolean addOrMoveAccommodationAt(Accommodation aAccommodation, int index)
   {
     boolean wasAdded = false;
-    if(accomodations.contains(aAccomodation))
+    if(accommodations.contains(aAccommodation))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfAccomodations()) { index = numberOfAccomodations() - 1; }
-      accomodations.remove(aAccomodation);
-      accomodations.add(index, aAccomodation);
+      if(index > numberOfAccommodations()) { index = numberOfAccommodations() - 1; }
+      accommodations.remove(aAccommodation);
+      accommodations.add(index, aAccommodation);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addAccomodationAt(aAccomodation, index);
+      wasAdded = addAccommodationAt(aAccommodation, index);
     }
     return wasAdded;
   }
@@ -335,10 +335,10 @@ public class City extends Node
       Venue aVenue = venues.get(i - 1);
       aVenue.delete();
     }
-    for(int i=accomodations.size(); i > 0; i--)
+    for(int i=accommodations.size(); i > 0; i--)
     {
-      Accomodation aAccomodation = accomodations.get(i - 1);
-      aAccomodation.delete();
+      Accommodation aAccommodation = accommodations.get(i - 1);
+      aAccommodation.delete();
     }
     super.delete();
   }

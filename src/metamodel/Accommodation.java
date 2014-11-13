@@ -6,26 +6,26 @@ package metamodel;
 
 // line 46 "model.ump"
 // line 123 "model.ump"
-public class Accomodation
+public class Accommodation
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //Accomodation Attributes
+  //Accommodation Attributes
   private String name;
   private String type;
   private double cost;
 
-  //Accomodation Associations
+  //Accommodation Associations
   private City city;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Accomodation(String aName, String aType, double aCost, City aCity)
+  public Accommodation(String aName, String aType, double aCost, City aCity)
   {
     name = aName;
     type = aType;
@@ -33,7 +33,7 @@ public class Accomodation
     boolean didAddCity = setCity(aCity);
     if (!didAddCity)
     {
-      throw new RuntimeException("Unable to create accomodation due to city");
+      throw new RuntimeException("Unable to create accommodation due to city");
     }
   }
 
@@ -97,9 +97,9 @@ public class Accomodation
     city = aCity;
     if (existingCity != null && !existingCity.equals(aCity))
     {
-      existingCity.removeAccomodation(this);
+      existingCity.removeAccommodation(this);
     }
-    city.addAccomodation(this);
+    city.addAccommodation(this);
     wasSet = true;
     return wasSet;
   }
@@ -108,7 +108,7 @@ public class Accomodation
   {
     City placeholderCity = city;
     this.city = null;
-    placeholderCity.removeAccomodation(this);
+    placeholderCity.removeAccommodation(this);
   }
 
 

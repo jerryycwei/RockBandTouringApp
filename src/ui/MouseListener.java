@@ -8,7 +8,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import metamodel.Accomodation;
+import metamodel.Accommodation;
 import metamodel.City;
 import metamodel.DottedArrow;
 import metamodel.Link;
@@ -117,10 +117,10 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        	
 	        	if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
 	        		
-	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMODATION(S):";
+	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMMODATION(S):";
 	        		
-	        		for (Accomodation accomodation : city.getAccomodations()){
-	        			printedText = printedText + "\n" + accomodation.getName() + " $" + accomodation.getCost();
+	        		for (Accommodation accommodation : city.getAccommodations()){
+	        			printedText = printedText + "\n" + accommodation.getName() + " $" + accommodation.getCost();
 	        		}
 	        		
 	        		printedText = printedText +"\n" +"\n" + "VENUE:";
