@@ -49,7 +49,6 @@ public class Main {
 	
 	Graphics2D g2d;
 	
-	
 	public void setIsCreateTourModeOn(boolean mode) {
 		isCreateTourModeOn = mode;
 		if (isCreateTourModeOn) {
