@@ -33,7 +33,7 @@ public class MenuListener implements ActionListener {
 			aboutDialog.setBounds(500, 200, 300, 200);
 			JPanel panel = new JPanel();
 			JTextArea aboutArea = new JTextArea();
-			aboutArea.setText("\nGunTour MussBander\nVersion 1.0.6 (35247)\nCopyright © 2014, GunTour MussBander\n");
+			aboutArea.setText("\nGunTour MussBander\nVersion 1.0.6 (35247)\nCopyright 2014, GunTour MussBander\n");
 			aboutArea.setEditable(false);
 			aboutArea.setBackground(null);
 			panel.add(aboutArea);
@@ -60,9 +60,9 @@ public class MenuListener implements ActionListener {
 			+ "     10. Click on Tour > End Alternate."
 			+ " The dashed arrow represents the possibility for the band to stop by Atlanta for another concert before going to Detroit after Chicago.\n"
 			+ "     11. Click on File > Save. A pop-up will appear, prompting you to save your current tour to your desired filename."
-			+ " Enter anything, for example mytour. The tour will be saved as mytour.gtr.\n"
+			+ " Enter anything, for example mytour. The tour will be saved as mytour.gtr. Saving takes a moment, please wait before closing the window.\n"
 			+ "     12. Click on File > Clear Map.\n"
-			+ "     13. Click on File > Load. Choose your saved file (mytour.gtr).\n"
+			+ "     13. Click on File > Load. Choose your saved file (mytour.gtr). Please wait, loading takes a moment.\n"
 			+ "     14. Click on Tour > Create Tour. You can now resume your tour."
 			+ " For example, click on Philadelphia, New York and Montreal, carefully avoiding Toronto and Ottawa.";
 			JDialog walkthroughDialog = new JDialog(parent.getFrame());
@@ -140,7 +140,7 @@ public class MenuListener implements ActionListener {
                     null, null);
 			}
 			if (saveFileName != null) {
-		    	parent.getConsole().setText("\tSaving to " + saveFileName + ".tour");
+		    	parent.getConsole().setText("\tSaving to " + saveFileName + ".gtr");
 				parent.save(parent.getSystem(), saveFileName);
 			}
 			

@@ -228,13 +228,14 @@ public class Main {
     }
     
     public boolean save(MapSystem sys, String name) {
+    	console.setText("\tSaving file please do not exit the application.");
     	XStream xs = new XStream();
     	try {
     		File saveFile = new File(name + ".gtr");
     		Writer writer = new FileWriter(saveFile);
 			xs.toXML(sys, writer);
 			writer.close();
-			console.setText("\tFile " + name + ".tour saved successfully.");
+			console.setText("\tFile " + name + ".gtr saved successfully.");
 			return true;
 		} catch (IOException e) {
 			console.setText("\tError saving file.");
@@ -243,7 +244,7 @@ public class Main {
     }
     
     public boolean load(File toLoad) {
-    	
+    	console.setText("\tLoading file please wait...");
     	XStream xs = new XStream();
     	try {
     		system = (MapSystem) xs.fromXML(new FileInputStream(toLoad));
