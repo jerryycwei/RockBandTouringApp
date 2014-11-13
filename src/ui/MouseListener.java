@@ -91,6 +91,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
         			}
         			mouseMap.put(e, city); //undo stack
         			pushMouseEvent(mouseUndoStack, e); //undo stack
+        			mouseRedoStack.clear();
         			repaint();
         			break;
         		}
