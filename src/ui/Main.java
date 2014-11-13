@@ -129,7 +129,7 @@ public class Main {
 		);
 		visualOutput.setLayout(gl_visualOutput);
 		
-		splitPane.setRightComponent(infoLabel.getInfo());//infoLabel);
+		splitPane.setRightComponent(infoLabel.getInfo());
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(false);
