@@ -34,8 +34,8 @@ public class CityBuilder {
 		
 		Random generator = new Random();
 
-		City losAngeles = new City("Los Angeles", new Circle("Los Angeles", 120, 413), system, "California", 3884000, "Sunny", new Symbol("images/weatherSunny.jpg"));
-		City chicago = new City("Chicago", new Circle("Chicago", 716, 220), system, "Illinois", 2790000, "Rainy", new Symbol("images/weatherRain.jpg"));
+		City losAngeles = new City("Los Angeles", new Circle("Los Angeles", 120, 413), system, "Los Angeles", 3884000, "Sunny", new Symbol("images/weatherSunny.jpg"));
+		City chicago = new City("Chicago", new Circle("Chicago", 716, 220), system, "Chicago", 2790000, "Rainy", new Symbol("images/weatherRain.jpg"));
 		City kansasCity = new City("Kansas City", new Circle("Kansas City", 581, 291), system, "Kansas", 467000, "Tornado", new Symbol("images/weatherTornado.jpg"));
 		City newYork = new City("New York City", new Circle("New York City", 981, 250), system, "New York", 8400000, "Snow", new Symbol("images/weatherSnow.jpg"));
 		City toronto = new City("Toronto", new Circle("Toronto", 876, 173), system, "Toronto", 2500000, "Snow", new Symbol("images/weatherSnow.jpg"));
