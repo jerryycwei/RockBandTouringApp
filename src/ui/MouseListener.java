@@ -117,7 +117,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener{
 	        	
 	        	if (hasClickedOnCity(mouseX, mouseY, cityX, cityY)) {
 	        		
-	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "ACCOMMODATION(S):";
+	        		String printedText = "CITY:" + "\n" + city.getName() +"\n" +"\n" + "POPULATION:" + "\n" + city.getPopulation() +"\n" +"\n" + "ACCOMMODATION(S):";
 	        		
 	        		for (Accommodation accommodation : city.getAccommodations()){
 	        			printedText = printedText + "\n" + accommodation.getName() + " $" + accommodation.getCost();
