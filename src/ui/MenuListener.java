@@ -33,7 +33,7 @@ public class MenuListener implements ActionListener {
 			aboutDialog.setBounds(500, 200, 300, 200);
 			JPanel panel = new JPanel();
 			JTextArea aboutArea = new JTextArea();
-			aboutArea.setText("\nGunTour MussBander\nVersion 1.0.6 (35247)\nCopyright Â© 2014, GunTour MussBander\n");
+			aboutArea.setText("\nGunTour MussBander\nVersion 1.0.6 (35247)\nCopyright © 2014, GunTour MussBander\n");
 			aboutArea.setEditable(false);
 			aboutArea.setBackground(null);
 			panel.add(aboutArea);
@@ -41,6 +41,46 @@ public class MenuListener implements ActionListener {
 			aboutDialog.add(panel);
 			aboutDialog.setVisible(true);
 			break;
+		case "Walkthrough":
+			String walkthrough =
+			"The following are simple step-by-step instructions on how to use the GunTour MussBander software.\n"
+			+ "\n"
+			+ "     1. Click on Tour > Create Tour.\n"
+			+ "     2. Click on Kansas City. Notice the red dot becomes green. This is your starting point.\n"
+			+ "     3. Click on Chicago. An arrow gets drawn indicating the direction, with the transport method."
+			+ " The default one is by plane."
+			+ " In a later release it will be possible to change the travel type to other ones, such as bus or car."
+			+ " Notice the Chicago red dot became yellow: this is the ending point of the tour.\n"
+			+ "     4. Click on Detroit: Chicago yellow dot becomes blue, and Detroit is now the new end point (yellow).\n"
+			+ "     5. Click on Toronto.\n"
+			+ "     6. Click on Edit > Undo.\n"
+			+ "     7. Click on Tour > End Tour.\n"
+			+ "     8. Click on Tour > Alternate Route.\n"
+			+ "     9. Click on Chicago, then Atlanta, then Detroit.\n"
+			+ "     10. Click on Tour > End Alternate."
+			+ " The dashed arrow represents the possibility for the band to stop by Atlanta for another concert before going to Detroit after Chicago.\n"
+			+ "     11. Click on File > Save. A pop-up will appear, prompting you to save your current tour to your desired filename."
+			+ " Enter anything, for example mytour. The tour will be saved as mytour.gtr.\n"
+			+ "     12. Click on File > Clear Map.\n"
+			+ "     13. Click on File > Load. Choose your saved file (mytour.gtr).\n"
+			+ "     14. Click on Tour > Create Tour. You can now resume your tour."
+			+ " For example, click on Philadelphia, New York and Montreal, carefully avoiding Toronto and Ottawa.";
+			JDialog walkthroughDialog = new JDialog(parent.getFrame());
+			walkthroughDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			walkthroughDialog.setBounds(100, 100, 1000, 500);
+			JPanel walkthroughPanel = new JPanel();
+			JTextArea walkthroughArea = new JTextArea();
+			walkthroughArea.setEditable(false);
+			walkthroughArea.setLineWrap(true);
+			walkthroughArea.setWrapStyleWord(true);
+			walkthroughArea.setColumns(87);
+			walkthroughArea.setRows(400);
+			walkthroughArea.setBackground(null);
+			walkthroughArea.setText(walkthrough);
+			walkthroughPanel.add(walkthroughArea);
+			walkthroughDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+			walkthroughDialog.add(walkthroughPanel);
+			walkthroughDialog.setVisible(true);
 		case "Clear Map":
 			MapSystem system = parent.getSystem();
 			if (system != null) {

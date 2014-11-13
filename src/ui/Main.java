@@ -184,6 +184,7 @@ public class Main {
 		mnHelp.add(mntmAbout);
 		
 		JMenuItem mntmWalkthrough = new JMenuItem("Walkthrough");
+		mntmWalkthrough.addActionListener(menuListener);
 		mnHelp.add(mntmWalkthrough);
 	}
 	
