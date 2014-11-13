@@ -113,6 +113,7 @@ public class Main {
 		splitPane.setLeftComponent(visualOutput);
 		
 		console = new Console();
+		console.setText("\tClick Tour -> Create Tour to begin creating a tour.");
 		visualOutput.add(console);
 		mouseListener = new MouseListener(this, visualOutput, console);
 		visualOutput.addMouseListener(mouseListener);
